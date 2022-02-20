@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   width: 100%;
   height: 100%;
   display: flex;
@@ -8,15 +10,24 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 61px;
   background-color: #FFFFFF;
 `;
 
+export const LogoContainer = styled.div``;
+
+export const UserContainer = styled.div``;
+
+export const AvatarUser = styled.div``;
+
 export const Body = styled.div`
   display: flex;
   width: 100%;
-  height: 1019px;
+  /* height: 1200px; */
+  height: 100%;
   /* border: 1px solid green; */
 `;
 
@@ -24,6 +35,8 @@ export const LeftMenu = styled.div`
   width: 15%;
   height: 100%;
   background-color: #FFFFFF;
+  border: 1px solid #EAEFED;
+  box-shadow: 0px 4px 8px rgba(165, 171, 179, 0.16);
   /* border: 1px solid red; */
 `;
 
@@ -37,7 +50,12 @@ export const RightContainer = styled.div`
   /* border: 1px solid black; */
 `;
 
-export const PageTitle = styled.div``;
+export const PageTitle = styled.div`
+  align-self: center;
+  width: 72%;
+  margin-bottom: 30px;
+  /* border: 1px solid red; */
+`;
 
 export const Main = styled.div`
   display: flex;
@@ -50,28 +68,42 @@ export const Main = styled.div`
   border-radius: 8px;
   padding: 50px 20px;
   /* border: 1px solid black; */
-
 `;
 
 export const Top = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 `;
-
 
 export const TabsContainer = styled.div`
   display: flex;
+  margin-bottom: 10px;
 `;
 
 export const Tab = styled.div``;
 
 export const TabBar = styled.div``;
 
-export const InputSearch = styled.div``;
+export const InputSearch = styled.div`
+  display: flex;
+  margin-bottom: 30px;
+  width: 100%;
 
-export const ListingContainer = styled.div``;
+  .searchTextField {
+    width: 100%;
+    /* background-color: red; */
+    /* width: 100%; */
+  }
+`;
 
-export const ListingTitle = styled.div``;
+export const ListingContainer = styled.div`
+
+`;
+
+export const ListingTitle = styled.div`
+  margin-bottom: 30px;
+`;
 
 export const Table = styled.div`
   width: 100%;
@@ -238,7 +270,7 @@ export const Td = styled.div`
   } */
 `;
 
-export const Avatar = styled.img`
+export const AvatarAgent = styled.img`
   width: 32px;
   height: 32px;
   border-radius: 100%;

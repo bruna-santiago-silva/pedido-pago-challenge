@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import { InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
+import { InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import {
     Container,
     Header,
+    LogoContainer,
+    UserContainer,
+    AvatarUser,
     LeftMenu,
     RightContainer,
     Body,
@@ -22,22 +25,21 @@ import {
     Tbody,
     TrBody,
     Td,
-    Avatar,
+    AvatarAgent,
     AgentName,
     PaginationContainer,
     PaginationLeftContainer,
     PaginationTitle,
-    PaginationDropdown,
     Pagination,
     PaginationRightContainer,
 } from '../Home/styles'
 import { challengeApi } from '../api/ChallengeApi'
-import { Agent } from 'http';
 import ThreeDotsIcon from '../components/ThreeDotsIcon';
 import Button from '../components/Button';
 import NextIcon from '../components/NextIcon';
 import BackIcon from '../components/BackIcon';
-import { off } from 'process';
+import LogoIcon from '../components/LogoIcon';
+import SearchIcon from '../components/SearchIcon';
 
 interface IAgents {
   agent_id: number;
@@ -119,9 +121,20 @@ const Home = () => {
 
   return (
     <Container>
-      <Header>header</Header>
+      <Header>
+        <LogoContainer>
+          <LogoIcon />
+        </LogoContainer>
+        <UserContainer>
+          <AvatarUser></AvatarUser>
+          {/* <User>
+            <UserName></UserName>
+            <UserData></UserData>
+          </User> */}
+        </UserContainer>
+      </Header>
       <Body>
-        <LeftMenu>leftmenu</LeftMenu>
+        <LeftMenu></LeftMenu>
         <RightContainer>
           <PageTitle>Organização</PageTitle>
           <Main>
@@ -133,22 +146,25 @@ const Home = () => {
               <TabBar>--------------------</TabBar>
             </Top>
             <InputSearch>
-            <TextField
-              // label="Pesquisar por"
-              // label={searchText === "" ? "Pesquise por nome ou cpf" : "Pesquisar por"}
-              label={!textFieldFocused ? "Pesquise por nome ou cpf" : "Pesquisar por"}
-              id="outlined-size-normal"
-              value={searchText}
-              // placeholder="Pesquise por nome ou cpf"
-              onChange={(e) => setSearchText(e.target.value)}
-              onFocus={() => setTextFieldFocused(true)}
-              // placeholder={}"Pesquise por nome ou cpf"
-
-            />
+              <TextField
+                className='searchTextField'
+                label="Pesquisar por"
+                placeholder="Pesquise por nome ou cpf"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                onFocus={() => setTextFieldFocused(true)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  )
+                }}
+              />
             </InputSearch> 
-            <ListingContainer>
+            {/* <ListingContainer> */}
               <ListingTitle>Listagem de colaboradores</ListingTitle>
-            </ListingContainer>
+            {/* </ListingContainer> */}
             <Table>
               <Thead>
                 <TrHead>
@@ -168,11 +184,11 @@ const Home = () => {
                   return (
                     <TrBody key={agent.agent_id}>
                       {/* <TdNameContainer>
-                        <Avatar src={agent.image}/>
+                        <AvatarAgent src={agent.image}/>
                         <AgentName>{agent.name}</AgentName>
                       </TdNameContainer> */}
                       <Td className='nameBody'>
-                        <Avatar src={agent.image}/>
+                        <AvatarAgent src={agent.image}/>
                         <AgentName>{agent.name}</AgentName>
                       </Td>
                       <Td className='departmentBody'>{agent.department}</Td>
