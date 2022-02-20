@@ -257,12 +257,16 @@ export const PaginationContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const PaginationLeftContainer = styled.div``;
+export const PaginationLeftContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 32%;
+  /* border: 1px solid red; */
+`;
 
 
 export const PaginationTitle = styled.div``;
-
-export const PaginationDropdown = styled.div``;
 
 export const Pagination = styled.div``;
 

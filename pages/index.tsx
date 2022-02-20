@@ -73,6 +73,8 @@ const Home = () => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(10)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(1)
+  const [searchText, setSearchText] = useState<string>("")
+  const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false)
 
   const tableHeader = ['Nome completo', 'Departamento', 'Cargo', 'Unidade', 'Status']
 
@@ -93,6 +95,7 @@ const Home = () => {
   useEffect(() => {handleChangePage()}, [currentPage])
 
   const handleSelectItemsPerPage = (e: SelectChangeEvent<number>) => {
+    setCurrentPage(1)
     const valueAsNumber = Number(e.target.value)
     setItemsPerPage(valueAsNumber)
     const slicedAgentsArray = agents.slice(0, valueAsNumber)
@@ -131,9 +134,16 @@ const Home = () => {
             </Top>
             <InputSearch>
             <TextField
-              label="Pesquisar por"
+              // label="Pesquisar por"
+              // label={searchText === "" ? "Pesquise por nome ou cpf" : "Pesquisar por"}
+              label={!textFieldFocused ? "Pesquise por nome ou cpf" : "Pesquisar por"}
               id="outlined-size-normal"
-              defaultValue="Pesquise por nome ou cpf"
+              value={searchText}
+              // placeholder="Pesquise por nome ou cpf"
+              onChange={(e) => setSearchText(e.target.value)}
+              onFocus={() => setTextFieldFocused(true)}
+              // placeholder={}"Pesquise por nome ou cpf"
+
             />
             </InputSearch> 
             <ListingContainer>
@@ -178,8 +188,6 @@ const Home = () => {
             <PaginationContainer>
               <PaginationLeftContainer>
                 <PaginationTitle>Mostrando 10 de 50 registros</PaginationTitle>
-                <PaginationDropdown></PaginationDropdown>
-                <InputLabel id="itemsPerPage">10</InputLabel>
                 <Select
                   labelId="itemsPerPage"
                   id="itemsPerPage"
