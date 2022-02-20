@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
+import { Box, InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
 import {
     Container,
     Header,
@@ -12,9 +12,6 @@ import {
     PageTitle,
     Main,
     Top,
-    TabsContainer,
-    Tab,
-    TabBar,
     InputSearch,
     ListingContainer,
     ListingTitle,
@@ -77,6 +74,7 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState<number>(1)
   const [searchText, setSearchText] = useState<string>("")
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false)
+  const [selectedTab, setSelectedTab] = useState<number>(0);
 
   const tableHeader = ['Nome completo', 'Departamento', 'Cargo', 'Unidade', 'Status']
 
@@ -119,6 +117,10 @@ const Home = () => {
     setCurrentPage(currentPage - 1)
   }
 
+  const handleTabChange = (_, newValue) => {
+    setSelectedTab(newValue);
+  };
+
   return (
     <Container>
       <Header>
@@ -139,11 +141,12 @@ const Home = () => {
           <PageTitle>Organização</PageTitle>
           <Main>
             <Top>
-              <TabsContainer>
-                <Tab>Colaboradores</Tab>
-                <Tab>Cargos</Tab>
-              </TabsContainer>
-              <TabBar>--------------------</TabBar>
+              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Tabs value={selectedTab} onChange={handleTabChange} >
+                  <Tab label="Colaboradores" style={{color: 'black', width: '24%', maxWidth: '196px'}} />
+                  <Tab label="Cargos" style={{color: 'black', width: '24%', maxWidth: '196px'}} />
+                </Tabs>
+              </Box>
             </Top>
             <InputSearch>
               <TextField

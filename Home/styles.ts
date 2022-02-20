@@ -76,15 +76,6 @@ export const Top = styled.div`
   margin-bottom: 30px;
 `;
 
-export const TabsContainer = styled.div`
-  display: flex;
-  margin-bottom: 10px;
-`;
-
-export const Tab = styled.div``;
-
-export const TabBar = styled.div``;
-
 export const InputSearch = styled.div`
   display: flex;
   margin-bottom: 30px;
