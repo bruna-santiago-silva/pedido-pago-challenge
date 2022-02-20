@@ -3,6 +3,8 @@ import styled from 'styled-components';
 interface IBtn {
   children: any;
   style?: any;
+  onClick: () => void;
+  disabled?: boolean;
 }
 
 const Btn = styled.button`
@@ -17,9 +19,9 @@ const Btn = styled.button`
   background-color: #FFFFFF;
 `;
 
-const Button: React.FC<IBtn> = ({children, style}) => {
+const Button: React.FC<IBtn> = ({children, style, onClick, disabled}) => {
   return (
-    <Btn style={style}>{children}</Btn>
+    <Btn disabled={disabled} style={style} onClick={onClick}>{children}</Btn>
   )
 }
 

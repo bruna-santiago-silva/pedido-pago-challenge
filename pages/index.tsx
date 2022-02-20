@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { TextField } from '@mui/material';
+import { InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import {
     Container,
     Header,
@@ -37,6 +37,7 @@ import ThreeDotsIcon from '../components/ThreeDotsIcon';
 import Button from '../components/Button';
 import NextIcon from '../components/NextIcon';
 import BackIcon from '../components/BackIcon';
+import { off } from 'process';
 
 interface IAgents {
   agent_id: number;
@@ -59,7 +60,20 @@ const Home = () => {
     status: '',
   }])
 
-  console.log(agents)
+  const [filteredAgents, setFilteredAgents] = useState([{
+    agent_id: 0,
+    branch: '',
+    department: '',
+    image: '',
+    name: '',
+    role: '',
+    status: '',
+  }])
+
+  const [itemsPerPage, setItemsPerPage] = useState<number>(10)
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [totalPages, setTotalPages] = useState<number>(1)
+
   const tableHeader = ['Nome completo', 'Departamento', 'Cargo', 'Unidade', 'Status']
 
   const fetchAgents = async () => {
@@ -67,11 +81,38 @@ const Home = () => {
       .getAgents()
       .then((response) => {
         setAgents(response.items)
+        setFilteredAgents(response.items)
       })
       .catch((error) => console.log(error))
   }
 
   useEffect(() => {fetchAgents()}, [])
+
+  useEffect(() => {setTotalPages(Math.round(agents.length / itemsPerPage))}, [agents])
+
+  useEffect(() => {handleChangePage()}, [currentPage])
+
+  const handleSelectItemsPerPage = (e: SelectChangeEvent<number>) => {
+    const valueAsNumber = Number(e.target.value)
+    setItemsPerPage(valueAsNumber)
+    const slicedAgentsArray = agents.slice(0, valueAsNumber)
+    setFilteredAgents(slicedAgentsArray)
+    setTotalPages(Math.round(agents.length / valueAsNumber))
+  }
+
+  const handleChangePage = () => {
+    const offset = (currentPage -1) * itemsPerPage
+    const slicedAgentsArray = agents.slice(offset, offset+itemsPerPage)
+    setFilteredAgents(slicedAgentsArray)
+  }
+
+  const goToNextPage = () => {
+    setCurrentPage(currentPage + 1)
+  }
+
+  const goToPreviousPage = () => {
+    setCurrentPage(currentPage - 1)
+  }
 
   return (
     <Container>
@@ -113,7 +154,7 @@ const Home = () => {
                 </TrHead>
               </Thead>
               <Tbody>
-                {agents.map((agent) => {
+                {filteredAgents.map((agent) => {
                   return (
                     <TrBody key={agent.agent_id}>
                       {/* <TdNameContainer>
@@ -138,16 +179,36 @@ const Home = () => {
               <PaginationLeftContainer>
                 <PaginationTitle>Mostrando 10 de 50 registros</PaginationTitle>
                 <PaginationDropdown></PaginationDropdown>
+                <InputLabel id="itemsPerPage">10</InputLabel>
+                <Select
+                  labelId="itemsPerPage"
+                  id="itemsPerPage"
+                  value={itemsPerPage}
+                  label="itemsPerPage"
+                  onChange={(e) => handleSelectItemsPerPage(e)}
+                >
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={10}>10</MenuItem>
+                </Select>
               </PaginationLeftContainer>
               <PaginationRightContainer>
                 <Button
                   style={{
                     borderRadius: '8px 0px 0px 8px'
-                  }}>
-                    <BackIcon />
+                  }}
+                  onClick={goToPreviousPage}
+                  disabled={currentPage === 1}
+                >
+                  <BackIcon />
                 </Button>
-                <Pagination>1 de 10</Pagination>
-                <Button><NextIcon /></Button>
+                <Pagination>{`${currentPage} de ${totalPages}`}</Pagination>
+                <Button
+                  onClick={goToNextPage}
+                  disabled={currentPage === totalPages}
+                >
+                  <NextIcon />
+                </Button>
               </PaginationRightContainer>
             </PaginationContainer>
           </Main>
