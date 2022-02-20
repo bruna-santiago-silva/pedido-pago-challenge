@@ -18,7 +18,7 @@ const Container = styled.div`
   /* border: 1px solid red; */
 `;
 
-const Pagination = styled.div`
+const PagesAmount = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: #587169;
@@ -38,7 +38,7 @@ const PaginationRightContainer: React.FC<IPaginationRightContainer> = ({
       >
         <BackIcon />
       </Button>
-      <Pagination>{`${currentPage} de ${totalPages}`}</Pagination>
+      <PagesAmount>{`${currentPage} de ${totalPages}`}</PagesAmount>
       <Button
         onClick={goToNextPage}
         disabled={currentPage === totalPages}

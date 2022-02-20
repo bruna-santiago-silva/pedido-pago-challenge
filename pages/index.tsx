@@ -8,9 +8,6 @@ import {
     Top,
     InputSearch,
     ListingTitle,
-    PaginationContainer,
-    PaginationLeftContainer,
-    PaginationTitle,
 } from '../Home/styles'
 import { challengeApi } from '../api/ChallengeApi'
 import SearchIcon from '../components/SearchIcon';
@@ -20,8 +17,7 @@ import PageTitle from '../components/PageTitle';
 import AgentsTable from '../components/AgentsTable';
 import { IAgent } from '../src/interfaces';
 import { dataForAgentsTableHead } from '../src/data';
-import Dropdown from '../components/Dropdown';
-import PaginationRightContainer from '../components/PaginationRightContainer';
+import Pagination from '../components/Pagination';
 
 const Home = () => {
   const [agents, setAgents] = useState<IAgent[]>([{
@@ -140,18 +136,15 @@ const Home = () => {
             </InputSearch> 
             <ListingTitle>Listagem de colaboradores</ListingTitle>
             <AgentsTable bodyData={filteredAgents} headerData={dataForAgentsTableHead} />
-            <PaginationContainer>
-              <PaginationLeftContainer>
-                <PaginationTitle>{`Mostrando ${itemsPerPage > agents.length ? agents.length : itemsPerPage} de ${agents.length}`}</PaginationTitle>
-                <Dropdown itemsPerPage={itemsPerPage} onChange={handleSelectItemsPerPage} values={[3, 5, 10]} />
-              </PaginationLeftContainer>
-              <PaginationRightContainer
-                goToPreviousPage={goToPreviousPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
-                goToNextPage={goToNextPage}
-              />
-            </PaginationContainer>
+            <Pagination 
+              itemsPerPage={itemsPerPage}
+              agents={agents}
+              handleSelectItemsPerPage={handleSelectItemsPerPage}
+              goToPreviousPage={goToPreviousPage}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              goToNextPage={goToNextPage}
+            />
           </Main>
         </RightContainer>
       </Body>
