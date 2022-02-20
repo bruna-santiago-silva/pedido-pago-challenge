@@ -63,17 +63,17 @@ export const UserData = styled.div`
 const Header = () => {
   return (
     <Container>
-        <LogoContainer>
-          <LogoIcon />
-        </LogoContainer>
-        <UserContainer>
-          <UserAvatar>LZ</UserAvatar>
-          <User>
-            <UserName>Luiz Zlochevsky</UserName>
-            <UserData>meus dados</UserData>
-          </User>
-        </UserContainer>
-      </Container>
+      <LogoContainer>
+        <LogoIcon />
+      </LogoContainer>
+      <UserContainer>
+        <UserAvatar>LZ</UserAvatar>
+        <User>
+          <UserName>Luiz Zlochevsky</UserName>
+          <UserData>meus dados</UserData>
+        </User>
+      </UserContainer>
+    </Container>
   )
 }
 

@@ -1,32 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Box, InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
+import { Box, InputAdornment, MenuItem, Select, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
 import {
     Container,
-    // Header,
-    // LogoContainer,
-    // UserContainer,
-    // UserAvatar,
-    // User,
-    // UserName,
-    // UserData,
-    // LeftMenu,
     RightContainer,
     Body,
-    // PageTitle,
     Main,
     Top,
     InputSearch,
-    ListingContainer,
     ListingTitle,
-    Table,
-    Thead,
-    TrHead,
-    Th,
-    Tbody,
-    TrBody,
-    Td,
-    AvatarAgent,
-    AgentName,
     PaginationContainer,
     PaginationLeftContainer,
     PaginationTitle,
@@ -34,28 +15,19 @@ import {
     PaginationRightContainer,
 } from '../Home/styles'
 import { challengeApi } from '../api/ChallengeApi'
-import ThreeDotsIcon from '../components/ThreeDotsIcon';
 import Button from '../components/Button';
 import NextIcon from '../components/NextIcon';
 import BackIcon from '../components/BackIcon';
-import LogoIcon from '../components/LogoIcon';
 import SearchIcon from '../components/SearchIcon';
 import Header from '../components/Header';
 import LeftMenu from '../components/LeftMenu';
 import PageTitle from '../components/PageTitle';
-
-interface IAgents {
-  agent_id: number;
-    branch: string;
-    department: string;
-    image: string;
-    name: string;
-    role: string;
-    status: string;
-}
+import AgentsTable from '../components/AgentsTable';
+import { IAgent } from '../src/interfaces';
+import { dataForAgentsTableHead } from '../src/data';
 
 const Home = () => {
-  const [agents, setAgents] = useState<[IAgents]>([{
+  const [agents, setAgents] = useState<IAgent[]>([{
     agent_id: 0,
     branch: '',
     department: '',
@@ -65,7 +37,7 @@ const Home = () => {
     status: '',
   }])
 
-  const [filteredAgents, setFilteredAgents] = useState([{
+  const [filteredAgents, setFilteredAgents] = useState<IAgent[]>([{
     agent_id: 0,
     branch: '',
     department: '',
@@ -80,8 +52,6 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState<number>(1)
   const [searchText, setSearchText] = useState<string>('')
   const [selectedTab, setSelectedTab] = useState<number>(0)
-
-  const tableHeader = ['Nome completo', 'Departamento', 'Cargo', 'Unidade', 'Status']
 
   const fetchAgents = async () => {
     await challengeApi
@@ -171,36 +141,8 @@ const Home = () => {
                 }}
               />
             </InputSearch> 
-              <ListingTitle>Listagem de colaboradores</ListingTitle>
-            <Table>
-              <Thead>
-                <TrHead>
-                  <Th className='nameHeader'>Nome completo</Th>
-                  <Th className='departmentHeader'>Departamento</Th>
-                  <Th className='roleHeader'>Cargo</Th>
-                  <Th className='branchHeader'>Unidade</Th>
-                  <Th className='statusHeader'>Status</Th>
-                  <Th className='empty'></Th>
-                </TrHead>
-              </Thead>
-              <Tbody>
-                {filteredAgents.map((agent) => {
-                  return (
-                    <TrBody key={agent.agent_id}>
-                      <Td className='nameBody'>
-                        <AvatarAgent src={agent.image}/>
-                        <AgentName>{agent.name}</AgentName>
-                      </Td>
-                      <Td className='departmentBody'>{agent.department}</Td>
-                      <Td className='roleBody'>{agent.role}</Td>
-                      <Td className='branchBody'>{agent.branch}</Td>
-                      <Td className='statusBody'>{agent.status === 'active' ? 'Ativo' : 'Inativo'}</Td>
-                      <Td className='dots'><ThreeDotsIcon /></Td>
-                    </TrBody>
-                  )
-                })}
-              </Tbody>
-            </Table>
+            <ListingTitle>Listagem de colaboradores</ListingTitle>
+            <AgentsTable bodyData={filteredAgents} headerData={dataForAgentsTableHead} />
             <PaginationContainer>
               <PaginationLeftContainer>
                 <PaginationTitle>Mostrando 10 de 50 registros</PaginationTitle>

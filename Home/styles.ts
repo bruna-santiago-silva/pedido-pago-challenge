@@ -69,132 +69,83 @@ export const ListingTitle = styled.div`
   color: #34423D;
 `;
 
-export const Table = styled.div`
-  width: 100%;
-`;
+// export const Table = styled.div`
+//   width: 100%;
+// `;
 
-export const Thead = styled.div`
-  width: 90%;
+// export const Thead = styled.div`
+//   width: 90%;
   
-`;
+// `;
 
-export const TrHead = styled.div`
-  display: flex;
-  width: 100%;
-  border: 1px solid #CAD6D1;
-  border-radius: 8px 8px 0px 0px;
-  /* border: 1px solid green; */
+// export const Tbody = styled.div`
+//   width: 90%;
+// `;
 
-  .nameHeader {
-    width: 45%;
-  }
+// export const TrBody = styled.div`
+//   display: flex;
+//   width: 100%;
+//   /* border: 1px solid red; */
 
-  .departmentHeader {
-    width: 25%;
-  }
+//   .nameBody {
+//     width: 44%;
+//     display: flex;
+//     align-items: center;
+//   }
 
-  .roleHeader {
-    width: 20%;
-  }
+//   .departmentBody {
+//     width: 23%;
+//   }
 
-  .branchHeader {
-    width: 40%;
-  }
+//   .roleBody {
+//     width: 20%;
+//   }
 
-  .statusHeader {
-    width: 20%;
-  }
+//   .branchBody {
+//     width: 40%;
+//   }
 
-  .empty {
-    width: 10%;
-    /* border: 1px solid red; */
-  }
-`;
+//   .statusBody {
+//     display: flex;
+//     justify-content: center;
+//     align-self: center;
+//     width: 20%;
+//     height: 24px;
+//     background-color: #B5F1DD;
+//     border-radius: 80px;
+//     padding: 4px 8px;
+//   }
 
-export const Th = styled.div`
-  display: flex;
-  align-items: center;
-  width: 20%;
-  height: 49px;
-  font-size: 12px;
-  font-weight: 400;
-  color: #587169;
-  padding: 0 16px;
+//   .dots {
+//     display: flex;
+//     justify-content: center;
+//     width: 10%;
+//   }
+// `;
 
-  /* border: 1px solid green; */
-`;
+// export const Td = styled.div`
+//   display: flex;
+//   align-items: center;
+//   width: 20%;
+//   height: 69px;
+//   border-bottom: 1px solid #EAEFED;
+//   font-size: 12px;
+//   font-weight: 600;
+//   color: #587169;
+//   padding: 0 16px;
+//   /* border: 1px solid red; */
+// `;
 
+// export const AvatarAgent = styled.img`
+//   width: 32px;
+//   height: 32px;
+//   border-radius: 100%;
+// `;
 
-
-export const Tbody = styled.div`
-  width: 90%;
-`;
-
-export const TrBody = styled.div`
-  display: flex;
-  width: 100%;
-  /* border: 1px solid red; */
-
-  .nameBody {
-    width: 44%;
-    display: flex;
-    align-items: center;
-  }
-
-  .departmentBody {
-    width: 23%;
-  }
-
-  .roleBody {
-    width: 20%;
-  }
-
-  .branchBody {
-    width: 40%;
-  }
-
-  .statusBody {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: 20%;
-    height: 24px;
-    background-color: #B5F1DD;
-    border-radius: 80px;
-    padding: 4px 8px;
-  }
-
-  .dots {
-    display: flex;
-    justify-content: center;
-    width: 10%;
-    
-  }
-`;
-
-export const Td = styled.div`
-  display: flex;
-  align-items: center;
-  width: 20%;
-  height: 69px;
-  border-bottom: 1px solid #EAEFED;
-  font-size: 12px;
-  font-weight: 600;
-  color: #587169;
-  padding: 0 16px;
-  /* border: 1px solid red; */
-`;
-
-export const AvatarAgent = styled.img`
-  width: 32px;
-  height: 32px;
-  border-radius: 100%;
-`;
-
-export const AgentName = styled.div`
-  width: 60%;
-  margin-left: 10px;
-`;
+// export const AgentName = styled.div`
+//   width: 60%;
+//   margin-left: 10px;
+// `;
 
 export const PaginationContainer = styled.div`
   display: flex;
@@ -209,7 +160,6 @@ export const PaginationLeftContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 37%;
-
   /* border: 1px solid red; */
 `;
 
@@ -232,6 +182,5 @@ export const PaginationRightContainer = styled.div`
   justify-content: space-between;
   width: 20%;
   /* border: 1px solid red; */
-
 `;
 
