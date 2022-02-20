@@ -9,36 +9,14 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 61px;
-  background-color: #FFFFFF;
-`;
-
-export const LogoContainer = styled.div``;
-
-export const UserContainer = styled.div``;
-
-export const AvatarUser = styled.div``;
-
 export const Body = styled.div`
   display: flex;
   width: 100%;
   /* height: 1200px; */
   height: 100%;
-  /* border: 1px solid green; */
+  border: 1px solid green;
 `;
 
-export const LeftMenu = styled.div`
-  width: 15%;
-  height: 100%;
-  background-color: #FFFFFF;
-  border: 1px solid #EAEFED;
-  box-shadow: 0px 4px 8px rgba(165, 171, 179, 0.16);
-  /* border: 1px solid red; */
-`;
 
 export const RightContainer = styled.div`
   display: flex;
@@ -48,13 +26,6 @@ export const RightContainer = styled.div`
   background-color: #E5E5E5;
   padding: 50px 100px;
   /* border: 1px solid black; */
-`;
-
-export const PageTitle = styled.div`
-  align-self: center;
-  width: 72%;
-  margin-bottom: 30px;
-  /* border: 1px solid red; */
 `;
 
 export const Main = styled.div`
@@ -67,7 +38,7 @@ export const Main = styled.div`
   box-shadow: 0px 4px 8px rgba(165, 171, 179, 0.16);
   border-radius: 8px;
   padding: 50px 20px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
 `;
 
 export const Top = styled.div`
@@ -84,7 +55,6 @@ export const InputSearch = styled.div`
   .searchTextField {
     width: 100%;
     /* background-color: red; */
-    /* width: 100%; */
   }
 `;
 
@@ -94,6 +64,9 @@ export const ListingContainer = styled.div`
 
 export const ListingTitle = styled.div`
   margin-bottom: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #34423D;
 `;
 
 export const Table = styled.div`
@@ -102,6 +75,7 @@ export const Table = styled.div`
 
 export const Thead = styled.div`
   width: 90%;
+  
 `;
 
 export const TrHead = styled.div`
@@ -141,32 +115,13 @@ export const Th = styled.div`
   display: flex;
   align-items: center;
   width: 20%;
-  height: 40px;
+  height: 49px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #587169;
+  padding: 0 16px;
+
   /* border: 1px solid green; */
-
-  /* .nameHeader {
-    width: 45%;
-  }
-
-  .departmentHeader {
-    width: 25%;
-  }
-
-  .roleHeader {
-    width: 20%;
-  }
-
-  .branchHeader {
-    width: 40%;
-  }
-
-  .statusHeader {
-    width: 30%;
-  }
-
-  .empty {
-    width: 10%;
-  } */
 `;
 
 
@@ -181,13 +136,13 @@ export const TrBody = styled.div`
   /* border: 1px solid red; */
 
   .nameBody {
-    width: 45%;
+    width: 44%;
     display: flex;
     align-items: center;
   }
 
   .departmentBody {
-    width: 25%;
+    width: 23%;
   }
 
   .roleBody {
@@ -217,48 +172,17 @@ export const TrBody = styled.div`
   }
 `;
 
-// export const TdNameContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   width: 20%;
-//   height: 70px;
-//   border-bottom: 1px solid #EAEFED;
-// `;
-
 export const Td = styled.div`
   display: flex;
   align-items: center;
   width: 20%;
-  height: 70px;
+  height: 69px;
   border-bottom: 1px solid #EAEFED;
+  font-size: 12px;
+  font-weight: 600;
+  color: #587169;
+  padding: 0 16px;
   /* border: 1px solid red; */
-
-  /* .nameBody {
-    width: 45%;
-  }
-
-  .departmentBody {
-    width: 25%;
-  }
-
-  .roleBody {
-    width: 20%;
-  }
-
-  .branchBody {
-    width: 40%;
-  }
-
-  .statusBody {
-    width: 20%;
-    background-color: #B5F1DD;
-    border-radius: 80px;
-    padding: 4px 8px;
-  }
-
-  .dots {
-    width: 10%;
-  } */
 `;
 
 export const AvatarAgent = styled.img`
@@ -284,14 +208,23 @@ export const PaginationLeftContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 32%;
+  width: 37%;
+
   /* border: 1px solid red; */
 `;
 
 
-export const PaginationTitle = styled.div``;
+export const PaginationTitle = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  color: #587169;
+`;
 
-export const Pagination = styled.div``;
+export const Pagination = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  color: #587169;
+`;
 
 export const PaginationRightContainer = styled.div`
   display: flex;

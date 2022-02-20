@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import { Box, InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
 import {
     Container,
-    Header,
-    LogoContainer,
-    UserContainer,
-    AvatarUser,
-    LeftMenu,
+    // Header,
+    // LogoContainer,
+    // UserContainer,
+    // UserAvatar,
+    // User,
+    // UserName,
+    // UserData,
+    // LeftMenu,
     RightContainer,
     Body,
-    PageTitle,
+    // PageTitle,
     Main,
     Top,
     InputSearch,
@@ -37,6 +40,9 @@ import NextIcon from '../components/NextIcon';
 import BackIcon from '../components/BackIcon';
 import LogoIcon from '../components/LogoIcon';
 import SearchIcon from '../components/SearchIcon';
+import Header from '../components/Header';
+import LeftMenu from '../components/LeftMenu';
+import PageTitle from '../components/PageTitle';
 
 interface IAgents {
   agent_id: number;
@@ -72,9 +78,8 @@ const Home = () => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(10)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(1)
-  const [searchText, setSearchText] = useState<string>("")
-  const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false)
-  const [selectedTab, setSelectedTab] = useState<number>(0);
+  const [searchText, setSearchText] = useState<string>('')
+  const [selectedTab, setSelectedTab] = useState<number>(0)
 
   const tableHeader = ['Nome completo', 'Departamento', 'Cargo', 'Unidade', 'Status']
 
@@ -121,30 +126,32 @@ const Home = () => {
     setSelectedTab(newValue);
   };
 
+  const filterAgentsBySearchText = (searchTerm) => {
+    const filteredAgentsCopy = agents.filter((agent) => {
+      return agent.name.toLowerCase().includes(searchTerm.toLowerCase())}
+    )
+    return filteredAgentsCopy
+  }
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value)
+    const searchResult = filterAgentsBySearchText(e.target.value)
+    setFilteredAgents(searchResult)
+  }
+
   return (
     <Container>
-      <Header>
-        <LogoContainer>
-          <LogoIcon />
-        </LogoContainer>
-        <UserContainer>
-          <AvatarUser></AvatarUser>
-          {/* <User>
-            <UserName></UserName>
-            <UserData></UserData>
-          </User> */}
-        </UserContainer>
-      </Header>
+      <Header />
       <Body>
-        <LeftMenu></LeftMenu>
+        <LeftMenu />
         <RightContainer>
           <PageTitle>Organização</PageTitle>
           <Main>
             <Top>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
                 <Tabs value={selectedTab} onChange={handleTabChange} >
-                  <Tab label="Colaboradores" style={{color: 'black', width: '24%', maxWidth: '196px'}} />
-                  <Tab label="Cargos" style={{color: 'black', width: '24%', maxWidth: '196px'}} />
+                  <Tab label="Colaboradores" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px'}} />
+                  <Tab label="Cargos" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px'}} />
                 </Tabs>
               </Box>
             </Top>
@@ -154,8 +161,7 @@ const Home = () => {
                 label="Pesquisar por"
                 placeholder="Pesquise por nome ou cpf"
                 value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                onFocus={() => setTextFieldFocused(true)}
+                onChange={(e) => handleSearch(e)}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -165,15 +171,10 @@ const Home = () => {
                 }}
               />
             </InputSearch> 
-            {/* <ListingContainer> */}
               <ListingTitle>Listagem de colaboradores</ListingTitle>
-            {/* </ListingContainer> */}
             <Table>
               <Thead>
                 <TrHead>
-                  {/* {tableHeader.map((th) => {
-                    return(<Th key={th}>{th}</Th>)
-                  })} */}
                   <Th className='nameHeader'>Nome completo</Th>
                   <Th className='departmentHeader'>Departamento</Th>
                   <Th className='roleHeader'>Cargo</Th>
@@ -186,10 +187,6 @@ const Home = () => {
                 {filteredAgents.map((agent) => {
                   return (
                     <TrBody key={agent.agent_id}>
-                      {/* <TdNameContainer>
-                        <AvatarAgent src={agent.image}/>
-                        <AgentName>{agent.name}</AgentName>
-                      </TdNameContainer> */}
                       <Td className='nameBody'>
                         <AvatarAgent src={agent.image}/>
                         <AgentName>{agent.name}</AgentName>
