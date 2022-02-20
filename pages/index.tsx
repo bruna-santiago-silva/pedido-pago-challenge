@@ -11,13 +11,8 @@ import {
     PaginationContainer,
     PaginationLeftContainer,
     PaginationTitle,
-    Pagination,
-    PaginationRightContainer,
 } from '../Home/styles'
 import { challengeApi } from '../api/ChallengeApi'
-import Button from '../components/Button';
-import NextIcon from '../components/NextIcon';
-import BackIcon from '../components/BackIcon';
 import SearchIcon from '../components/SearchIcon';
 import Header from '../components/Header';
 import LeftMenu from '../components/LeftMenu';
@@ -25,6 +20,8 @@ import PageTitle from '../components/PageTitle';
 import AgentsTable from '../components/AgentsTable';
 import { IAgent } from '../src/interfaces';
 import { dataForAgentsTableHead } from '../src/data';
+import Dropdown from '../components/Dropdown';
+import PaginationRightContainer from '../components/PaginationRightContainer';
 
 const Home = () => {
   const [agents, setAgents] = useState<IAgent[]>([{
@@ -145,37 +142,15 @@ const Home = () => {
             <AgentsTable bodyData={filteredAgents} headerData={dataForAgentsTableHead} />
             <PaginationContainer>
               <PaginationLeftContainer>
-                <PaginationTitle>Mostrando 10 de 50 registros</PaginationTitle>
-                <Select
-                  labelId="itemsPerPage"
-                  id="itemsPerPage"
-                  value={itemsPerPage}
-                  label="itemsPerPage"
-                  onChange={(e) => handleSelectItemsPerPage(e)}
-                >
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={5}>5</MenuItem>
-                  <MenuItem value={10}>10</MenuItem>
-                </Select>
+                <PaginationTitle>{`Mostrando ${itemsPerPage > agents.length ? agents.length : itemsPerPage} de ${agents.length}`}</PaginationTitle>
+                <Dropdown itemsPerPage={itemsPerPage} onChange={handleSelectItemsPerPage} values={[3, 5, 10]} />
               </PaginationLeftContainer>
-              <PaginationRightContainer>
-                <Button
-                  style={{
-                    borderRadius: '8px 0px 0px 8px'
-                  }}
-                  onClick={goToPreviousPage}
-                  disabled={currentPage === 1}
-                >
-                  <BackIcon />
-                </Button>
-                <Pagination>{`${currentPage} de ${totalPages}`}</Pagination>
-                <Button
-                  onClick={goToNextPage}
-                  disabled={currentPage === totalPages}
-                >
-                  <NextIcon />
-                </Button>
-              </PaginationRightContainer>
+              <PaginationRightContainer
+                goToPreviousPage={goToPreviousPage}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                goToNextPage={goToNextPage}
+              />
             </PaginationContainer>
           </Main>
         </RightContainer>

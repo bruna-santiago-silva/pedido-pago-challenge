@@ -170,17 +170,3 @@ export const PaginationTitle = styled.div`
   color: #587169;
 `;
 
-export const Pagination = styled.div`
-  font-size: 16px;
-  font-weight: 400;
-  color: #587169;
-`;
-
-export const PaginationRightContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 20%;
-  /* border: 1px solid red; */
-`;
-
