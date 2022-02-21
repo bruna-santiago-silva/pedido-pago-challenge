@@ -1,7 +1,7 @@
 import { SelectChangeEvent } from '@mui/material';
 import styled from 'styled-components';
 import { IAgent } from '../src/interfaces';
-import Dropdown from './Dropdown';
+import PaginationDropdown from './PaginationDropdown';
 
 interface IPaginationLeftContainer {
   itemsPerPage: number;
@@ -30,7 +30,7 @@ const PaginationLeftContainer = ({itemsPerPage, agents, handleSelectItemsPerPage
       <PaginationTitle>
         {`Mostrando ${itemsPerPage > agents.length ? agents.length : itemsPerPage} de ${agents.length}`}
       </PaginationTitle>
-      <Dropdown itemsPerPage={itemsPerPage} onChange={handleSelectItemsPerPage} values={[3, 5, 10]} />
+      <PaginationDropdown itemsPerPage={itemsPerPage} onChange={handleSelectItemsPerPage} values={[3, 5, 10]} />
     </Container>
   )
 }

@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
 export const Body = styled.div`
   display: flex;
   width: 100%;
@@ -26,25 +17,6 @@ export const RightContainer = styled.div`
   background-color: #E5E5E5;
   padding: 50px 100px;
   /* border: 1px solid black; */
-`;
-
-export const Main = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  width: 70%;
-  height: 80%;
-  background-color: #FFFFFF;
-  box-shadow: 0px 4px 8px rgba(165, 171, 179, 0.16);
-  border-radius: 8px;
-  padding: 50px 20px;
-  /* border: 1px solid black; */
-`;
-
-export const Top = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
 `;
 
 export const InputSearch = styled.div`

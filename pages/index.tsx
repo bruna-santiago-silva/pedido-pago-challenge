@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Box, InputAdornment, MenuItem, Select, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
+import { InputAdornment, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
 import {
-    Container,
     RightContainer,
     Body,
-    Main,
-    Top,
     InputSearch,
     ListingTitle,
 } from '../Home/styles'
@@ -18,6 +15,9 @@ import AgentsTable from '../components/AgentsTable';
 import { IAgent } from '../src/interfaces';
 import { dataForAgentsTableHead } from '../src/data';
 import Pagination from '../components/Pagination';
+import Main from '../components/Main';
+import TabsContainer from '../components/TabsContainer';
+import PageWrapper from '../components/PageWrapper';
 
 const Home = () => {
   const [agents, setAgents] = useState<IAgent[]>([{
@@ -103,21 +103,14 @@ const Home = () => {
   }
 
   return (
-    <Container>
+    <PageWrapper>
       <Header />
       <Body>
         <LeftMenu />
         <RightContainer>
           <PageTitle>Organização</PageTitle>
           <Main>
-            <Top>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
-                <Tabs value={selectedTab} onChange={handleTabChange} >
-                  <Tab label="Colaboradores" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px'}} />
-                  <Tab label="Cargos" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px'}} />
-                </Tabs>
-              </Box>
-            </Top>
+            <TabsContainer selectedTab={selectedTab} handleTabChange={handleTabChange}/>
             <InputSearch>
               <TextField
                 className='searchTextField'
@@ -148,7 +141,7 @@ const Home = () => {
           </Main>
         </RightContainer>
       </Body>
-    </Container>
+    </PageWrapper>
   )
 }
 

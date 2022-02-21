@@ -36,14 +36,14 @@ const PaginationRightContainer: React.FC<IPaginationRightContainer> = ({
         onClick={goToPreviousPage}
         disabled={currentPage === 1}
       >
-        <BackIcon />
+        <BackIcon disabled={currentPage === 1}/>
       </Button>
       <PagesAmount>{`${currentPage} de ${totalPages}`}</PagesAmount>
       <Button
         onClick={goToNextPage}
         disabled={currentPage === totalPages}
       >
-        <NextIcon />
+        <NextIcon disabled={currentPage === totalPages} />
       </Button>
     </Container>
   )

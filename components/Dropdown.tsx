@@ -1,19 +1,20 @@
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
 
 interface IDropdown {
-  itemsPerPage: number;
-  onChange: (e: SelectChangeEvent<number>) => void;
-  values: number[]
+  values: string;
+  onChange?: (e: SelectChangeEvent<number>) => void;
+  label: string;
 }
 
-const Dropdown: React.FC<IDropdown> = ({ itemsPerPage, onChange, values }) => {
+const Dropdown: React.FC<IDropdown> = ({ values, onChange, label }) => {
   return (
     <Select
-      value={itemsPerPage}
+      value={values}
       onChange={(e) => onChange(e)}
-      displayEmpty
+      // displayEmpty
+      label={label}
     >
-      {values.map((v) => <MenuItem value={v}>{v}</MenuItem>)}
+      {/* {values.map((v) => <MenuItem value={v}>{v}</MenuItem>)} */}
     </Select>
   )
 }

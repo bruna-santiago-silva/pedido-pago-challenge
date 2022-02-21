@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 interface IPageTitle {
-  children: string;
+  children: any;
+  style?: any;
 }
 
 export const Container = styled.div`
+  display: flex;
+  align-items: center;
   align-self: center;
   width: 72%;
   font-size: 32px;
@@ -13,9 +16,9 @@ export const Container = styled.div`
   margin-bottom: 30px;
 `;
 
-const PageTitle: React.FC<IPageTitle> = ({children}) => {
+const PageTitle: React.FC<IPageTitle> = ({children, style}) => {
   return (
-    <Container>{children}</Container>
+    <Container style={style}>{children}</Container>
   )
 }
 

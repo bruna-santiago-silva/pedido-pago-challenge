@@ -1,25 +1,29 @@
 import styled from 'styled-components';
 
-interface IBtn {
+interface IButton {
   children: any;
   style?: any;
   onClick: () => void;
   disabled?: boolean;
 }
 
-const Btn = styled.button`
+interface IBtn {
+  disabled: boolean;
+}
+
+const Btn = styled.button<IBtn>`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 36px;
-  border: none;
-  border: 1.4px solid #709085;
+  border: 1.4px solid ${(props) => props.disabled ? '#CAD6D1' : '#709085' };
   border-radius: 0px 8px 8px 0px;
   background-color: #FFFFFF;
 `;
 
-const Button: React.FC<IBtn> = ({children, style, onClick, disabled}) => {
+const Button: React.FC<IButton> = ({ children, style, onClick, disabled }) => {
+  console.log(disabled)
   return (
     <Btn disabled={disabled} style={style} onClick={onClick}>{children}</Btn>
   )
