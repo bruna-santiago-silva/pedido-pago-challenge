@@ -101,7 +101,7 @@ const [status, setStatus] = useState()
               </UserDataContainer>
             </UserInformationContainer>
             <PersonalInformationsContainer>
-              <PersonalInformationsTitle>Informações  pessoais</PersonalInformationsTitle>
+              <PersonalInformationsTitle>Informações pessoais</PersonalInformationsTitle>
               <DataContainer>
                 <Data>
                   <DocumentIcon />

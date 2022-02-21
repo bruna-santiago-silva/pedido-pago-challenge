@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import ThreeDotsIcon from './ThreeDotsIcon';
 
+interface IStatus {
+  status?: string;
+}
+
 interface ITableBodyRow {
   agent: {
     agent_id: number;
@@ -13,7 +17,7 @@ interface ITableBodyRow {
   }
 }
 
-const TrBody = styled.tr`
+const TrBody = styled.tr<IStatus>`
   display: flex;
   width: 100%;
   /* border: 1px solid red; */
@@ -22,6 +26,7 @@ const TrBody = styled.tr`
     width: 44%;
     display: flex;
     align-items: center;
+    font-weight: 600;
   }
 
   .departmentBody {
@@ -37,14 +42,7 @@ const TrBody = styled.tr`
   }
 
   .statusBody {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: 20%;
-    height: 24px;
-    background-color: #B5F1DD;
-    border-radius: 80px;
-    padding: 4px 8px;
+    width: 20%; 
   }
 
   .dots {
@@ -54,23 +52,37 @@ const TrBody = styled.tr`
   }
 `;
 
-const Td = styled.td`
+const StatusContainer = styled.div<IStatus>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  width: 72px;
+  font-weight: 600;
+  background-color: ${ props => props.status === 'active' ? '#B5F1DD' : '#EAEFED'};
+  color: ${props => props.status === 'active' ? '#587169' : '#A3B8B0'};
+  border-radius: 80px;
+  padding: 4px 8px;
+`
+
+const Td = styled.td<IStatus>`
   display: flex;
   align-items: center;
   width: 20%;
   height: 69px;
   border-bottom: 1px solid #EAEFED;
   font-size: 12px;
-  font-weight: 600;
-  color: #587169;
+  font-weight: 400;
+  color: ${props => props.status === 'active' ? '#587169' : '#A3B8B0'};
   padding: 0 16px;
   /* border: 1px solid red; */
 `;
 
-const AvatarAgent = styled.img`
+const AvatarAgent = styled.img<IStatus>`
   width: 32px;
   height: 32px;
   border-radius: 100%;
+  opacity: ${props => props.status === 'active' ? 1 : 0.3};
 `;
 
 const AgentName = styled.div`
@@ -79,17 +91,22 @@ const AgentName = styled.div`
 `;
 
 const TableBodyRow: React.FC<ITableBodyRow> = ({ agent }) => {
+  const { agent_id, image, name, status, department, role, branch } = agent
   return (
-    <TrBody key={agent.agent_id}>
-      <Td className='nameBody'>
-        <AvatarAgent src={agent.image}/>
-        <AgentName>{agent.name}</AgentName>
+    <TrBody key={agent_id} status={status}>
+      <Td className='nameBody' status={status}>
+        <AvatarAgent src={image} status={status}/>
+        <AgentName>{name}</AgentName>
       </Td>
-      <Td className='departmentBody'>{agent.department}</Td>
-      <Td className='roleBody'>{agent.role}</Td>
-      <Td className='branchBody'>{agent.branch}</Td>
-      <Td className='statusBody'>{agent.status === 'active' ? 'Ativo' : 'Inativo'}</Td>
-      <Td className='dots'><ThreeDotsIcon /></Td>
+      <Td className='departmentBody' status={status}>{department}</Td>
+      <Td className='roleBody' status={status} >{role}</Td>
+      <Td className='branchBody' status={status} >{branch}</Td>
+      <Td className='statusBody'>
+        <StatusContainer status={status}>
+          {status === 'active' ? 'Ativo' : 'Inativo'}
+        </StatusContainer>
+      </Td>
+      <Td className='dots' status={status} ><ThreeDotsIcon /></Td>
     </TrBody>
   )
 }

@@ -6,7 +6,6 @@ interface IPageWrapper {
 
 export const Container = styled.div`
   font-family: 'Poppins', sans-serif;
-  font-weight: 600;
   width: 100%;
   height: 100%;
   display: flex;
