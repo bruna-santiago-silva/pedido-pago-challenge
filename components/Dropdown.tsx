@@ -8,9 +8,6 @@ interface IDropdown {
 }
 
 const Dropdown: React.FC<IDropdown> = ({ value, values, onChange, label }) => {
-  console.log(values)
-  console.log(value)
-
   return (
     <Select
       value={value}

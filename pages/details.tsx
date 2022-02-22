@@ -145,8 +145,6 @@ const Details = () => {
     await challengeApi
       .getAgent()
       .then((response) => {
-        console.log(response.agent.department)
-
         setAgent(response.agent)
         setRole(response.agent.role)
         setDepartment(response.agent.department)
@@ -166,15 +164,23 @@ const Details = () => {
   }
 
   const selectRolesNames = () => {
-    const rolesNameArray = roles.map((role) => role.name)
-    const rolesNameSet = new Set(rolesNameArray)
-    return [...rolesNameSet]
+    const rolesNameArray = [] 
+    roles.forEach((role) => {
+      if (!rolesNameArray.includes(role.name)) {
+        rolesNameArray.push(role.name)
+      }
+    })
+    return rolesNameArray
   }
 
   const selectDepartments = () => {
-    const departments = roles.map((role) => role.departament)
-    const departmentsSet = new Set(departments)
-    return [...departmentsSet]
+    const departments = [] 
+    roles.forEach((role) => {
+      if (!departments.includes(role.departament)) {
+        departments.push(role.departament)
+      }
+    })
+    return departments
   }
 
   useEffect(() => {
@@ -189,7 +195,7 @@ const Details = () => {
         <LeftMenu />
         <RightContainer>
           <PageTitle>
-           <BackPageIcon link='http://localhost:3000'/>
+           <BackPageIcon link='/'/>
             Detalhes do colaborador
           </PageTitle>
           <Main>

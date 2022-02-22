@@ -27,7 +27,6 @@ const Btn = styled.button<IBtn>`
 `;
 
 const Button: React.FC<IButton> = ({ children, style, onClick, disabled }) => {
-  console.log(disabled)
   return (
     <Btn disabled={disabled} style={style} onClick={onClick}>{children}</Btn>
   )

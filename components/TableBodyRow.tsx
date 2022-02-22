@@ -97,7 +97,7 @@ const AgentName = styled.div`
 const TableBodyRow: React.FC<ITableBodyRow> = ({ agent }) => {
   const { agent_id, image, name, status, department, role, branch } = agent
   return (
-    <Link href={'http://localhost:3000/details'}>
+    <Link href={'/details'}>
       <TrBody key={agent_id} status={status}>
         <Td className='nameBody' status={status}>
           <AvatarAgent src={image} status={status}/>
