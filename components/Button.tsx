@@ -20,6 +20,10 @@ const Btn = styled.button<IBtn>`
   border: 1.4px solid ${(props) => props.disabled ? '#CAD6D1' : '#709085' };
   border-radius: 0px 8px 8px 0px;
   background-color: #FFFFFF;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 const Button: React.FC<IButton> = ({ children, style, onClick, disabled }) => {

@@ -6,10 +6,13 @@ import LeftMenu from '../components/LeftMenu';
 import Main from '../components/Main';
 import PageTitle from '../components/PageTitle';
 import PageWrapper from '../components/PageWrapper';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DocumentIcon from '../components/DocumentIcon';
 import PhoneIcon from '../components/PhoneIcon';
 import CalendarIcon from '../components/CalendarIcon';
+import { challengeApi } from '../api/ChallengeApi';
+import { IAgentDetail, IRole } from '../src/interfaces';
+import DetailsContainer from '../components/DetailsContainer';
 
 export const Body = styled.div`
   display: flex;
@@ -29,58 +32,155 @@ export const RightContainer = styled.div`
   /* border: 1px solid black; */
 `;
 
-export const UserInformationContainer = styled.div``;
+export const UserInformationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+`;
 
-export const UserAvatar = styled.img``;
+export const UserAvatar = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+`;
 
-export const UserDataContainer = styled.div``;
+export const UserDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+`;
 
-export const UserName = styled.div``;
+export const UserName = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  color: #34423D;
+`;
 
-export const UserEmail = styled.div``;
+export const UserEmail = styled.div`
+  font-size: 14px;
+  font-weight: 400;
+  color: #587169;
+`;
 
 export const PersonalInformationsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 `;
 
-export const PersonalInformationsTitle = styled.div`
+export const SubTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
 `;
 
 
-export const DataContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+// export const DataContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
   
-`;
+// `;
 
-export const Data = styled.div`
-  display: flex;
-  align-items: center;
-  width: 31%;
-  height: 70px;
-  background-color: #F5FAF8;
-  border: 2px solid #CAD6D1;
-  border-radius: 8px;
-`;
+// export const Data = styled.div`
+//   display: flex;
+//   align-items: center;
+//   width: 31%;
+//   height: 70px;
+//   background-color: #F5FAF8;
+//   border: 2px solid #CAD6D1;
+//   border-radius: 8px;
+// `;
 
 export const PhoneContainer = styled.div``;
 
 export const BirthDateContainer = styled.div``;
 
-export const OrganizationalDataContainer = styled.div``;
+export const OrganizationalDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #EAEFED;
+  border-radius: 8px;
+  padding: 24px;
+`;
 
-export const DropdownContainer = styled.div``;
+export const DropdownContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const Details = () => {
-const [department, setDepartment] = useState()
-const [role, setRole] = useState()
-const [branch, setBranch] = useState()
-const [status, setStatus] = useState()
+  const [agent, setAgent] = useState<IAgentDetail>({
+    id: 0,
+    name: '',
+    email: '',
+    phone: {
+      ddd: '',
+      ddi: '',
+      number: '',
+    },
+    document: {
+      type: '',
+      number: '',
+    },
+    birth_date: new Date(),
+    image: '',
+    department: '',
+    branch: '',
+    role: '',
+    status: '',
+  })
+  const [roles, setRoles] = useState<IRole[]>([{
+    name: '',
+    departament: '',
+    agents_quantity: 0
+  }])
+  const [department, setDepartment] = useState<string>('')
+  const [role, setRole] = useState<string>('')
+  const [branch, setBranch] = useState<string>('')
+  const [status, setStatus] = useState<string>('')
+
+  const fetchAgent = async () => {
+    await challengeApi
+      .getAgent()
+      .then((response) => {
+        console.log(response.agent.department)
+
+        setAgent(response.agent)
+        setRole(response.agent.role)
+        setDepartment(response.agent.department)
+        setStatus(response.agent.status)
+        setBranch(response.agent.branch)
+      })
+      .catch((error) => console.log(error))
+  }
+
+  const fetchRoles = async () => {
+    await challengeApi
+      .getRoles()
+      .then((response) => {
+        setRoles(response.roles)
+      })
+      .catch((error) => console.log(error))
+  }
+
+  const selectRolesNames = () => {
+    const rolesNameArray = roles.map((role) => role.name)
+    const rolesNameSet = new Set(rolesNameArray)
+    return [...rolesNameSet]
+  }
+
+  const selectDepartments = () => {
+    const departments = roles.map((role) => role.departament)
+    const departmentsSet = new Set(departments)
+    return [...departmentsSet]
+  }
+
+  useEffect(() => {
+    fetchAgent()
+    fetchRoles()
+  }, [])
 
   return (
     <PageWrapper>
@@ -89,39 +189,30 @@ const [status, setStatus] = useState()
         <LeftMenu />
         <RightContainer>
           <PageTitle>
-           <BackPageIcon />
+           <BackPageIcon link='http://localhost:3000'/>
             Detalhes do colaborador
           </PageTitle>
           <Main>
             <UserInformationContainer>
-              <UserAvatar src='' />
+              <UserAvatar src={`${agent.image}`} />
               <UserDataContainer>
-                <UserName></UserName>
-                <UserEmail></UserEmail>
+                <UserName>{agent.name}</UserName>
+                <UserEmail>{agent.email}</UserEmail>
               </UserDataContainer>
             </UserInformationContainer>
             <PersonalInformationsContainer>
-              <PersonalInformationsTitle>Informações pessoais</PersonalInformationsTitle>
-              <DataContainer>
-                <Data>
-                  <DocumentIcon />
-                </Data>
-                <Data>
-                  <PhoneIcon />
-                </Data>
-                <Data>
-                  <CalendarIcon />
-                </Data>
-              </DataContainer>
+              <SubTitle>Informações pessoais</SubTitle>
+              <DetailsContainer agent={agent}/>
             </PersonalInformationsContainer>
             <OrganizationalDataContainer>
+              <SubTitle>Dados organizacionais</SubTitle>
               <DropdownContainer>
-                <Dropdown values={department} label='Departamento' />
-                <Dropdown values={role} label='Cargo' />
+                <Dropdown value={department} values={selectDepartments()} label='Departamento' onChange={setDepartment}/>
+                <Dropdown value={role} values={selectRolesNames()} label='Cargo' onChange={setRole}/>
               </DropdownContainer>
               <DropdownContainer>
-                <Dropdown values={branch} label='Unidade' />
-                <Dropdown values={status} label='Status' />
+                <Dropdown value={branch} values={['Farmácia Pedido Pago']} label='Unidade' onChange={setBranch}/>
+                <Dropdown value={status} values={['active', 'inactive']} label='Status' onChange={setDepartment}/>
               </DropdownContainer>
             </OrganizationalDataContainer>
           </Main>

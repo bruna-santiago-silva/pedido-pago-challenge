@@ -1,20 +1,33 @@
-import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 
 interface IDropdown {
-  values: string;
-  onChange?: (e: SelectChangeEvent<number>) => void;
+  value: string;
+  values: string[];
+  onChange?: any;
   label: string;
 }
 
-const Dropdown: React.FC<IDropdown> = ({ values, onChange, label }) => {
+const Dropdown: React.FC<IDropdown> = ({ value, values, onChange, label }) => {
+  console.log(values)
+  console.log(value)
+
   return (
     <Select
-      value={values}
-      onChange={(e) => onChange(e)}
-      // displayEmpty
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
       label={label}
+      style={{
+        width: '50%',
+        backgroundColor: '#F5FAF8',
+        fontSize: '16px',
+        fontWeight: '600',
+        color: '#587169',
+        fontFamily: 'Poppins, sans-serif',
+        borderRadius: '8px',
+        margin: '24px 24px 5px 0'
+      }}
     >
-      {/* {values.map((v) => <MenuItem value={v}>{v}</MenuItem>)} */}
+      {values.map((v) => <MenuItem key={v} value={v}>{v}</MenuItem>)}
     </Select>
   )
 }

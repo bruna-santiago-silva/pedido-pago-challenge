@@ -17,8 +17,8 @@ const TabsContainer: React.FC<ITabsContainer> = ({selectedTab, handleTabChange})
     <Container>
       <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
         <Tabs value={selectedTab} onChange={handleTabChange} >
-          <Tab label="Colaboradores" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px'}} />
-          <Tab label="Cargos" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px'}} />
+          <Tab label="Colaboradores" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px', textTransform: 'capitalize'}} />
+          <Tab label="Cargos" style={{fontSize: '14px', fontWeight: '600', color: '#34423D', width: '24%', maxWidth: '196px', textTransform: 'capitalize'}} />
         </Tabs>
       </Box>
     </Container>
