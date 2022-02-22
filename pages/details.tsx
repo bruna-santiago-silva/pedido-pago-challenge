@@ -7,9 +7,6 @@ import Main from '../components/Main';
 import PageTitle from '../components/PageTitle';
 import PageWrapper from '../components/PageWrapper';
 import { useEffect, useState } from 'react';
-import DocumentIcon from '../components/DocumentIcon';
-import PhoneIcon from '../components/PhoneIcon';
-import CalendarIcon from '../components/CalendarIcon';
 import { challengeApi } from '../api/ChallengeApi';
 import { IAgentDetail, IRole } from '../src/interfaces';
 import DetailsContainer from '../components/DetailsContainer';
@@ -74,24 +71,6 @@ export const SubTitle = styled.div`
   color: #34423D;
 `;
 
-
-// export const DataContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-  
-// `;
-
-// export const Data = styled.div`
-//   display: flex;
-//   align-items: center;
-//   width: 31%;
-//   height: 70px;
-//   background-color: #F5FAF8;
-//   border: 2px solid #CAD6D1;
-//   border-radius: 8px;
-// `;
-
 export const PhoneContainer = styled.div``;
 
 export const BirthDateContainer = styled.div``;
@@ -144,28 +123,28 @@ const Details = () => {
   const fetchAgent = async () => {
     await challengeApi
       .getAgent()
-      .then((response) => {
+      .then(response => {
         setAgent(response.agent)
         setRole(response.agent.role)
         setDepartment(response.agent.department)
         setStatus(response.agent.status)
         setBranch(response.agent.branch)
       })
-      .catch((error) => console.log(error))
+      .catch(error => console.log(error))
   }
 
   const fetchRoles = async () => {
     await challengeApi
       .getRoles()
-      .then((response) => {
+      .then(response => {
         setRoles(response.roles)
       })
-      .catch((error) => console.log(error))
+      .catch(error => console.log(error))
   }
 
   const selectRolesNames = () => {
     const rolesNameArray = [] 
-    roles.forEach((role) => {
+    roles.forEach(role => {
       if (!rolesNameArray.includes(role.name)) {
         rolesNameArray.push(role.name)
       }
@@ -175,7 +154,7 @@ const Details = () => {
 
   const selectDepartments = () => {
     const departments = [] 
-    roles.forEach((role) => {
+    roles.forEach(role => {
       if (!departments.includes(role.departament)) {
         departments.push(role.departament)
       }

@@ -63,8 +63,8 @@ const StatusContainer = styled.div<IStatus>`
   height: 24px;
   width: 72px;
   font-weight: 600;
-  background-color: ${ props => props.status === 'active' ? '#B5F1DD' : '#EAEFED'};
-  color: ${props => props.status === 'active' ? '#587169' : '#A3B8B0'};
+  background-color: ${ ({ status }) => status === 'active' ? '#B5F1DD' : '#EAEFED'};
+  color: ${ ({ status }) => status === 'active' ? '#587169' : '#A3B8B0'};
   border-radius: 80px;
   padding: 4px 8px;
 `
@@ -77,7 +77,7 @@ const Td = styled.td<IStatus>`
   border-bottom: 1px solid #EAEFED;
   font-size: 12px;
   font-weight: 400;
-  color: ${props => props.status === 'active' ? '#587169' : '#A3B8B0'};
+  color: ${ ({ status }) => status === 'active' ? '#587169' : '#A3B8B0'};
   padding: 0 16px;
   /* border: 1px solid red; */
 `;
@@ -86,7 +86,7 @@ const AvatarAgent = styled.img<IStatus>`
   width: 32px;
   height: 32px;
   border-radius: 100%;
-  opacity: ${props => props.status === 'active' ? 1 : 0.3};
+  opacity: ${ ({ status }) => status === 'active' ? 1 : 0.3};
 `;
 
 const AgentName = styled.div`
@@ -113,7 +113,6 @@ const TableBodyRow: React.FC<ITableBodyRow> = ({ agent }) => {
         </Td>
         <Td className='dots' status={status} ><ThreeDotsIcon /></Td>
       </TrBody>
-
     </Link>
   )
 }

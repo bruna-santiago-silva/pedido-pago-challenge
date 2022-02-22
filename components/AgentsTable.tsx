@@ -27,9 +27,9 @@ const AgentsTable: React.FC<IAgentsTable> = ({ bodyData, headerData }) => {
         <TableHeadRow headerData={headerData} />
       </Thead>
       <Tbody>
-        {bodyData.map((d) => {
+        {bodyData.map(data => {
           return (
-            <TableBodyRow agent={d} />
+            <TableBodyRow agent={data} />
           )
         })}
       </Tbody>

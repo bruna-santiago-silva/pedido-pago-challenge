@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box, InputAdornment, MenuItem, Select, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
 
 interface ITabsContainer {
   selectedTab: number;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   margin-bottom: 30px;
 `;
 
-const TabsContainer: React.FC<ITabsContainer> = ({selectedTab, handleTabChange}) => {
+const TabsContainer: React.FC<ITabsContainer> = ({ selectedTab, handleTabChange }) => {
   return (
     <Container>
       <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>

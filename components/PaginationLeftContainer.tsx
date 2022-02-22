@@ -17,14 +17,13 @@ const Container = styled.div`
   /* border: 1px solid red; */
 `;
 
-
 const PaginationTitle = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: #587169;
 `;
 
-const PaginationLeftContainer = ({itemsPerPage, agents, handleSelectItemsPerPage}) => {
+const PaginationLeftContainer: React.FC<IPaginationLeftContainer> = ({itemsPerPage, agents, handleSelectItemsPerPage}) => {
   return (
     <Container>
       <PaginationTitle>

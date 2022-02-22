@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CalendarIcon from './CalendarIcon';
 import DocumentIcon from './DocumentIcon';
 import PhoneIcon from './PhoneIcon';
+import DataContainer from './DataContainer';
+import { IAgentDetail } from '../src/interfaces';
+
+interface IDetailsContainer {
+  agent: IAgentDetail;
+}
 
 const Container = styled.div`
   display: flex;
@@ -11,51 +16,22 @@ const Container = styled.div`
   margin-top: 24px;
 `;
 
-const DataContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 29%;
-  height: 70px;
-  background-color: #F5FAF8;
-  border: 2px solid #CAD6D1;
-  border-radius: 8px;
-  padding-left: 16px;
-`;
-
-const Data = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 10px;
-`;
-
-const DataTitle = styled.div`
-  font-size: 12px;
-  font-weight: 400;
-  color: #587169;
-`;
-
-const Info = styled.div`
-  font-size: 14px;
-  font-weight: 600;
-  color: #587169;
-`;
-
-const DetailsContainer = ({ agent }) => {
-  const formatDocument = (document) => {
+const DetailsContainer: React.FC<IDetailsContainer> = ({ agent }) => {
+  const formatDocument = (document: string) => {
     const documentNumberArray = document.split('')
     const emptySpacesPositions = [3, 7, 11]
-    emptySpacesPositions.forEach((position) => documentNumberArray.splice(position, 0, ' '))
+    emptySpacesPositions.forEach(position => documentNumberArray.splice(position, 0, ' '))
     return documentNumberArray.join('')
   }
 
-  const formatPhoneNumber = (phoneNumber) => {
+  const formatPhoneNumber = (phoneNumber: string) => {
     const phoneNumberArray = phoneNumber.split('')
     const emptySpacesPositions = [5]
-    emptySpacesPositions.forEach((position) => phoneNumberArray.splice(position, 0, ' '))
+    emptySpacesPositions.forEach(position => phoneNumberArray.splice(position, 0, ' '))
     return phoneNumberArray.join('')
   }
 
-  const formatBirthDate = (birthDate) => {
+  const formatBirthDate = (birthDate: Date) => {
     const date = new Date(birthDate)
     const year = date.getFullYear()
     const month = date.getMonth()
@@ -65,27 +41,21 @@ const DetailsContainer = ({ agent }) => {
   
   return (
     <Container>
-      <DataContainer>
-        <DocumentIcon />
-        <Data>
-          <DataTitle>{agent.document.type}</DataTitle>
-          <Info>{formatDocument(agent.document.number)}</Info>
-        </Data>
-      </DataContainer>
-      <DataContainer>
-        <PhoneIcon />
-        <Data>
-          <DataTitle>Telefone</DataTitle>
-          <Info>{`+${agent.phone.ddi} ${agent.phone.ddd} ${formatPhoneNumber(agent.phone.number)}`}</Info>
-        </Data>
-      </DataContainer>
-      <DataContainer>
-        <CalendarIcon />
-        <Data>
-          <DataTitle>Nascimento</DataTitle>
-          <Info>{formatBirthDate(agent.birth_date)}</Info>
-        </Data>
-      </DataContainer>
+      <DataContainer
+        title={agent.document.type}
+        info={formatDocument(agent.document.number)}
+        icon={<DocumentIcon />}
+      />
+      <DataContainer
+        title='Telefone'
+        info={`+${agent.phone.ddi} ${agent.phone.ddd} ${formatPhoneNumber(agent.phone.number)}`}
+        icon={<PhoneIcon />}
+      />
+      <DataContainer
+        title='Nascimento'
+        info={formatBirthDate(agent.birth_date)}
+        icon={<CalendarIcon />}
+      />
     </Container>
   )
 }

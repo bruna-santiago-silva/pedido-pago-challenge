@@ -12,7 +12,7 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-const PageWrapper: React.FC<IPageWrapper> = ({children}) => {
+const PageWrapper: React.FC<IPageWrapper> = ({ children }) => {
   return (
     <Container>{children}</Container>
   )

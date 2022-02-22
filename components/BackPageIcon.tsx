@@ -19,7 +19,7 @@ const IconContainer = styled.span`
   border-radius: 100%;
 `;
 
-const BackPageIcon: React.FC<IBackPageIcon> = ({link}) => {
+const BackPageIcon: React.FC<IBackPageIcon> = ({ link }) => {
   return (
     <Link href={link}>
       <IconContainer >
@@ -29,7 +29,7 @@ const BackPageIcon: React.FC<IBackPageIcon> = ({link}) => {
         </svg>
       </IconContainer>
     </Link>
-    )
+  )
 }
 
 export default BackPageIcon;

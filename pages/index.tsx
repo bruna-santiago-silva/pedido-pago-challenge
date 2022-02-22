@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { InputAdornment, SelectChangeEvent, Tab, Tabs, TextField } from '@mui/material';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { InputAdornment, SelectChangeEvent, TextField } from '@mui/material';
 import {
     RightContainer,
     Body,
@@ -49,18 +49,18 @@ const Home = () => {
   const fetchAgents = async () => {
     await challengeApi
       .getAgents()
-      .then((response) => {
+      .then(response => {
         setAgents(response.items)
         setFilteredAgents(response.items)
       })
-      .catch((error) => console.log(error))
+      .catch(error => console.log(error))
   }
 
-  useEffect(() => {fetchAgents()}, [])
+  useEffect(() => { fetchAgents() }, [])
 
-  useEffect(() => {setTotalPages(Math.round(agents.length / itemsPerPage))}, [agents])
+  useEffect(() => { setTotalPages(Math.round(agents.length / itemsPerPage)) }, [agents])
 
-  useEffect(() => {handleChangePage()}, [currentPage])
+  useEffect(() => { handleChangePage() }, [currentPage])
 
   const handleSelectItemsPerPage = (e: SelectChangeEvent<number>) => {
     setCurrentPage(1)
@@ -89,14 +89,14 @@ const Home = () => {
     setSelectedTab(newValue);
   };
 
-  const filterAgentsBySearchText = (searchTerm) => {
+  const filterAgentsBySearchText = (searchTerm: string) => {
     const filteredAgentsCopy = agents.filter((agent) => {
       return agent.name.toLowerCase().includes(searchTerm.toLowerCase())}
     )
     return filteredAgentsCopy
   }
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setSearchText(e.target.value)
     const searchResult = filterAgentsBySearchText(e.target.value)
     setFilteredAgents(searchResult)
@@ -117,7 +117,7 @@ const Home = () => {
                 label="Pesquisar por"
                 placeholder="Pesquise por nome ou cpf"
                 value={searchText}
-                onChange={(e) => handleSearch(e)}
+                onChange={e => handleSearch(e)}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">

@@ -11,7 +11,7 @@ const Dropdown: React.FC<IDropdown> = ({ value, values, onChange, label }) => {
   return (
     <Select
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={e => onChange(e.target.value)}
       label={label}
       style={{
         width: '50%',
@@ -24,7 +24,7 @@ const Dropdown: React.FC<IDropdown> = ({ value, values, onChange, label }) => {
         margin: '24px 24px 5px 0'
       }}
     >
-      {values.map((v) => <MenuItem key={v} value={v}>{v}</MenuItem>)}
+      {values.map(v => <MenuItem key={v} value={v}>{v}</MenuItem>)}
     </Select>
   )
 }

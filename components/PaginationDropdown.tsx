@@ -10,10 +10,10 @@ const PaginationDropdown: React.FC<IPaginationDropdown> = ({ itemsPerPage, onCha
   return (
     <Select
       value={itemsPerPage}
-      onChange={(e) => onChange(e)}
+      onChange={e => onChange(e)}
       displayEmpty
     >
-      {values.map((v) => <MenuItem value={v}>{v}</MenuItem>)}
+      {values.map(v => <MenuItem value={v}>{v}</MenuItem>)}
     </Select>
   )
 }
