@@ -44,7 +44,7 @@ const TableHeadRow: React.FC<ITableHeadRow> = ({ headerData }) => {
   return (
     <TrHead>
       {headerData.map(d =>
-        <TableHeadCell cellClass={d.class} title={d.title} />
+        <TableHeadCell cellClass={d.class} title={d.title} key={d.title} />
       )}
     </TrHead>
   )

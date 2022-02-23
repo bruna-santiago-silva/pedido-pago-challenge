@@ -94,7 +94,7 @@ const AgentName = styled.div`
   margin-left: 10px;
 `;
 
-const TableBodyRow: React.FC<ITableBodyRow> = ({ agent }) => {
+const AgentTableRow: React.FC<ITableBodyRow> = ({ agent }) => {
   const { agent_id, image, name, status, department, role, branch } = agent
   return (
     <Link href={'/details'}>
@@ -117,4 +117,4 @@ const TableBodyRow: React.FC<ITableBodyRow> = ({ agent }) => {
   )
 }
 
-export default TableBodyRow;
+export default AgentTableRow;

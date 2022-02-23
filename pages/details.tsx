@@ -36,9 +36,7 @@ export const PersonalInformationsContainer = styled.div`
   margin-bottom: 40px;
 `;
 
-const Title = styled.div`
-
-`
+export const Title = styled.div``
 
 export const SubTitle = styled.div`
   font-size: 18px;

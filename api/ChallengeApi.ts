@@ -15,6 +15,11 @@ class ChallengeApi extends Api {
         const response = await this.axios.get(`/roles`)
         return response.data;
     }
+
+    async getRole() {
+        const response = await this.axios.get(`/role/1`)
+        return response.data;
+    }
 }
 
 export const challengeApi = new ChallengeApi();

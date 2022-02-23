@@ -39,3 +39,14 @@ export interface IRole {
   departament: string;
   agents_quantity: number;
 }
+
+export interface IGroupRules {
+  role: string;
+  permissions: string[];
+}
+
+export interface IPermissions {
+  name: string;
+  department: string;
+  grouprules: IGroupRules[]
+}

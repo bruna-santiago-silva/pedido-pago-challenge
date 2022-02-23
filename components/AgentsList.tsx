@@ -89,7 +89,7 @@ const AgentsList = () => {
 
   return (
     <div>
-      <InputSearch  data={[]} setData={} paramToBeFiltered={} labelText={} placeholder={} />
+      {/* <InputSearch  data={[]} setData={} paramToBeFiltered={} labelText={} placeholder={} /> */}
     </div>
   )
 }

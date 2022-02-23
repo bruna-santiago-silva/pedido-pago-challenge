@@ -58,7 +58,7 @@ const Td = styled.td`
 const RolesTableRow: React.FC<IRolesTableRow> = ({ role }) => {
   const { name, departament, agents_quantity } = role
   return (
-    <Link href={'/details'}>
+    <Link href={'/permission'}>
       <TrBody>
         <Td className='nameBody'>{name}</Td>
         <Td className='departmentBody'>{departament}</Td>
