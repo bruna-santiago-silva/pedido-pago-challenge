@@ -34,14 +34,16 @@ export const RightContainer = styled.div`
 export const Title = styled.div``;
 
 export const SubTitle = styled.div`
-font-size: 16px;
-font-weight: 600;
-color: #34423D;
+  font-size: 16px;
+  font-weight: 600;
+  color: #34423D;
+  margin-bottom: 35px;
 `;
 
 export const TextFieldContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 35px;
 `;
 
 

@@ -23,7 +23,7 @@ const PaginationTitle = styled.div`
   color: #587169;
 `;
 
-const PaginationLeftContainer: React.FC<IPaginationLeftContainer> = ({itemsPerPage, agents, handleSelectItemsPerPage}) => {
+const PaginationLeftContainer: React.FC<IPaginationLeftContainer> = ({ itemsPerPage, agents, handleSelectItemsPerPage }) => {
   return (
     <Container>
       <PaginationTitle>

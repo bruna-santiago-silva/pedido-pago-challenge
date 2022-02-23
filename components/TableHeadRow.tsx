@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { dataForAgentsTableHead } from '../src/data';
 import { ITableHeadData } from '../src/interfaces';
 import TableHeadCell from './TableHeadCell';
 
@@ -15,7 +14,7 @@ const TrHead = styled.tr`
   /* border: 1px solid green; */
 
   .nameHeader {
-    width: 45%;
+    width: 50%;
   }
 
   .departmentHeader {
