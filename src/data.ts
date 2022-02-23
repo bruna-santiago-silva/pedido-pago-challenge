@@ -6,3 +6,9 @@ export const dataForAgentsTableHead = [
   {title: 'Status', class: 'statusHeader'},
   {title: '', class: 'empty'}
 ]
+
+export const dataForRolesTableHead = [
+  {title: 'Cargo', class: ''},
+  {title: 'Departamento', class: ''},
+  {title: 'Colaboradores', class: ''},
+]

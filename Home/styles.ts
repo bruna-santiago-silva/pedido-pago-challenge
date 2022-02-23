@@ -8,7 +8,6 @@ export const Body = styled.div`
   /* border: 1px solid green; */
 `;
 
-
 export const RightContainer = styled.div`
   display: flex;
   flex-direction: column;

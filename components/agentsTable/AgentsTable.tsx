@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import TableBodyRow from './TableBodyRow';
-import TableHeadRow from './TableHeadRow';
-import {IAgent, ITableHeadData} from '../src/interfaces';
+import AgentTableRow from './AgentTableRow';
+import TableHeadRow from '../TableHeadRow';
+import {IAgent, ITableHeadData} from '../../src/interfaces';
 
 interface IAgentsTable {
   bodyData?: IAgent[]
@@ -29,7 +29,7 @@ const AgentsTable: React.FC<IAgentsTable> = ({ bodyData, headerData }) => {
       <Tbody>
         {bodyData.map(data => {
           return (
-            <TableBodyRow agent={data} />
+            <AgentTableRow agent={data} />
           )
         })}
       </Tbody>

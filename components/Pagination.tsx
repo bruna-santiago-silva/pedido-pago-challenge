@@ -34,12 +34,12 @@ const Pagination: React.FC<IPagination> = ({
   return (
     <Container>
       <PaginationLeftContainer itemsPerPage={itemsPerPage} agents={agents} handleSelectItemsPerPage={handleSelectItemsPerPage} />
-        <PaginationRightContainer
-          goToPreviousPage={goToPreviousPage}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          goToNextPage={goToNextPage}
-        />
+      <PaginationRightContainer
+        goToPreviousPage={goToPreviousPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        goToNextPage={goToNextPage}
+      />
     </Container>
   )
 }

@@ -11,7 +11,7 @@ const Th = styled.th`
   width: 20%;
   height: 49px;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 600;
   color: #587169;
   padding: 0 16px;
   /* border: 1px solid green; */

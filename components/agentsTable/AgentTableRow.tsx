@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ThreeDotsIcon from './ThreeDotsIcon';
+import ThreeDotsIcon from '../ThreeDotsIcon';
 
 interface IStatus {
   status?: string;
