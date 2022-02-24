@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import ShowAgentModal from '../ShowAgentModal';
 import ThreeDotsIcon from '../ThreeDotsIcon';
 
 interface IStatus {
@@ -15,6 +17,7 @@ interface ITableBodyRow {
     branch: string;
     status: string;
   }
+  deleteAgent: (id: number) => void;
 }
 
 const Link = styled.a`
@@ -46,7 +49,7 @@ const TrBody = styled.tr<IStatus>`
   }
 
   .statusBody {
-    width: 20%; 
+    width: 20%;
   }
 
   .dots {
@@ -70,6 +73,7 @@ const StatusContainer = styled.div<IStatus>`
 `
 
 const Td = styled.td<IStatus>`
+position: relative;
   display: flex;
   align-items: center;
   width: 20%;
@@ -94,12 +98,19 @@ const AgentName = styled.div`
   margin-left: 10px;
 `;
 
-const AgentTableRow: React.FC<ITableBodyRow> = ({ agent }) => {
+const ModalContainer = styled.div`
+  position: relative;
+`
+
+const AgentTableRow: React.FC<ITableBodyRow> = ({ agent, deleteAgent }) => {
+
+  const [showModal, setShowModal] = useState(false)
+
   const { agent_id, image, name, status, department, role, branch } = agent
   return (
     <>
-      <Link href={'/details'}>
         <TrBody key={agent_id} status={status}>
+      {/* <Link href={'/details'}> */}
           <Td className='nameBody' status={status}>
             <AvatarAgent src={image} status={status}/>
             <AgentName>{name}</AgentName>
@@ -112,9 +123,14 @@ const AgentTableRow: React.FC<ITableBodyRow> = ({ agent }) => {
               {status === 'active' ? 'Ativo' : 'Inativo'}
             </StatusContainer>
           </Td>
-          <Td className='dots' status={status} ><ThreeDotsIcon /></Td>
+      {/* </Link> */}
+          <Td className='dots' status={status}>
+            <ModalContainer>
+              <ThreeDotsIcon onClick={setShowModal} modalState={showModal}/>
+              {showModal && <ShowAgentModal setState={setShowModal} deleteAgent={deleteAgent} agentId={agent_id}/>}
+            </ModalContainer>
+          </Td>
         </TrBody>
-      </Link>
     </>
   )
 }

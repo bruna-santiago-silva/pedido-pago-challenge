@@ -20,6 +20,31 @@ const TrHead = styled.tr`
   .medium {
     width: 15%;
   }
+
+  .extraBigCell {
+    width: 44%;
+  }
+
+  .bigCell {
+    width: 40%;
+  }
+
+  .mediumCell {
+    width: 23%;
+  }
+
+  .smallCell {
+    width: 20%;
+  }
+  
+  .statusHeader {
+    width: 20%;
+  }
+
+  .empty {
+    width: 10%;
+    /* border: 1px solid red; */
+  }
 `;
 
 const TableHeadRow: React.FC<ITableHeadRow> = ({ headerData }) => {

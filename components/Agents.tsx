@@ -33,6 +33,11 @@ const Agents = () => {
 
   useEffect(() => { fetchAgents() }, [])
 
+  const deleteAgent = (id: number) => {
+    const remainFilteredAgents = filteredAgents.filter((f) => !(f.agent_id === id))
+    setFilteredAgents(remainFilteredAgents)
+  }
+
   return( 
     <Container>
       <InputSearch
@@ -43,7 +48,7 @@ const Agents = () => {
         placeholder='Pesquise por nome ou cpf'
       />
       <ListingTitle>Listagem de colaboradores</ListingTitle>
-      <AgentsTable bodyData={filteredAgents} headerData={dataForAgentsTableHead} />
+      <AgentsTable bodyData={filteredAgents} headerData={dataForAgentsTableHead} deleteAgent={deleteAgent}/>
       <Pagination
         setStateFunction={setFilteredAgents}
         data={agents}

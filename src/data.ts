@@ -1,9 +1,9 @@
 export const dataForAgentsTableHead = [
-  {title: 'Nome completo', class: 'nameHeader'},
-  {title: 'Departamento', class: 'departmentHeader'},
-  {title: 'Cargo', class: 'roleHeader'},
-  {title: 'Unidade', class: 'branchHeader'},
-  {title: 'Status', class: 'statusHeader'},
+  {title: 'Nome completo', class: 'extraBigCell'},
+  {title: 'Departamento', class: 'mediumCell'},
+  {title: 'Cargo', class: 'smallCell'},
+  {title: 'Unidade', class: 'bigCell'},
+  {title: 'Status', class: 'smallCell'},
   {title: '', class: 'empty'}
 ]
 

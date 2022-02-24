@@ -11,6 +11,7 @@ import TabsContainer from '../components/TabsContainer';
 import PageWrapper from '../components/PageWrapper';
 import Agents from '../components/Agents';
 import Roles from '../components/Roles';
+import ShowAgentModal from '../components/ShowAgentModal';
 
 const TABS = {
   AGENTS: 'agents',
