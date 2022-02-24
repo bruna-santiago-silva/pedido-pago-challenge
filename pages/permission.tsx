@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { TextField } from '@mui/material';
 import BackPageIcon from '../components/BackPageIcon';
 import Header from '../components/Header';
 import LeftMenu from '../components/LeftMenu';
@@ -11,6 +10,7 @@ import PermissionsTable from '../components/permissionsTable/PermissionsTable';
 import { dataForPermissionsTableHead } from '../src/data';
 import { challengeApi } from '../api/ChallengeApi';
 import { IPermissions } from '../src/interfaces';
+import StyledTextField from '../components/StyledTextField';
 
 
 export const Body = styled.div`
@@ -26,9 +26,16 @@ export const RightContainer = styled.div`
   flex-direction: column;
   width: 85%;
   height: 100%;
+  min-height: 1020px;
   background-color: #E5E5E5;
   padding: 50px 100px;
   /* border: 1px solid black; */
+
+  @media only screen and (max-width: 1300px) {
+    padding: 50px 0;
+    width: 100%;
+  }
+
 `;
 
 export const Title = styled.div``;
@@ -44,8 +51,11 @@ export const TextFieldContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 35px;
-`;
 
+  @media only screen and (max-width: 1300px) {
+    flex-direction: column;
+  }
+`;
 
 const Permission: React.FC<IPermissions> = () => {
 
@@ -83,32 +93,8 @@ const Permission: React.FC<IPermissions> = () => {
           <Main>
             <SubTitle>Dados do cargo</SubTitle>
             <TextFieldContainer>
-              <TextField
-                  className='searchTextField'
-                  label="Departamento"
-                  placeholder="SAC"
-                  // value=''
-                  // onChange={}
-                  style={{
-                    color: '#A3B8B0',
-                    borderColor: '#CAD6D1',
-                    borderRadius: '8px',
-                    width: '48%',
-                  }}
-                />
-                <TextField
-                  className='searchTextField'
-                  label="Cargo"
-                  placeholder="Analista"
-                  // value=''
-                  // onChange={}
-                  style={{
-                    color: '#A3B8B0',
-                    borderColor: '#CAD6D1',
-                    borderRadius: '8px',
-                    width: '48%',
-                  }}
-                />
+              <StyledTextField label="Departamento" placeholder="SAC"/>
+              <StyledTextField label="Cargo" placeholder="Analista"/>
             </TextFieldContainer>
             <SubTitle>Listagem de permissões</SubTitle>
             <PermissionsTable bodyData={role.grouprules} headerData={dataForPermissionsTableHead}/>

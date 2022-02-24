@@ -14,8 +14,8 @@ export const dataForRolesTableHead = [
 ]
 
 export const dataForPermissionsTableHead = [
-  {title: 'Cargo', class: ''},
-  {title: 'Ler', class: ''},
-  {title: 'Editar', class: ''},
-  {title: 'Excluir', class: ''},
+  {title: 'Cargo', class: 'extraLarge'},
+  {title: 'Ler', class: 'medium'},
+  {title: 'Editar', class: 'medium'},
+  {title: 'Excluir', class: 'medium'},
 ]

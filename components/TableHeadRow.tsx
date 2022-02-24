@@ -13,29 +13,12 @@ const TrHead = styled.tr`
   border-radius: 8px 8px 0px 0px;
   /* border: 1px solid green; */
 
-  .nameHeader {
-    width: 50%;
+  .extraLarge {
+    width: 80%;
   }
 
-  .departmentHeader {
-    width: 25%;
-  }
-
-  .roleHeader {
-    width: 20%;
-  }
-
-  .branchHeader {
-    width: 40%;
-  }
-
-  .statusHeader {
-    width: 20%;
-  }
-
-  .empty {
-    width: 10%;
-    /* border: 1px solid red; */
+  .medium {
+    width: 15%;
   }
 `;
 

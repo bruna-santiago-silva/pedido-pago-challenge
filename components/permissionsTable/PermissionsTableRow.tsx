@@ -16,30 +16,12 @@ const TrBody = styled.tr`
   width: 100%;
   /* border: 1px solid red; */
 
-  .nameBody {
-    width: 50%;
+  .extraLarge {
+    width: 80%;
   }
 
-  .departmentBody {
-    width: 23%;
-  }
-
-  .roleBody {
-    width: 20%;
-  }
-
-  .branchBody {
-    width: 40%;
-  }
-
-  .statusBody {
-    width: 20%; 
-  }
-
-  .dots {
-    display: flex;
-    justify-content: center;
-    width: 10%;
+  .medium {
+    width: 15%;
   }
 `;
 
@@ -69,10 +51,10 @@ const PermissionsTableRow: React.FC<IPermissionsTableRow> = ({ rule }) => {
 
   return (
     <TrBody key={rule.role}>
-      <Td className='nameBody'>{rule.role}</Td>
-      <Td className='departmentBody'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowRead} onChange={() => setAllowRead(!allowRead)} /></Td>
-      <Td className='roleBody'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowWrite} onChange={() => setAllowWrite(!allowWrite)} /></Td>
-      <Td className='branchBody'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowDelete} onChange={() => setAllowDelete(!allowDelete)} /></Td>
+      <Td className='extraLarge'>{rule.role}</Td>
+      <Td className='medium'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowRead} onChange={() => setAllowRead(!allowRead)} /></Td>
+      <Td className='medium'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowWrite} onChange={() => setAllowWrite(!allowWrite)} /></Td>
+      <Td className='medium'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowDelete} onChange={() => setAllowDelete(!allowDelete)} /></Td>
     </TrBody>
   )
 }

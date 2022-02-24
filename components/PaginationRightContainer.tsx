@@ -15,6 +15,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 20%;
+  min-width: 150px;
   /* border: 1px solid red; */
 `;
 

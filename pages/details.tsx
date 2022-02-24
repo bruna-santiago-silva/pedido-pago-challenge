@@ -25,9 +25,13 @@ export const RightContainer = styled.div`
   flex-direction: column;
   width: 85%;
   height: 100%;
+  min-height: 1020px;
   background-color: #E5E5E5;
   padding: 50px 100px;
   /* border: 1px solid black; */
+  @media only screen and (max-width: 1300px) {
+    padding: 50px 0;
+  }
 `;
 
 export const PersonalInformationsContainer = styled.div`

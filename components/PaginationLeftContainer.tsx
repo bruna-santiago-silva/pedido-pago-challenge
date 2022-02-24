@@ -1,6 +1,5 @@
 import { SelectChangeEvent } from '@mui/material';
 import styled from 'styled-components';
-import { IAgent } from '../src/interfaces';
 import PaginationDropdown from './PaginationDropdown';
 
 interface IPaginationLeftContainer {
@@ -15,12 +14,21 @@ const Container = styled.div`
   justify-content: space-between;
   width: 37%;
   /* border: 1px solid red; */
+  
+  @media only screen and (max-width: 1300px) {
+    /* margin-bottom: 10px; */
+    width: 50%;
+  }
 `;
 
 const PaginationTitle = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: #587169;
+
+  @media only screen and (max-width: 1300px) {
+    margin-right: 10px;
+  }
 `;
 
 const PaginationLeftContainer: React.FC<IPaginationLeftContainer> = ({ itemsPerPage, data, handleSelectItemsPerPage }) => {
