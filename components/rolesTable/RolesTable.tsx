@@ -7,6 +7,7 @@ import RolesTableRow from './RolesTableRow';
 interface IRolesTable {
   bodyData: IRole[];
   headerData?: ITableHeadData[];
+  deleteRole: (name: string, departament: string) => void;
 }
 
 const Table = styled.table`
@@ -21,7 +22,7 @@ const Tbody = styled.tbody`
   width: 90%;
 `;
 
-const RolesTable: React.FC<IRolesTable> = ({ bodyData, headerData }) => {
+const RolesTable: React.FC<IRolesTable> = ({ bodyData, headerData, deleteRole }) => {
   return (
     <Table>
       <Thead>
@@ -30,7 +31,7 @@ const RolesTable: React.FC<IRolesTable> = ({ bodyData, headerData }) => {
       <Tbody>
         {bodyData.map(data => {
           return (
-            <RolesTableRow key={`${data.name}-${data.departament}`} role={data} />
+            <RolesTableRow key={`${data.name}-${data.departament}`} role={data} deleteRole={deleteRole}/>
           )
         })}
       </Tbody>

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { challengeApi } from "../api/ChallengeApi";
-import { dataForAgentsTableHead } from "../src/data";
-import { IAgent } from "../src/interfaces";
-import AgentsTable from "./agentsTable/AgentsTable";
-import InputSearch from "./InputSearch";
-import Pagination from "./Pagination";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { challengeApi } from '../api/ChallengeApi';
+import { dataForAgentsTableHead } from '../src/data';
+import { IAgent } from '../src/interfaces';
+import AgentsTable from './agentsTable/AgentsTable';
+import InputSearch from './InputSearch';
+import Pagination from './Pagination';
 
 const Container = styled.div``
 
@@ -52,6 +52,7 @@ const Agents = () => {
       <Pagination
         setStateFunction={setFilteredAgents}
         data={agents}
+        filteredData={filteredAgents}
       />
     </Container>
   )

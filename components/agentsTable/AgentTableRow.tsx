@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import ShowAgentModal from '../ShowAgentModal';
+import AgentModal from '../AgentModal';
 import ThreeDotsIcon from '../ThreeDotsIcon';
-
-interface IStatus {
-  status?: string;
-}
+import { IStatus } from '../../src/interfaces';
 
 interface ITableBodyRow {
   agent: {
@@ -126,8 +123,14 @@ const AgentTableRow: React.FC<ITableBodyRow> = ({ agent, deleteAgent }) => {
       {/* </Link> */}
           <Td className='dots' status={status}>
             <ModalContainer>
-              <ThreeDotsIcon onClick={setShowModal} modalState={showModal}/>
-              {showModal && <ShowAgentModal setState={setShowModal} deleteAgent={deleteAgent} agentId={agent_id}/>}
+              <ThreeDotsIcon setState={setShowModal} modalState={showModal}/>
+              {showModal && 
+                <AgentModal
+                  setState={setShowModal}
+                  deleteAgent={deleteAgent}
+                  agentId={agent_id}
+                />
+              }
             </ModalContainer>
           </Td>
         </TrBody>

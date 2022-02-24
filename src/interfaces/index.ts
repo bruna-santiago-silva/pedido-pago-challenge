@@ -50,3 +50,7 @@ export interface IPermissions {
   department: string;
   grouprules: IGroupRules[]
 }
+
+export interface IStatus {
+  status?: string;
+}

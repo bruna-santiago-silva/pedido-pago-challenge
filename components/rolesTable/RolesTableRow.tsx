@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { IRole } from '../../src/interfaces';
+import RoleModal from '../RoleModal';
 import ThreeDotsIcon from '../ThreeDotsIcon';
-
-interface IStatus {
-  status?: string;
-}
+import { IStatus } from '../../src/interfaces';
 
 interface IRolesTableRow {
   role: IRole;
+  deleteRole: (name: string, departament: string) => void;
 }
 
 const Link = styled.a`
@@ -55,17 +55,36 @@ const Td = styled.td`
   /* border: 1px solid red; */
 `;
 
-const RolesTableRow: React.FC<IRolesTableRow> = ({ role }) => {
+const ModalContainer = styled.div`
+  position: relative;
+`
+
+const RolesTableRow: React.FC<IRolesTableRow> = ({ role, deleteRole }) => {
+  
+  const [showModal, setShowModal] = useState(false)
+
   const { name, departament, agents_quantity } = role
   return (
-    <Link href={'/permission'}>
+    // <Link href={'/permission'}>
       <TrBody>
         <Td className='nameBody'>{name}</Td>
         <Td className='departmentBody'>{departament}</Td>
         <Td className='agentsQuantityBody'>{agents_quantity}</Td>
-        <Td className='dots'><ThreeDotsIcon /></Td>
+        <Td className='dots'>
+          <ModalContainer>
+            <ThreeDotsIcon setState={setShowModal} modalState={showModal}/>
+            {showModal && 
+              <RoleModal
+                setState={setShowModal}
+                deleteRole={deleteRole}
+                name={name}
+                departament={departament}
+              />
+            }
+          </ModalContainer>
+        </Td>
       </TrBody>
-    </Link>
+    // </Link>
   )
 }
 

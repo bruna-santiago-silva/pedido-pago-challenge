@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import RemoveIcon from './RemoveIcon';
 import ViewIcon from './ViewIcon';
 
-interface IShowAgentModal {
+interface IAgentModal {
   setState: Dispatch<SetStateAction<boolean>>;
   deleteAgent: (id: number) => void;
   agentId: number;
@@ -40,7 +40,7 @@ const ActionContainer = styled.div`
   cursor: pointer;
 `;
 
-const ShowAgentModal: React.FC<IShowAgentModal> = ({ setState, deleteAgent, agentId }) => {
+const AgentModal: React.FC<IAgentModal> = ({ setState, deleteAgent, agentId }) => {
   return (
     <Container
       onClick={() => setState(false)}
@@ -61,4 +61,4 @@ const ShowAgentModal: React.FC<IShowAgentModal> = ({ setState, deleteAgent, agen
   )
 }
 
-export default ShowAgentModal;
+export default AgentModal;

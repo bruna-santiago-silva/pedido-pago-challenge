@@ -7,6 +7,7 @@ import PaginationRightContainer from './PaginationRightContainer';
 interface IPagination {
   setStateFunction: Dispatch<SetStateAction<any[]>>;
   data: any[];
+  filteredData: any[];
 }
 
 const Container = styled.div`
@@ -20,6 +21,7 @@ const Container = styled.div`
 const Pagination: React.FC<IPagination> = ({
   setStateFunction,
   data,
+  filteredData
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(10)
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -31,11 +33,8 @@ const Pagination: React.FC<IPagination> = ({
     setItemsPerPage(valueAsNumber)
     const slicedAgentsArray = data.slice(0, valueAsNumber)
     setStateFunction(slicedAgentsArray)
-    let numberOfPages = Math.round(data.length / valueAsNumber)
-    if (data.length % valueAsNumber !== 0) {
-      numberOfPages += 1
-    }
-    setTotalPages(numberOfPages)
+    let numberOfPages = data.length / valueAsNumber
+    setTotalPages(Math.ceil(numberOfPages))
   }
 
   const goToNextPage = () => {
@@ -54,12 +53,12 @@ const Pagination: React.FC<IPagination> = ({
   
   useEffect(() => { setTotalPages(Math.round(data.length / itemsPerPage)) }, [data])
   useEffect(() => { handleChangePage() }, [currentPage])
-  console.log(data)
   return (
     <Container>
       <PaginationLeftContainer
         itemsPerPage={itemsPerPage}
         data={data}
+        filteredData={filteredData}
         handleSelectItemsPerPage={handleSelectItemsPerPage}
       />
       <PaginationRightContainer

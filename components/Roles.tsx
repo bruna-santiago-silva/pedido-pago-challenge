@@ -31,6 +31,11 @@ const Roles = () => {
       .catch(error => console.log(error))
   }
 
+  const deleteRole = (name: string, departament: string) => {
+    const remainFilteredAgents = filteredRoles.filter((f) => !(f.name === name && f.departament === departament))
+    setFilteredRoles(remainFilteredAgents)
+  }
+
   useEffect(() => { fetchRoles() }, [])
   return( 
     <Container>
@@ -42,10 +47,11 @@ const Roles = () => {
         placeholder='Pesquise por cargos'
       />
       <ListingTitle>Listagem de cargos</ListingTitle>
-      <RolesTable bodyData={filteredRoles} headerData={dataForRolesTableHead} />
+      <RolesTable bodyData={filteredRoles} headerData={dataForRolesTableHead} deleteRole={deleteRole}/>
       <Pagination
         setStateFunction={setFilteredRoles}
         data={roles}
+        filteredData={filteredRoles}
       />
     </Container>
   )

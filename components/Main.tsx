@@ -14,7 +14,7 @@ const Container = styled.div`
   box-shadow: 0px 4px 8px rgba(165, 171, 179, 0.16);
   border-radius: 8px;
   padding: 50px 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 const Main: React.FC<IMain> = ({children}) => {
