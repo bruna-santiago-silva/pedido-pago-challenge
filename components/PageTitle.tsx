@@ -14,6 +14,8 @@ export const Container = styled.div`
   font-weight: 600;
   color: #34423D;
   margin-bottom: 30px;
+
+  
 `;
 
 const PageTitle: React.FC<IPageTitle> = ({children, style}) => {

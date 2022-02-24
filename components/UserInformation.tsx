@@ -1,15 +1,25 @@
 import styled from "styled-components";
 
-const UserInformationContainer = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 50px;
+  width: 100%;
+
+  @media only screen and (max-width: 350px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const UserAvatar = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 100%;
+
+  @media only screen and (max-width: 350px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const UserDataContainer = styled.div`
@@ -32,13 +42,13 @@ const UserEmail = styled.div`
 
 const UserInformation = ({ agent }) => {
   return (
-    <UserInformationContainer>
+    <Container>
       <UserAvatar src={`${agent.image}`} />
       <UserDataContainer>
         <UserName>{agent.name}</UserName>
         <UserEmail>{agent.email}</UserEmail>
       </UserDataContainer>
-    </UserInformationContainer>
+    </Container>
   )
 }
 

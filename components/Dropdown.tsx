@@ -15,12 +15,12 @@ const SelectStyled = styled(Select)`
   color: #587169;
   border-radius: 8px;
   margin: 24px 24px 5px 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
   @media only screen and (max-width: 1300px) {
     margin-bottom: 10px;
-    width: 80%;
-    margin: 0 20px 20px 0;
+    width: 100%;
+    margin: 12px 0;
   }
 
 `

@@ -46,8 +46,8 @@ export const OrganizationDetailsTitle = styled.div`
   /* border: 1px solid green; */
 
   @media only screen and (max-width: 1300px) {
-    width: 75%;
-    margin-left: 8%;
+    width: 100%;
+    margin-bottom: 12px;
   }
 `;
 
