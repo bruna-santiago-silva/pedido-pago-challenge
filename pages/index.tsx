@@ -24,7 +24,7 @@ const Home = () => {
   const handleTabChange = (_, newValue) => {
     setSelectedTab(newValue);
   };
-
+  
   return (
     <PageWrapper>
       <Header />
@@ -33,7 +33,11 @@ const Home = () => {
         <RightContainer>
           <PageTitle>Organização</PageTitle>
           <Main>
-            <TabsContainer selectedTab={selectedTab} handleTabChange={handleTabChange} setTabDisplayed={setTabDisplayed} />
+            <TabsContainer
+              selectedTab={selectedTab}
+              handleTabChange={handleTabChange}
+              setTabDisplayed={setTabDisplayed}
+            />
             {tabDisplayed === TABS['AGENTS']
             ? 
               <Agents />
