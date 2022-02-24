@@ -29,7 +29,7 @@ const AgentsTable: React.FC<IAgentsTable> = ({ bodyData, headerData }) => {
       <Tbody>
         {bodyData.map(data => {
           return (
-            <AgentTableRow agent={data} />
+            <AgentTableRow key={data.agent_id} agent={data} />
           )
         })}
       </Tbody>

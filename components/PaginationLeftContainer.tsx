@@ -5,7 +5,7 @@ import PaginationDropdown from './PaginationDropdown';
 
 interface IPaginationLeftContainer {
   itemsPerPage: number;
-  agents: IAgent[];
+  data: any[];
   handleSelectItemsPerPage: (e: SelectChangeEvent<number>) => void;
 }
 
@@ -23,11 +23,11 @@ const PaginationTitle = styled.div`
   color: #587169;
 `;
 
-const PaginationLeftContainer: React.FC<IPaginationLeftContainer> = ({ itemsPerPage, agents, handleSelectItemsPerPage }) => {
+const PaginationLeftContainer: React.FC<IPaginationLeftContainer> = ({ itemsPerPage, data, handleSelectItemsPerPage }) => {
   return (
     <Container>
       <PaginationTitle>
-        {`Mostrando ${itemsPerPage > agents.length ? agents.length : itemsPerPage} de ${agents.length}`}
+        {`Mostrando ${itemsPerPage > data.length ? data.length : itemsPerPage} de ${data.length}`}
       </PaginationTitle>
       <PaginationDropdown itemsPerPage={itemsPerPage} onChange={handleSelectItemsPerPage} values={[3, 5, 10]} />
     </Container>

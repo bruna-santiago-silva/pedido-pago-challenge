@@ -22,6 +22,7 @@ const Tbody = styled.tbody`
 `;
 
 const RolesTable: React.FC<IRolesTable> = ({ bodyData, headerData }) => {
+  console.log(bodyData)
   return (
     <Table>
       <Thead>
@@ -30,7 +31,7 @@ const RolesTable: React.FC<IRolesTable> = ({ bodyData, headerData }) => {
       <Tbody>
         {bodyData.map(data => {
           return (
-            <RolesTableRow role={data} />
+            <RolesTableRow key={`${data.name}-${data.departament}`} role={data} />
           )
         })}
       </Tbody>

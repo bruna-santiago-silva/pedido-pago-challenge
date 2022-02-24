@@ -97,23 +97,25 @@ const AgentName = styled.div`
 const AgentTableRow: React.FC<ITableBodyRow> = ({ agent }) => {
   const { agent_id, image, name, status, department, role, branch } = agent
   return (
-    <Link href={'/details'}>
-      <TrBody key={agent_id} status={status}>
-        <Td className='nameBody' status={status}>
-          <AvatarAgent src={image} status={status}/>
-          <AgentName>{name}</AgentName>
-        </Td>
-        <Td className='departmentBody' status={status}>{department}</Td>
-        <Td className='roleBody' status={status} >{role}</Td>
-        <Td className='branchBody' status={status} >{branch}</Td>
-        <Td className='statusBody'>
-          <StatusContainer status={status}>
-            {status === 'active' ? 'Ativo' : 'Inativo'}
-          </StatusContainer>
-        </Td>
-        <Td className='dots' status={status} ><ThreeDotsIcon /></Td>
-      </TrBody>
-    </Link>
+    <>
+      <Link href={'/details'}>
+        <TrBody key={agent_id} status={status}>
+          <Td className='nameBody' status={status}>
+            <AvatarAgent src={image} status={status}/>
+            <AgentName>{name}</AgentName>
+          </Td>
+          <Td className='departmentBody' status={status}>{department}</Td>
+          <Td className='roleBody' status={status} >{role}</Td>
+          <Td className='branchBody' status={status} >{branch}</Td>
+          <Td className='statusBody'>
+            <StatusContainer status={status}>
+              {status === 'active' ? 'Ativo' : 'Inativo'}
+            </StatusContainer>
+          </Td>
+          <Td className='dots' status={status} ><ThreeDotsIcon /></Td>
+        </TrBody>
+      </Link>
+    </>
   )
 }
 

@@ -13,7 +13,7 @@ const PaginationDropdown: React.FC<IPaginationDropdown> = ({ itemsPerPage, onCha
       onChange={e => onChange(e)}
       displayEmpty
     >
-      {values.map(v => <MenuItem value={v}>{v}</MenuItem>)}
+      {values.map(v => <MenuItem key={v} value={v}>{v}</MenuItem>)}
     </Select>
   )
 }

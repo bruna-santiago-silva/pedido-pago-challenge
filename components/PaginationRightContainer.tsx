@@ -25,7 +25,7 @@ const PagesAmount = styled.div`
 `;
 
 const PaginationRightContainer: React.FC<IPaginationRightContainer> = ({
-  goToPreviousPage, currentPage, totalPages, goToNextPage
+  goToPreviousPage, goToNextPage, currentPage, totalPages 
 }) => {
   return (
     <Container>

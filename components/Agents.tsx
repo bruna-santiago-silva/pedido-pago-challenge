@@ -1,4 +1,3 @@
-import { SelectChangeEvent } from "@mui/material";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { challengeApi } from "../api/ChallengeApi";
@@ -8,9 +7,7 @@ import AgentsTable from "./agentsTable/AgentsTable";
 import InputSearch from "./InputSearch";
 import Pagination from "./Pagination";
 
-const Container = styled.div`
-
-`
+const Container = styled.div``
 
 const ListingTitle = styled.div`
   margin-bottom: 30px;
@@ -188,10 +185,6 @@ const Agents = ({ }) => {
     }
   ])
 
-  const [itemsPerPage, setItemsPerPage] = useState<number>(10)
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [totalPages, setTotalPages] = useState<number>(1)
-
   const fetchAgents = async () => {
     await challengeApi
       .getAgents()
@@ -202,32 +195,7 @@ const Agents = ({ }) => {
       .catch(error => console.log(error))
   }
 
-  const handleSelectItemsPerPage = (e: SelectChangeEvent<number>) => {
-    setCurrentPage(1)
-    const valueAsNumber = Number(e.target.value)
-    setItemsPerPage(valueAsNumber)
-    const slicedAgentsArray = agents.slice(0, valueAsNumber)
-    setFilteredAgents(slicedAgentsArray)
-    setTotalPages(Math.round(agents.length / valueAsNumber))
-  }
-
-  const goToNextPage = () => {
-    setCurrentPage(currentPage + 1)
-  }
-
-  const goToPreviousPage = () => {
-    setCurrentPage(currentPage - 1)
-  }
-
-  const handleChangePage = () => {
-    const offset = (currentPage -1) * itemsPerPage
-    const slicedAgentsArray = agents.slice(offset, offset+itemsPerPage)
-    setFilteredAgents(slicedAgentsArray)
-  }
-
   useEffect(() => { fetchAgents() }, [])
-  useEffect(() => { setTotalPages(Math.round(agents.length / itemsPerPage)) }, [agents])
-  useEffect(() => { handleChangePage() }, [currentPage])
 
   return( 
     <Container>
@@ -241,13 +209,8 @@ const Agents = ({ }) => {
       <ListingTitle>Listagem de colaboradores</ListingTitle>
       <AgentsTable bodyData={filteredAgents} headerData={dataForAgentsTableHead} />
       <Pagination
-        itemsPerPage={itemsPerPage}
-        agents={agents}
-        handleSelectItemsPerPage={handleSelectItemsPerPage}
-        goToPreviousPage={goToPreviousPage}
-        currentPage={currentPage}
-        totalPages={totalPages}
-        goToNextPage={goToNextPage}
+        setStateFunction={setFilteredAgents}
+        data={agents}
       />
     </Container>
   )
