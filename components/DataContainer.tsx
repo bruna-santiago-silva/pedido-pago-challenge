@@ -15,6 +15,11 @@ const Container = styled.div`
   border: 2px solid #CAD6D1;
   border-radius: 8px;
   padding-left: 16px;
+
+  @media only screen and (max-width: 1300px) {
+    margin-bottom: 10px;
+    width: 80%;
+  }
 `;
 
 const Data = styled.div`

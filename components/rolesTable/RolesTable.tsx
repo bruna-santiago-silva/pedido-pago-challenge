@@ -22,7 +22,6 @@ const Tbody = styled.tbody`
 `;
 
 const RolesTable: React.FC<IRolesTable> = ({ bodyData, headerData }) => {
-  console.log(bodyData)
   return (
     <Table>
       <Thead>

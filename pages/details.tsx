@@ -54,12 +54,24 @@ export const OrganizationalDataContainer = styled.div`
   border: 2px solid #EAEFED;
   border-radius: 8px;
   padding: 24px;
+  /* border: 1px solid blue; */
+
+  @media only screen and (max-width: 1300px) {
+    flex-direction: column;
+  }
 `;
 
 export const DropdownContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  /* border: 1px solid red; */
+
+  @media only screen and (max-width: 1300px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const Details = () => {
@@ -225,17 +237,17 @@ const Details = () => {
             <UserInformation agent={agent} />
             <PersonalInformationsContainer>
               <SubTitle>Informações pessoais</SubTitle>
-              <DetailsContainer agent={agent}/>
+              <DetailsContainer agent={agent} />
             </PersonalInformationsContainer>
             <OrganizationalDataContainer>
               <SubTitle>Dados organizacionais</SubTitle>
               <DropdownContainer>
-                <Dropdown value={department} values={selectDepartments()} label='Departamento' onChange={setDepartment}/>
-                <Dropdown value={role} values={selectRolesNames()} label='Cargo' onChange={setRole}/>
+                <Dropdown value={department} values={selectDepartments()} label='Departamento' onChange={setDepartment} />
+                <Dropdown value={role} values={selectRolesNames()} label='Cargo' onChange={setRole} />
               </DropdownContainer>
               <DropdownContainer>
-                <Dropdown value={branch} values={['Farmácia Pedido Pago']} label='Unidade' onChange={setBranch}/>
-                <Dropdown value={status} values={['active', 'inactive']} label='Status' onChange={setStatus}/>
+                <Dropdown value={branch} values={['Farmácia Pedido Pago']} label='Unidade' onChange={setBranch} />
+                <Dropdown value={status} values={['active', 'inactive']} label='Status' onChange={setStatus} />
               </DropdownContainer>
             </OrganizationalDataContainer>
           </Main>

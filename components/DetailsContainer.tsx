@@ -14,6 +14,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 24px;
+
+  @media only screen and (max-width: 1300px) {
+    flex-direction: column;
+  }
 `;
 
 const DetailsContainer: React.FC<IDetailsContainer> = ({ agent }) => {

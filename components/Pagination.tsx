@@ -54,7 +54,7 @@ const Pagination: React.FC<IPagination> = ({
   
   useEffect(() => { setTotalPages(Math.round(data.length / itemsPerPage)) }, [data])
   useEffect(() => { handleChangePage() }, [currentPage])
-
+  console.log(data)
   return (
     <Container>
       <PaginationLeftContainer
