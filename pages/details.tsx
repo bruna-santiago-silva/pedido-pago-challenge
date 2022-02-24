@@ -38,10 +38,30 @@ export const PersonalInformationsContainer = styled.div`
 
 export const Title = styled.div``
 
-export const SubTitle = styled.div`
+export const OrganizationDetailsTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
+  margin-bottom: 24px;
+  /* border: 1px solid green; */
+
+  @media only screen and (max-width: 1300px) {
+    width: 75%;
+    margin-left: 8%;
+  }
+`;
+
+export const PersonalInformationTitle = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  color: #34423D;
+  /* margin-bottom: 24px; */
+  /* border: 1px solid green; */
+
+  @media only screen and (max-width: 1300px) {
+    width: 75%;
+    margin-left: 8%;
+  }
 `;
 
 export const PhoneContainer = styled.div``;
@@ -58,6 +78,8 @@ export const OrganizationalDataContainer = styled.div`
 
   @media only screen and (max-width: 1300px) {
     flex-direction: column;
+    align-self: center;
+    width: 75%;
   }
 `;
 
@@ -66,7 +88,7 @@ export const DropdownContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* border: 1px solid red; */
+  /* border: 1px solid blue; */
 
   @media only screen and (max-width: 1300px) {
     flex-direction: column;
@@ -236,11 +258,11 @@ const Details = () => {
           <Main>
             <UserInformation agent={agent} />
             <PersonalInformationsContainer>
-              <SubTitle>Informações pessoais</SubTitle>
+              <PersonalInformationTitle>Informações pessoais</PersonalInformationTitle>
               <DetailsContainer agent={agent} />
             </PersonalInformationsContainer>
             <OrganizationalDataContainer>
-              <SubTitle>Dados organizacionais</SubTitle>
+              <OrganizationDetailsTitle>Dados organizacionais</OrganizationDetailsTitle>
               <DropdownContainer>
                 <Dropdown value={department} values={selectDepartments()} label='Departamento' onChange={setDepartment} />
                 <Dropdown value={role} values={selectRolesNames()} label='Cargo' onChange={setRole} />
