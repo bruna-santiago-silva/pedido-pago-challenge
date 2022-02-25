@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface IMain {
   children: any;
+  style?: any;
 }
 
 const Container = styled.div`
@@ -16,9 +17,9 @@ const Container = styled.div`
   padding: 50px 20px;
 `;
 
-const Main: React.FC<IMain> = ({children}) => {
+const Main: React.FC<IMain> = ({ children, style }) => {
   return (
-    <Container>{children}</Container>
+    <Container style={style}>{children}</Container>
   )
 }
 

@@ -13,13 +13,13 @@ import DetailsContainer from './DetailsContainer';
 import UserInformation from './UserInformation';
 import { ApplicationContext } from '../src/context/ApplicationContext';
 
-export const Body = styled.div`
+const Body = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
 `;
 
-export const RightContainer = styled.div`
+const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 85%;
@@ -33,15 +33,15 @@ export const RightContainer = styled.div`
   }
 `;
 
-export const PersonalInformationsContainer = styled.div`
+const PersonalInformationsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 `;
 
-export const Title = styled.div``
+const Title = styled.div``
 
-export const OrganizationDetailsTitle = styled.div`
+const OrganizationDetailsTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
@@ -53,7 +53,7 @@ export const OrganizationDetailsTitle = styled.div`
   }
 `;
 
-export const PersonalInformationTitle = styled.div`
+const PersonalInformationTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
@@ -64,11 +64,7 @@ export const PersonalInformationTitle = styled.div`
   }
 `;
 
-export const PhoneContainer = styled.div``;
-
-export const BirthDateContainer = styled.div``;
-
-export const OrganizationalDataContainer = styled.div`
+const OrganizationalDataContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 2px solid #EAEFED;
@@ -82,7 +78,7 @@ export const OrganizationalDataContainer = styled.div`
   }
 `;
 
-export const DropdownContainer = styled.div`
+const DropdownContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

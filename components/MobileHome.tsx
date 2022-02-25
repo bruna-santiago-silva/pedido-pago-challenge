@@ -33,6 +33,7 @@ const TextFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
+  margin-top: 40px;
 `;
 
 const SelectPageDataContainer = styled.div`
@@ -43,13 +44,9 @@ const SelectPageDataContainer = styled.div`
   border: 2px solid #CAD6D1;
   border-color: #CAD6D1;
   border-radius: 8px;
-  width: 48%;
+  width: 100%;
   height: 56px;
-
-  @media only screen and (max-width: 1300px) {
-    margin-bottom: 20px;
-    width: 100%;
-  }
+  margin-bottom: 20px;
 `;
 
 const SelectPageTitle = styled.div`
@@ -99,10 +96,10 @@ const MobileHome = () => {
         </PageTitle>
         <Main>
           <TextFieldContainer>
-              <SelectPageDataContainer>
-                <SelectPageTitle>{pageData === PAGE_DATA['AGENTS'] ? 'Colaboradores' : 'Cargos'}</SelectPageTitle>
-                <ThreeDotsIconMobile setState={setShowModal}/>
-              </SelectPageDataContainer>
+            <SelectPageDataContainer>
+              <SelectPageTitle>{pageData === PAGE_DATA['AGENTS'] ? 'Colaboradores' : 'Cargos'}</SelectPageTitle>
+              <ThreeDotsIconMobile setState={setShowModal}/>
+            </SelectPageDataContainer>
           </TextFieldContainer>
           {showModal && 
             <MobileSelectModal setState={setPageData} setShowModal={setShowModal}/>

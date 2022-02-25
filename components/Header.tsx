@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import LogoIcon from './LogoIcon';
 
-export const Container = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,14 +10,15 @@ export const Container = styled.div`
   background-color: #FFFFFF;
 `;
 
-export const LogoContainer = styled.div`
+const LogoContainer = styled.div`
   display: flex;
   width: 5%;
   height: 100%;
   border-right: 1px solid #EAEFED;
+  margin-left: 32px;
 `;
 
-export const UserContainer = styled.div`
+const UserContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +27,7 @@ export const UserContainer = styled.div`
   border-left: 1px solid #EAEFED;
 `;
 
-export const UserAvatar = styled.div`
+const UserAvatar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,19 +40,19 @@ export const UserAvatar = styled.div`
   color: #34423D;
 `;
 
-export const User = styled.div`
+const User = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 15px;
 `;
 
-export const UserName = styled.div`
+const UserName = styled.div`
   font-size: 14px;
   font-weight: 600;
   color: #34423D;
 `;
 
-export const UserData = styled.div`
+const UserData = styled.div`
   font-size: 12px;
   font-weight: 400;
   color: #587169;

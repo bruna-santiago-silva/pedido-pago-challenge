@@ -1,4 +1,5 @@
-import ApplicationContextProvider from "../src/context/ApplicationContext"
+import ApplicationContextProvider from '../src/context/ApplicationContext';
+import '../src/styles/index.css'
 
 const MyApp = ({ Component, pageProps }) => {
   return (

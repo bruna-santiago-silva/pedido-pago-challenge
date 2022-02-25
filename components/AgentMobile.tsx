@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import BackPageIcon from './BackPageIcon';
 import Dropdown from './Dropdown';
-import Header from './Header';
-import LeftMenu from './LeftMenu';
 import Main from './Main';
 import PageTitle from './PageTitle';
 import PageWrapper from './PageWrapper';
@@ -12,20 +10,22 @@ import { IAgentDetail, IRole } from '../src/interfaces';
 import DetailsContainer from './DetailsContainer';
 import UserInformation from './UserInformation';
 import { ApplicationContext } from '../src/context/ApplicationContext';
+import HeaderMobile from './HeaderMobile';
 
-export const Body = styled.div`
+const Body = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
 `;
 
-export const RightContainer = styled.div`
+const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 85%;
+  width: 100%;
   height: 100%;
   min-height: 1020px;
-  background-color: #E5E5E5;
+  /* background-color: #E5E5E5; */
+  background-color: #F8FAF9;
   padding: 50px 100px;
 
   @media only screen and (max-width: 1300px) {
@@ -33,15 +33,17 @@ export const RightContainer = styled.div`
   }
 `;
 
-export const PersonalInformationsContainer = styled.div`
+const PersonalInformationsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 `;
 
-export const Title = styled.div``
+const Title = styled.div`
+  font-size: 20px;
+`
 
-export const OrganizationDetailsTitle = styled.div`
+const OrganizationDetailsTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
@@ -53,7 +55,7 @@ export const OrganizationDetailsTitle = styled.div`
   }
 `;
 
-export const PersonalInformationTitle = styled.div`
+const PersonalInformationTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
@@ -64,25 +66,18 @@ export const PersonalInformationTitle = styled.div`
   }
 `;
 
-export const PhoneContainer = styled.div``;
-
-export const BirthDateContainer = styled.div``;
-
-export const OrganizationalDataContainer = styled.div`
+const OrganizationalDataContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-self: center;
+
   border: 2px solid #EAEFED;
   border-radius: 8px;
   padding: 24px;
-
-  @media only screen and (max-width: 1300px) {
-    flex-direction: column;
-    align-self: center;
-    width: 75%;
-  }
+  width: 85%;
 `;
 
-export const DropdownContainer = styled.div`
+const DropdownContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -161,19 +156,18 @@ const AgentMobile = () => {
 
   return (
     <PageWrapper>
-      <Header />
+      <HeaderMobile />
       <Body>
-        <LeftMenu />
         <RightContainer>
-          <PageTitle>
-            <BackPageIcon link='/'/>
+          <PageTitle style={{width: '100%'}}>
+            <BackPageIcon link='/' style={{marginLeft: '16px'}} />
             <Title>Detalhes do colaborador</Title>
           </PageTitle>
-          <Main>
+          <Main style={{width: '85%'}}>
             <UserInformation agent={agent} />
             <PersonalInformationsContainer>
               <PersonalInformationTitle>Informações pessoais</PersonalInformationTitle>
-              <DetailsContainer agent={agent} />
+              <DetailsContainer agent={agent} style={{width: '95%'}}/>
             </PersonalInformationsContainer>
             <OrganizationalDataContainer>
               <OrganizationDetailsTitle>Dados organizacionais</OrganizationDetailsTitle>

@@ -15,7 +15,7 @@ const ListingTitle = styled.div`
   color: #34423D;
 `;
 
-const Roles = () => {
+const RolesDesktop = () => {
   const { roles, filteredRoles, setFilteredRoles } = useContext(ApplicationContext)
 
   const deleteRole = (name: string, departament: string) => {
@@ -43,4 +43,4 @@ const Roles = () => {
   )
 }
 
-export default Roles;
+export default RolesDesktop;

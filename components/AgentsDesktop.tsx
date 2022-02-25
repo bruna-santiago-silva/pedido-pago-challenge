@@ -15,7 +15,7 @@ const ListingTitle = styled.div`
   color: #34423D;
 `;
 
-const Agents = () => {
+const AgentsDesktop = () => {
   const { agents, filteredAgents, setFilteredAgents } = useContext(ApplicationContext)
 
   const deleteAgent = (id: number) => {
@@ -43,4 +43,4 @@ const Agents = () => {
   )
 }
 
-export default Agents;
+export default AgentsDesktop;

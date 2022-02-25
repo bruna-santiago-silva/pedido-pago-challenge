@@ -4,6 +4,7 @@ interface IDataContainer {
   title: string;
   info: string;
   icon: any;
+  style?: any;
 }
 
 const Container = styled.div`
@@ -40,9 +41,9 @@ const Info = styled.div`
   color: #587169;
 `;
 
-const DataContainer: React.FC<IDataContainer> = ({ title, info, icon }) => {
+const DataContainer: React.FC<IDataContainer> = ({ title, info, icon, style }) => {
   return (
-    <Container>
+    <Container style={style}>
       {icon}
       <Data>
         <DataTitle>{title}</DataTitle>

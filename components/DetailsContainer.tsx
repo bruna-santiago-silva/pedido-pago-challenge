@@ -7,6 +7,7 @@ import { IAgentDetail } from '../src/interfaces';
 
 interface IDetailsContainer {
   agent: IAgentDetail;
+  style?: any;
 }
 
 const Container = styled.div`
@@ -20,7 +21,7 @@ const Container = styled.div`
   }
 `;
 
-const DetailsContainer: React.FC<IDetailsContainer> = ({ agent }) => {
+const DetailsContainer: React.FC<IDetailsContainer> = ({ agent, style }) => {
   const formatDocument = (document: string) => {
     const documentNumberArray = document.split('')
     const emptySpacesPositions = [3, 7, 11]
@@ -49,16 +50,19 @@ const DetailsContainer: React.FC<IDetailsContainer> = ({ agent }) => {
         title={agent.document.type}
         info={formatDocument(agent.document.number)}
         icon={<DocumentIcon />}
+        style={style}
       />
       <DataContainer
         title='Telefone'
         info={`+${agent.phone.ddi} ${agent.phone.ddd} ${formatPhoneNumber(agent.phone.number)}`}
         icon={<PhoneIcon />}
+        style={style}
       />
       <DataContainer
         title='Nascimento'
         info={formatBirthDate(agent.birth_date)}
         icon={<CalendarIcon />}
+        style={style}
       />
     </Container>
   )

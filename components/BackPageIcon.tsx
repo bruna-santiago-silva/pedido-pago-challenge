@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface IBackPageIcon {
   link: string;
+  style?: any;
 }
 
 const Link = styled.a`
@@ -19,9 +20,9 @@ const IconContainer = styled.span`
   border-radius: 100%;
 `;
 
-const BackPageIcon: React.FC<IBackPageIcon> = ({ link }) => {
+const BackPageIcon: React.FC<IBackPageIcon> = ({ link, style }) => {
   return (
-    <Link href={link}>
+    <Link href={link} style={style}>
       <IconContainer >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M0 8C0 7.44772 0.447715 7 1 7H15C15.5523 7 16 7.44772 16 8C16 8.55228 15.5523 9 15 9H1C0.447715 9 0 8.55228 0 8Z" fill="#34423D"/>

@@ -4,8 +4,7 @@ interface IPageWrapper {
   children: any;
 }
 
-export const Container = styled.div`
-  font-family: 'Poppins', sans-serif;
+const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
