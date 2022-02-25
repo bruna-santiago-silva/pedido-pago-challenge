@@ -17,10 +17,6 @@ interface ITableBodyRow {
   deleteAgent: (id: number) => void;
 }
 
-const Link = styled.a`
-  text-decoration: none;
-`;
-
 const TrBody = styled.tr<IStatus>`
   display: flex;
   width: 100%;
@@ -73,13 +69,12 @@ const Td = styled.td<IStatus>`
   position: relative;
   display: flex;
   align-items: center;
-  /* width: 20%; */
   height: 69px;
   border-bottom: 1px solid #EAEFED;
   font-size: 12px;
   font-weight: 400;
   color: ${ ({ status }) => status === 'active' ? '#587169' : '#A3B8B0'};
-  /* padding: 0 16px; */
+  cursor: pointer;
 `;
 
 const AvatarAgent = styled.img<IStatus>`
@@ -98,43 +93,43 @@ const ModalContainer = styled.div`
   position: relative;
 `
 
-const AgentTableRow: React.FC<ITableBodyRow> = ({ agent, deleteAgent }) => {
-
+const AgentsTableRow: React.FC<ITableBodyRow> = ({ agent, deleteAgent }) => {
+  
   const [showModal, setShowModal] = useState(false)
+  
+  const urlAgentDetails = `/agents/${agent.agent_id}`
 
   const { agent_id, image, name, status, department, role, branch } = agent
   return (
     <>
-        <TrBody key={agent_id} status={status}>
-      {/* <Link href={'/details'}> */}
-          <Td className='largeCell' status={status}>
-            <AvatarAgent src={image} status={status}/>
-            <AgentName>{name}</AgentName>
-          </Td>
-          <Td className='departmentBody' status={status}>{department}</Td>
-          <Td className='roleBody' status={status} >{role}</Td>
-          <Td className='branchBody' status={status} >{branch}</Td>
-          <Td className='statusBody'>
-            <StatusContainer status={status}>
-              {status === 'active' ? 'Ativo' : 'Inativo'}
-            </StatusContainer>
-          </Td>
-      {/* </Link> */}
-          <Td className='dots' status={status}>
-            <ModalContainer>
-              <ThreeDotsIcon setState={setShowModal} modalState={showModal}/>
-              {showModal && 
-                <AgentModal
-                  setState={setShowModal}
-                  deleteAgent={deleteAgent}
-                  agentId={agent_id}
-                />
-              }
-            </ModalContainer>
-          </Td>
-        </TrBody>
+      <TrBody key={agent_id} status={status}>
+        <Td className='largeCell' status={status} onClick={() => window.open(urlAgentDetails)}>
+          <AvatarAgent src={image} status={status}/>
+          <AgentName>{name}</AgentName>
+        </Td>
+        <Td className='departmentBody' status={status} onClick={() => window.open(urlAgentDetails)}>{department}</Td>
+        <Td className='roleBody' status={status} onClick={() => window.open(urlAgentDetails)}>{role}</Td>
+        <Td className='branchBody' status={status} onClick={() => window.open(urlAgentDetails)}>{branch}</Td>
+        <Td className='statusBody' onClick={() => window.open(urlAgentDetails)}>
+          <StatusContainer status={status}>
+            {status === 'active' ? 'Ativo' : 'Inativo'}
+          </StatusContainer>
+        </Td>
+        <Td className='dots' status={status}>
+          <ModalContainer>
+            <ThreeDotsIcon setState={setShowModal} modalState={showModal}/>
+            {showModal && 
+              <AgentModal
+                setState={setShowModal}
+                deleteAgent={deleteAgent}
+                agentId={agent_id}
+              />
+            }
+          </ModalContainer>
+        </Td>
+      </TrBody>
     </>
   )
 }
 
-export default AgentTableRow;
+export default AgentsTableRow;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import TableBodyRow from '../agentsTable/AgentTableRow';
 import TableHeadRow from '../TableHeadRow';
-import {IAgent, IRole, ITableHeadData} from '../../src/interfaces';
+import { IRole, ITableHeadData } from '../../src/interfaces';
 import RolesTableRow from './RolesTableRow';
 
 interface IRolesTable {

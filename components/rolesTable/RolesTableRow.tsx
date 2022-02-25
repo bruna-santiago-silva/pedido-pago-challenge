@@ -51,6 +51,7 @@ const Td = styled.td`
   font-size: 12px;
   font-weight: 400;
   color: #587169;
+  cursor: pointer;
 `;
 
 const ModalContainer = styled.div`
@@ -61,28 +62,28 @@ const RolesTableRow: React.FC<IRolesTableRow> = ({ role, deleteRole }) => {
   
   const [showModal, setShowModal] = useState(false)
 
+  const urlAgentDetails = `/roles/${role.name}-${role.departament}`
+
   const { name, departament, agents_quantity } = role
   return (
-    // <Link href={'/permission'}>
-      <TrBody>
-        <Td className='nameBody'>{name}</Td>
-        <Td className='departmentBody'>{departament}</Td>
-        <Td className='agentsQuantityBody'>{agents_quantity}</Td>
-        <Td className='dots'>
-          <ModalContainer>
-            <ThreeDotsIcon setState={setShowModal} modalState={showModal}/>
-            {showModal && 
-              <RoleModal
-                setState={setShowModal}
-                deleteRole={deleteRole}
-                name={name}
-                departament={departament}
-              />
-            }
-          </ModalContainer>
-        </Td>
-      </TrBody>
-    // </Link>
+    <TrBody>
+      <Td className='nameBody' onClick={() => window.open(urlAgentDetails)}>{name}</Td>
+      <Td className='departmentBody' onClick={() => window.open(urlAgentDetails)}>{departament}</Td>
+      <Td className='agentsQuantityBody' onClick={() => window.open(urlAgentDetails)}>{agents_quantity}</Td>
+      <Td className='dots'>
+        <ModalContainer>
+          <ThreeDotsIcon setState={setShowModal} modalState={showModal}/>
+          {showModal && 
+            <RoleModal
+              setState={setShowModal}
+              deleteRole={deleteRole}
+              name={name}
+              departament={departament}
+            />
+          }
+        </ModalContainer>
+      </Td>
+    </TrBody>
   )
 }
 
