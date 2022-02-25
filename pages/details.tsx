@@ -6,11 +6,12 @@ import LeftMenu from '../components/LeftMenu';
 import Main from '../components/Main';
 import PageTitle from '../components/PageTitle';
 import PageWrapper from '../components/PageWrapper';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { challengeApi } from '../api/ChallengeApi';
 import { IAgentDetail, IRole } from '../src/interfaces';
 import DetailsContainer from '../components/DetailsContainer';
 import UserInformation from '../components/UserInformation';
+import { ApplicationContext } from '../src/context/ApplicationContext';
 
 export const Body = styled.div`
   display: flex;
@@ -99,102 +100,28 @@ export const DropdownContainer = styled.div`
 `;
 
 const Details = () => {
-  // const [agent, setAgent] = useState<IAgentDetail>({
-  //   id: 0,
-  //   name: '',
-  //   email: '',
-  //   phone: {
-  //     ddd: '',
-  //     ddi: '',
-  //     number: '',
-  //   },
-  //   document: {
-  //     type: '',
-  //     number: '',
-  //   },
-  //   birth_date: new Date(),
-  //   image: '',
-  //   department: '',
-  //   branch: '',
-  //   role: '',
-  //   status: '',
-  // })
+  const {roles} = useContext(ApplicationContext)
   const [agent, setAgent] = useState<IAgentDetail>({
-    "id": 1,
-    "name": "Kai Cunha Lima",
-    "email": "kaicunhalinha@email.com",
-    "phone": {
-      "ddd": "11",
-      "ddi": "55",
-      "number": "987654321"
+    id: 0,
+    name: '',
+    email: '',
+    phone: {
+      ddd: '',
+      ddi: '',
+      number: ''
     },
-    "document": {
-      "type": "CPF",
-      "number": "12345678901"
+    document: {
+      type: '',
+      number: ''
     },
-    "birth_date": new Date("2022-02-14T23:15:14.715Z"),
-    "image": "https://picsum.photos/200",
-    "department": "Administrativo",
-    "branch": "Farmácia Pedido Pago",
-    "role": "Diretor",
-    "status": "active"
+    birth_date: new Date(),
+    image: '',
+    department: '',
+    branch: '',
+    role: '',
+    status: ''
   })
-  // const [roles, setRoles] = useState<IRole[]>([{
-  //   name: '',
-  //   departament: '',
-  //   agents_quantity: 0
-  // }])
-  const [roles, setRoles] = useState<IRole[]>([{
-    "name": "Supervisor",
-    "departament": "SAC",
-    "agents_quantity": 5
-  },
-  {
-    "name": "Gerente",
-    "departament": "Eventos",
-    "agents_quantity": 2
-  },
-  {
-    "name": "Analista",
-    "departament": "Produtivo",
-    "agents_quantity": 3
-  },
-  {
-    "name": "Gerente",
-    "departament": "Garantia de qualidade",
-    "agents_quantity": 2
-  },
-  {
-    "name": "Supervisor",
-    "departament": "Comercial",
-    "agents_quantity": 4
-  },
-  {
-    "name": "Supervisor",
-    "departament": "Marketing",
-    "agents_quantity": 3
-  },
-  {
-    "name": "Gerente",
-    "departament": "Visitação Médica",
-    "agents_quantity": 4
-  },
-  {
-    "name": "Analista",
-    "departament": "Marketing",
-    "agents_quantity": 1
-  },
-  {
-    "name": "Diretor",
-    "departament": "Administrativo",
-    "agents_quantity": 2
-  },
-  {
-    "name": "Analista",
-    "departament": "Eventos",
-    "agents_quantity": 2
-  }])
-
+  
   const [department, setDepartment] = useState<string>('Administrativo')
   const [role, setRole] = useState<string>('Diretor')
   const [branch, setBranch] = useState<string>('Farmácia Pedido Pago')
@@ -213,17 +140,9 @@ const Details = () => {
       .catch(error => console.log(error))
   }
 
-  const fetchRoles = async () => {
-    await challengeApi
-      .getRoles()
-      .then(response => {
-        setRoles(response.roles)
-      })
-      .catch(error => console.log(error))
-  }
-
   const selectRolesNames = () => {
-    const rolesNameArray = [] 
+    const rolesNameArray = []
+    console.log(roles)
     roles.forEach(role => {
       if (!rolesNameArray.includes(role.name)) {
         rolesNameArray.push(role.name)
@@ -244,7 +163,6 @@ const Details = () => {
 
   useEffect(() => {
     fetchAgent()
-    fetchRoles()
   }, [])
 
   return (

@@ -37,8 +37,6 @@ const ApplicationContextProvider: React.FC = ({ children }) => {
       .catch(error => console.log(error))
   }
 
-  useEffect(() => { fetchAgents() }, [])
-
   const fetchRoles = async () => {
     await challengeApi
       .getRoles()
@@ -48,7 +46,11 @@ const ApplicationContextProvider: React.FC = ({ children }) => {
       })
       .catch(error => console.log(error))
   }
-  useEffect(() => { fetchRoles() }, [])
+  
+  useEffect(() => {
+    fetchAgents()
+    fetchRoles()
+  }, [])
   return (
     <ApplicationContext.Provider
       value={{
