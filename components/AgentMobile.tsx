@@ -115,7 +115,7 @@ const AgentMobile = () => {
   const [department, setDepartment] = useState<string>('Comercial')
   const [role, setRole] = useState<string>('Diretor')
   const [branch, setBranch] = useState<string>('Farmácia Pedido Pago')
-  const [status, setStatus] = useState<string>('active')
+  const [status, setStatus] = useState<string>('Ativo')
 
   const fetchAgent = async () => {
     await challengeApi
@@ -124,7 +124,7 @@ const AgentMobile = () => {
         setAgent(response.agent)
         setRole(response.agent.role)
         setDepartment(response.agent.department)
-        setStatus(response.agent.status)
+        setStatus(response.agent.status === 'active' ? 'Ativo': 'Inativo')
         setBranch(response.agent.branch)
       })
       .catch(error => console.log(error))
@@ -177,7 +177,7 @@ const AgentMobile = () => {
               </DropdownContainer>
               <DropdownContainer>
                 <Dropdown value={branch} values={['Farmácia Pedido Pago']} label='Unidade' onChange={setBranch} />
-                <Dropdown value={status} values={['active', 'inactive']} label='Status' onChange={setStatus} />
+                <Dropdown value={status} values={['Ativo', 'Inativo']} label='Status' onChange={setStatus} />
               </DropdownContainer>
             </OrganizationalDataContainer>
           </Main>
