@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { IAgent, IStatus } from '../src/interfaces';
+import AgentModalMobile from './AgentModalMobile';
 import CardInfoBox from './CardInfoBox';
 import ShowActionsIcon from './ShowActionsIcon';
 
 interface IAgentCardData {
   agent: IAgent;
+  deleteAgent: (id: number) => void;
 }
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -27,6 +31,7 @@ const HorizontalContainer = styled.div`
 `;
 
 const ActionButton = styled.button`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,8 +79,9 @@ const Title = styled.div`
   width: 100%;
 `;
 
+const AgentCardData: React.FC<IAgentCardData>  = ({ agent, deleteAgent }) => {
 
-const AgentCardData: React.FC<IAgentCardData>  = ({ agent }) => {
+  const [showModal, setShowModal] = useState(false)
   return (
     <Container>
       <HorizontalContainer>
@@ -94,10 +100,17 @@ const AgentCardData: React.FC<IAgentCardData>  = ({ agent }) => {
           </StatusContainer>
         </Data>
       </InfoContainer>
-      <ActionButton>
+      <ActionButton onClick={() => setShowModal(!showModal)}>
         <ShowActionsIcon />
         <ButtonTitle>Ações</ButtonTitle>
       </ActionButton> 
+      {showModal &&
+        <AgentModalMobile
+          setState={setShowModal}
+          deleteAgent={deleteAgent}
+          agentId={agent.agent_id}
+        />
+      }
     </Container>
   )
 }

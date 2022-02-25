@@ -2,11 +2,12 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import DownArrowIcon from './DownArrowIcon';
 import UpArrowIcon from './UpArrowIcon';
-import { IAgent, IStatus } from '../src/interfaces';
+import { IAgent } from '../src/interfaces';
 import AgentCardData from './AgentCardData';
 
 interface IAgentCard {
   agent: IAgent;
+  deleteAgent: (id: number) => void;
 }
 
 interface IContainer {
@@ -72,7 +73,7 @@ const Name = styled.div`
   margin-left: 8px;
 `;
 
-const AgentCard: React.FC<IAgentCard>  = ({ agent }) => {
+const AgentCard: React.FC<IAgentCard>  = ({ agent, deleteAgent }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <Container isOpen={isOpen}>
@@ -86,11 +87,14 @@ const AgentCard: React.FC<IAgentCard>  = ({ agent }) => {
             </Info>
           </AvatarContainer>
           {
-            isOpen ? <UpArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/> : <DownArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/>
+            isOpen ?
+              <UpArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/>
+            :
+              <DownArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/>
           }
         </HorizontalContainer>
       </InfoContainer>
-      { isOpen && <AgentCardData agent={agent} /> }
+      { isOpen && <AgentCardData agent={agent} deleteAgent={deleteAgent}/> }
     </Container>
   )
 }

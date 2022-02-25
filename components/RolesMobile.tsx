@@ -45,7 +45,13 @@ const RolesMobile = () => {
       <Divider></Divider>
       <SubTitle>Listagem de cargos</SubTitle>
       <CardsContainer>
-        {filteredRoles.map(role => <RoleCard key={`${role.name}-${role.departament}-${role.agents_quantity}`} role={role} deleteRole={deleteRole}/>)}
+        {filteredRoles.map(role => 
+          <RoleCard
+            key={`${role.name}-${role.departament}-${role.agents_quantity}`}
+            role={role}
+            deleteRole={deleteRole}
+          />
+        )}
       </CardsContainer>
     </>
   )

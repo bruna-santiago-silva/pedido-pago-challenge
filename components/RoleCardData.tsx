@@ -59,7 +59,14 @@ const RoleCardData: React.FC<IRoleCardData>  = ({ role, deleteRole }) => {
         <ShowActionsIcon />
         <ButtonTitle>Ações</ButtonTitle>
       </ActionButton> 
-      {showModal && <RoleModalMobile setState={setShowModal} deleteRole={deleteRole} name={role.name} departament={role.departament}/>}
+      {showModal &&
+        <RoleModalMobile
+          setState={setShowModal}
+          deleteRole={deleteRole}
+          name={role.name}
+          departament={role.departament}
+        />
+      }
     </Container>
   )
 }

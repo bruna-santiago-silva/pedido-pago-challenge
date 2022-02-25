@@ -25,7 +25,13 @@ const CardsContainer = styled.div`
 `;
 
 const AgentsMobile = () => {
+  
   const { agents, filteredAgents, setFilteredAgents } = useContext(ApplicationContext);
+
+  const deleteAgent = (id: number) => {
+    const remainFilteredAgents = filteredAgents.filter((f) => !(f.agent_id === id))
+    setFilteredAgents(remainFilteredAgents)
+  }
   return (
     <>
       <InputSearch
@@ -39,7 +45,9 @@ const AgentsMobile = () => {
       <Divider></Divider>
       <SubTitle>Listagem de colaboradores</SubTitle>
       <CardsContainer>
-        {filteredAgents.map(agent => <AgentCard key={agent.agent_id} agent={agent}/>)}
+        {filteredAgents.map(agent =>
+          <AgentCard key={agent.agent_id} agent={agent} deleteAgent={deleteAgent}/>
+        )}
       </CardsContainer>
     </>
   )
