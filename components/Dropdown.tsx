@@ -1,4 +1,5 @@
-import { MenuItem, Select, styled } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import styled from "styled-components";
 
 interface IDropdown {
   value: string;
@@ -7,35 +8,41 @@ interface IDropdown {
   label: string;
 }
 
-const SelectStyled = styled(Select)`
-  width: 50%;
-  background-color: #F5FAF8;
-  font-size: 16px;
-  font-weight: 600;
-  color: #587169;
-  border-radius: 8px;
+const DropdownContainer = styled.div`
+  width: 100%;
   margin: 24px 24px 5px 0;
-  /* border: 1px solid red; */
 
   @media only screen and (max-width: 1300px) {
     margin-bottom: 10px;
     width: 100%;
     margin: 12px 0;
   }
-`
+`;
 
 const Dropdown: React.FC<IDropdown> = ({ value, values, onChange, label }) => {
   return (
-    <SelectStyled
-      value={value}
-      onChange={e => onChange(e.target.value)}
-      label={label}
-      style={{
-        fontFamily: 'Poppins, sans-serif',
-      }}
-    >
-      {values.map(v => <MenuItem key={v} value={v}>{v}</MenuItem>)}
-    </SelectStyled>
+    <DropdownContainer>
+      <FormControl style={{width: '100%'}}>
+        <InputLabel id={`labelId-${label}`}>{label}</InputLabel>
+        <Select
+          labelId={`labelId-${label}`}
+          id={label}
+          value={value}
+          label={label}
+          onChange={e => onChange(e.target.value)}
+          style={{
+            width: '100%',
+            backgroundColor: '#F5FAF8',
+            fontSize: '16px',
+            fontWeight: '600',
+            color:' #587169',
+            borderRadius: '8px',
+          }}
+        >
+          {values.map(v => <MenuItem key={v} value={v}>{v}</MenuItem>)}
+        </Select>
+      </FormControl>
+    </DropdownContainer>
   )
 }
 

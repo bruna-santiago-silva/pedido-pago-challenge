@@ -122,7 +122,7 @@ const Details = () => {
     status: ''
   })
   
-  const [department, setDepartment] = useState<string>('Administrativo')
+  const [department, setDepartment] = useState<string>('Comercial')
   const [role, setRole] = useState<string>('Diretor')
   const [branch, setBranch] = useState<string>('Farmácia Pedido Pago')
   const [status, setStatus] = useState<string>('active')
@@ -142,7 +142,6 @@ const Details = () => {
 
   const selectRolesNames = () => {
     const rolesNameArray = []
-    console.log(roles)
     roles.forEach(role => {
       if (!rolesNameArray.includes(role.name)) {
         rolesNameArray.push(role.name)
