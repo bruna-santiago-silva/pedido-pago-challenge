@@ -8,12 +8,11 @@ interface ITableHeadCell {
 const Th = styled.th`
   display: flex;
   align-items: center;
-  width: 20%;
+  justify-content: start;
   height: 49px;
   font-size: 12px;
   font-weight: 600;
   color: #587169;
-  padding: 0 16px;
 `;
 
 const TableHeadCell: React.FC<ITableHeadCell> = ({ title, cellClass }) => {

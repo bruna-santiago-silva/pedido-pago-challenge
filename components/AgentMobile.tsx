@@ -160,11 +160,11 @@ const AgentMobile = () => {
       <Body>
         <RightContainer>
           <PageTitle style={{width: '100%'}}>
-            <BackPageIcon link='/' style={{marginLeft: '16px'}} />
+            <BackPageIcon link='/' style={{marginLeft: '16px'}}/>
             <Title>Detalhes do colaborador</Title>
           </PageTitle>
           <Main style={{width: '85%'}}>
-            <UserInformation agent={agent} />
+            <UserInformation agent={agent}/>
             <PersonalInformationsContainer>
               <PersonalInformationTitle>Informações pessoais</PersonalInformationTitle>
               <DetailsContainer agent={agent} style={{width: '95%'}}/>

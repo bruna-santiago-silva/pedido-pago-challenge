@@ -1,11 +1,17 @@
+import MediaQuery from 'react-responsive';
 import AgentDesktop from '../../components/AgentDesktop'
 import AgentMobile from '../../components/AgentMobile';
 
 const Details = () => {
   return (
-    // <AgentDesktop />
-    
-    <AgentMobile />
+    <>
+      <MediaQuery minWidth={500}>
+        <AgentDesktop /> 
+      </MediaQuery>
+      <MediaQuery maxWidth={500}>
+        <AgentMobile />
+      </MediaQuery>
+    </>
   )
 }
 
