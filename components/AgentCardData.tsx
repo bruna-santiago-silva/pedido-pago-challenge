@@ -83,12 +83,16 @@ const AgentCardData: React.FC<IAgentCardData>  = ({ agent }) => {
         <CardInfoBox title='Cargo' data={agent.role} />
       </HorizontalContainer>
       <HorizontalContainer>
-        <CardInfoBox title='Documento' data={agent.branch} />
+        <CardInfoBox title='Documento' data='123456789' />
         <CardInfoBox title='Unidade' data={agent.branch} />
       </HorizontalContainer>
       <InfoContainer>
         <Title>Status</Title>
-        <Data><StatusContainer>Ativo</StatusContainer></Data>
+        <Data>
+          <StatusContainer status={agent.status}>
+            {agent.status === 'active' ? 'Ativo' : 'Inativo'}
+          </StatusContainer>
+        </Data>
       </InfoContainer>
       <ActionButton>
         <ShowActionsIcon />

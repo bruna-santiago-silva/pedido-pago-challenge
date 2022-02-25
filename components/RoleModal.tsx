@@ -14,11 +14,12 @@ interface IRoleModal {
 
 const Container = styled.div`
   position: absolute;
+  right: 50%;
+  top: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 340px;
-  height: 280px;
+  height: 278px;
   background-color: #FFFFFF;
   border-radius: 8px;
   box-shadow: 0px 8px 24px rgba(165, 171, 179, 0.4);

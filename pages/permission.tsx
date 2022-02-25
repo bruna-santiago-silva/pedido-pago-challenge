@@ -80,12 +80,12 @@ const Permission: React.FC<IPermissions> = () => {
   
   return (
     <PageWrapper>
-      <MediaQuery minWidth={500}>
+      {/* <MediaQuery minWidth={500}>
         <Header /> 
       </MediaQuery>
       <MediaQuery maxWidth={500}>
         <HeaderMobile />
-      </MediaQuery>
+      </MediaQuery> */}
       <Body>
         <LeftMenu />
         <RightContainer>

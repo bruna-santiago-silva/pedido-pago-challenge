@@ -22,7 +22,6 @@ const SelectStyled = styled(Select)`
     width: 100%;
     margin: 12px 0;
   }
-
 `
 
 const Dropdown: React.FC<IDropdown> = ({ value, values, onChange, label }) => {

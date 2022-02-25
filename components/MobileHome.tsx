@@ -7,6 +7,8 @@ import { ApplicationContext } from '../src/context/ApplicationContext';
 import AgentCard from './AgentCard';
 import HeaderMobile from './HeaderMobile';
 import InputSearch from './InputSearch';
+import LoadMoreIcon from './LoadMoreIcon';
+import MobileSelectModal from './MobileSelectModal';
 import PageTitle from './PageTitle';
 import StyledTextField from './StyledTextField';
 import ThreeDotsIcon from './ThreeDotsIcon';
@@ -17,6 +19,7 @@ const TABS = {
 }
 
 const Main = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -62,7 +65,6 @@ const CardsContainer = styled.div`
 
 const LoadMoreContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 90%;
@@ -76,11 +78,14 @@ const LoadMoreContainer = styled.div`
 const ButtonTitle = styled.div`
   font-size: 16px;
   font-weight: 600;
+  margin-left: 8px;
 `
 
 const MobileHome = () => {
   const { agents, filteredAgents, setFilteredAgents, filteredRoles } = useContext(ApplicationContext);
-  const [cardDisplayed, setCardDisplayed] = useState<string>(TABS['ROLES'])
+
+  const [cardDisplayed, setCardDisplayed] = useState<string>(TABS['AGENTS'])
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   return (
     <PageWrapper>
@@ -99,17 +104,22 @@ const MobileHome = () => {
           </PageTitle>
           <Main>
             <TextFieldContainer>
-              <StyledTextField
-                placeholder='Colaboradores'
-                inputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <ThreeDotsIcon />
-                    </InputAdornment>
-                  )
-                }}
-                style={{marginTop: '40px', marginBottom: '0'}}
-              />
+              <div style={{position: 'relative'}}>
+                <StyledTextField
+                  placeholder='Colaboradores'
+                  inputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <ThreeDotsIcon modalState={showModal} setState={setShowModal}/>
+                      </InputAdornment>
+                    )
+                  }}
+                  style={{marginTop: '40px', marginBottom: '0'}}
+                />
+              </div>
+              {showModal && 
+                <MobileSelectModal />
+              }
               <InputSearch
                 data={agents}
                 setData={setFilteredAgents}
@@ -129,6 +139,7 @@ const MobileHome = () => {
               }
               </CardsContainer>
               <LoadMoreContainer>
+                <LoadMoreIcon />
                 <ButtonTitle>Carregar Mais</ButtonTitle>
               </LoadMoreContainer>
           </Main>

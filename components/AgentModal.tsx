@@ -15,9 +15,8 @@ const Container = styled.div`
   top: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 340px;
-  height: 132px;
+  height: 143px;
   background-color: #FFFFFF;
   border-radius: 8px;
   box-shadow: 0px 8px 24px rgba(165, 171, 179, 0.4);
