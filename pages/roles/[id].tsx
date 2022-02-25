@@ -1,10 +1,17 @@
+import MediaQuery from "react-responsive";
 import RoleDesktop from "../../components/RoleDesktop";
 import RoleMobile from "../../components/RoleMobile";
 
 const Role = () => {
   return (
-    // <RoleDesktop />
-    <RoleMobile />
+    <>
+      <MediaQuery minWidth={500}>
+        <RoleDesktop />
+      </MediaQuery>
+      <MediaQuery maxWidth={500}>
+        <RoleMobile />
+      </MediaQuery>
+    </>
   )
 }
 

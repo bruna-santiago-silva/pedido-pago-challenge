@@ -14,14 +14,17 @@ const TrHead = styled.tr`
 
   .extraLarge {
     width: 80%;
+    padding-left: 16px;
+  }
+
+  .largeCell {
+    width: 44%;
+    margin-left: 16px;
   }
 
   .medium {
     width: 15%;
-  }
-
-  .extraBigCell {
-    width: 44%;
+    justify-content: center;
   }
 
   .bigCell {
@@ -33,10 +36,6 @@ const TrHead = styled.tr`
   }
 
   .smallCell {
-    width: 20%;
-  }
-  
-  .statusHeader {
     width: 20%;
   }
 

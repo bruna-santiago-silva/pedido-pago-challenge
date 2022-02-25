@@ -25,11 +25,12 @@ const TrBody = styled.tr<IStatus>`
   display: flex;
   width: 100%;
 
-  .nameBody {
+  .largeCell {
     width: 44%;
     display: flex;
     align-items: center;
     font-weight: 600;
+    margin-left: 16px;
   }
 
   .departmentBody {
@@ -72,13 +73,13 @@ const Td = styled.td<IStatus>`
   position: relative;
   display: flex;
   align-items: center;
-  width: 20%;
+  /* width: 20%; */
   height: 69px;
   border-bottom: 1px solid #EAEFED;
   font-size: 12px;
   font-weight: 400;
   color: ${ ({ status }) => status === 'active' ? '#587169' : '#A3B8B0'};
-  padding: 0 16px;
+  /* padding: 0 16px; */
 `;
 
 const AvatarAgent = styled.img<IStatus>`
@@ -106,7 +107,7 @@ const AgentTableRow: React.FC<ITableBodyRow> = ({ agent, deleteAgent }) => {
     <>
         <TrBody key={agent_id} status={status}>
       {/* <Link href={'/details'}> */}
-          <Td className='nameBody' status={status}>
+          <Td className='largeCell' status={status}>
             <AvatarAgent src={image} status={status}/>
             <AgentName>{name}</AgentName>
           </Td>

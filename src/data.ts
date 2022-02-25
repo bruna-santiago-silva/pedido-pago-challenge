@@ -1,5 +1,5 @@
 export const dataForAgentsTableHead = [
-  {title: 'Nome completo', class: 'extraBigCell'},
+  {title: 'Nome completo', class: 'largeCell'},
   {title: 'Departamento', class: 'mediumCell'},
   {title: 'Cargo', class: 'smallCell'},
   {title: 'Unidade', class: 'bigCell'},

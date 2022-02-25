@@ -47,6 +47,19 @@ const TextFieldContainer = styled.div`
   width: 100%;
 `;
 
+const Divider = styled.div`
+  border: 1px solid #EAEFED;
+  width: 100%;
+  margin-bottom: 40px;
+`;
+
+const DataContainer = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const RoleMobile = () => {
 
   const [role, setRole] = useState({
@@ -68,7 +81,6 @@ const RoleMobile = () => {
   }
 
   useEffect(() => {fetchRole()}, [])
-
   
   return (
     <PageWrapper>
@@ -80,15 +92,16 @@ const RoleMobile = () => {
             <Title>Cargos e permissões</Title>
           </PageTitle>
           <Main style={{width: '95%', padding: '50px 0', alignItems: 'center'}}>
-            <div style={{width: '90%', display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+            <DataContainer>
               <SubTitle>Dados do cargo</SubTitle>
               <TextFieldContainer>
                 <StyledTextField label="Departamento" placeholder="SAC"/>
                 <StyledTextField label="Cargo" placeholder="Analista"/>
               </TextFieldContainer>
+              <Divider></Divider>
               <SubTitle>Listagem de permissões</SubTitle>
               <PermissionsTableMobile bodyData={role.grouprules} headerData={dataForPermissionsTableHead}/>
-            </div>
+            </DataContainer>
           </Main>
         </RightContainer>
       </Body>

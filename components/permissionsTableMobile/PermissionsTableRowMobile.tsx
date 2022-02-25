@@ -51,9 +51,24 @@ const PermissionsTableRowMobile: React.FC<IPermissionsTableRow> = ({ rule }) => 
   return (
     <TrBody key={rule.role}>
       <Td className='extraLarge'>{rule.role}</Td>
-      <Td className='medium'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowRead} onChange={() => setAllowRead(!allowRead)} /></Td>
-      <Td className='medium'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowWrite} onChange={() => setAllowWrite(!allowWrite)} /></Td>
-      <Td className='medium'><Checkbox style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}} checked={allowDelete} onChange={() => setAllowDelete(!allowDelete)} /></Td>
+      <Td className='medium'>
+        <Checkbox
+          style={{color: `${allowRead ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}}
+          checked={allowRead} onChange={() => setAllowRead(!allowRead)}
+        />
+      </Td>
+      <Td className='medium'>
+        <Checkbox
+          style={{color: `${allowWrite ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}}
+          checked={allowWrite} onChange={() => setAllowWrite(!allowWrite)}
+        />
+      </Td>
+      <Td className='medium'>
+        <Checkbox
+          style={{color: `${allowDelete ? '#1DD195' : '#CAD6D1'}`, borderRadius: '6px'}}
+          checked={allowDelete} onChange={() => setAllowDelete(!allowDelete)}
+        />
+      </Td>
     </TrBody>
   )
 }
