@@ -23,6 +23,7 @@ const Data = styled.div`
 const HorizontalContainer = styled.div`
   display: flex;
   width: 100%;
+  margin-left: 6px;
 `;
 
 const ActionButton = styled.button`
@@ -36,6 +37,8 @@ const ActionButton = styled.button`
   border: none;
   border: 2px solid #B5F1DD;
   border-radius: 8px;
+  background-color: #FFFFFF;
+  margin-top: 32px;
 `;
 
 const ButtonTitle = styled.div`
@@ -55,15 +58,13 @@ const StatusContainer = styled.div<IStatus>`
   font-weight: 600;
   background-color: ${ ({ status }) => status === 'active' ? '#B5F1DD' : '#EAEFED'};
   color: ${ ({ status }) => status === 'active' ? '#587169' : '#A3B8B0'};
-  /* background-color: #B5F1DD;
-  color: #587169; */
   border-radius: 80px;
   padding: 4px 8px;
 `
 
 const InfoContainer = styled.div`
   width: 50%;
-  margin: 10px;
+  margin: 10px 0 0 16px;
 `;
 
 const Title = styled.div`
@@ -78,12 +79,12 @@ const AgentCardData: React.FC<IAgentCardData>  = ({ agent }) => {
   return (
     <Container>
       <HorizontalContainer>
-        <AgentCardInfoBox title='Departamento' data='' />
-        <AgentCardInfoBox title='Cargo' data='' />
+        <AgentCardInfoBox title='Departamento' data={agent.department} />
+        <AgentCardInfoBox title='Cargo' data={agent.role} />
       </HorizontalContainer>
       <HorizontalContainer>
-        <AgentCardInfoBox title='Documento' data='' />
-        <AgentCardInfoBox title='Unidade' data='' />
+        <AgentCardInfoBox title='Documento' data={agent.branch} />
+        <AgentCardInfoBox title='Unidade' data={agent.branch} />
       </HorizontalContainer>
       <InfoContainer>
         <Title>Status</Title>
