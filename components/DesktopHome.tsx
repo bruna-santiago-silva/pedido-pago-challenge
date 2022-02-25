@@ -24,6 +24,11 @@ import { PAGE_DATA } from '../src/data';
   min-height: 1020px;
   background-color: #E5E5E5;
   padding: 50px 100px;
+
+  @media only screen and (max-width: 1400px) {
+    padding: 50px 0;
+    width: 100%;
+  }
 `;
 
 const DesktopHome = () => {

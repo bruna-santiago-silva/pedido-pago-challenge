@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import AgentsTableRow from './AgentsTableRow';
 import TableHeadRow from '../TableHeadRow';
-import {IAgent, ITableHeadData} from '../../src/interfaces';
+import { IAgent, ITableHeadData } from '../../src/interfaces';
 
 interface IAgentsTable {
   bodyData?: IAgent[]

@@ -25,6 +25,14 @@ const UserContainer = styled.div`
   width: 13%;
   height: 100%;
   border-left: 1px solid #EAEFED;
+
+  @media only screen and (max-width: 1300px) {
+    width: 18%;
+  }
+
+  @media only screen and (max-width: 900px) {
+    width: 25%;
+  }
 `;
 
 const UserAvatar = styled.div`

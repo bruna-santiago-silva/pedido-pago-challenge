@@ -25,7 +25,7 @@ const StyledTextField: React.FC<IStyledTextField> = ({ label, placeholder, input
       <TextFieldStyled
         className='searchTextField'
         label={label}
-        placeholder={placeholder}
+        value={placeholder}
         InputProps={inputProps}
         style={style}
       />
