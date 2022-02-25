@@ -16,7 +16,6 @@ const Container = styled.div`
   justify-content: space-between;
   width: 20%;
   min-width: 150px;
-  /* border: 1px solid red; */
 `;
 
 const PagesAmount = styled.div`

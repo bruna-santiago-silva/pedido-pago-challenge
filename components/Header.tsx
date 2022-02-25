@@ -15,8 +15,6 @@ export const LogoContainer = styled.div`
   width: 5%;
   height: 100%;
   border-right: 1px solid #EAEFED;
-
-  /* border: 1px solid red; */
 `;
 
 export const UserContainer = styled.div`
@@ -26,7 +24,6 @@ export const UserContainer = styled.div`
   width: 13%;
   height: 100%;
   border-left: 1px solid #EAEFED;
-  /* border: 1px solid green; */
 `;
 
 export const UserAvatar = styled.div`

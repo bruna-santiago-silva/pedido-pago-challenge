@@ -14,7 +14,6 @@ const Link = styled.a`
 const TrBody = styled.tr`
   display: flex;
   width: 100%;
-  /* border: 1px solid red; */
 
   .extraLarge {
     width: 80%;
@@ -35,7 +34,6 @@ const Td = styled.td`
   font-weight: 400;
   color: #587169;
   padding: 0 16px;
-  /* border: 1px solid red; */
 `;
 
 const RULE_TYPES = {

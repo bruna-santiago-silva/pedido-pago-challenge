@@ -17,7 +17,6 @@ const Link = styled.a`
 const TrBody = styled.tr<IStatus>`
   display: flex;
   width: 100%;
-  /* border: 1px solid red; */
 
   .nameBody {
     width: 22%;
@@ -52,7 +51,6 @@ const Td = styled.td`
   font-weight: 400;
   color: #587169;
   padding: 0 16px;
-  /* border: 1px solid red; */
 `;
 
 const ModalContainer = styled.div`

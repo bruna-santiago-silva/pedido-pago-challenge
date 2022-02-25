@@ -5,12 +5,12 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface IMobileSelectModal {
   setState: Dispatch<SetStateAction<string>>;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
 const Container = styled.div`
   position: absolute;
-  right: 7%;
-  top: 7%;
+  top: 5%;
   display: flex;
   flex-direction: column;
   width: 328px;
@@ -31,33 +31,37 @@ const Title = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
-  margin-left: 16px;
 `;
 
 const CategoriesContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 32px;
-  cursor: pointer;
 `;
 
-const CategorieTitle = styled.div`
+const CategoryTitle = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: #587169;
   margin-bottom: 24px;
 `;
 
-const MobileSelectModal: React.FC<IMobileSelectModal> = ({ setState }) => {
+const MobileSelectModal: React.FC<IMobileSelectModal> = ({ setState, setShowModal }) => {
+
+  const handleClick = (page: string) => {
+    setState(page)
+    setShowModal(false)
+  }
+
   return (
     <Container>
       <TitleContainer>
         <Title>Categorias</Title>
-        <ExitModalIcon />
+        <ExitModalIcon setShowModal={setShowModal}/>
       </TitleContainer>
       <CategoriesContainer>
-        <CategorieTitle onClick={() => setState(PAGE_DATA['AGENTS'])}>Colaboradores</CategorieTitle>
-        <CategorieTitle onClick={() => setState(PAGE_DATA['ROLES'])}>Cargos</CategorieTitle>
+        <CategoryTitle onClick={() => handleClick(PAGE_DATA['AGENTS'])}>Colaboradores</CategoryTitle>
+        <CategoryTitle onClick={() => handleClick(PAGE_DATA['ROLES'])}>Cargos</CategoryTitle>
       </CategoriesContainer>
     </Container>
   )

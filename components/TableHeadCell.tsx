@@ -14,7 +14,6 @@ const Th = styled.th`
   font-weight: 600;
   color: #587169;
   padding: 0 16px;
-  /* border: 1px solid green; */
 `;
 
 const TableHeadCell: React.FC<ITableHeadCell> = ({ title, cellClass }) => {

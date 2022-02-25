@@ -7,6 +7,7 @@ import RoleCardData from './RoleCardData';
 
 interface IRoleCard {
   role: IRole;
+  deleteRole: (name: string, departament: string) => void;
 }
 
 interface IContainer {
@@ -65,7 +66,7 @@ const Name = styled.div`
   font-size: 12px;
 `;
 
-const RoleCard: React.FC<IRoleCard>  = ({ role }) => {
+const RoleCard: React.FC<IRoleCard>  = ({ role, deleteRole }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <Container isOpen={isOpen}>
@@ -80,14 +81,16 @@ const RoleCard: React.FC<IRoleCard>  = ({ role }) => {
               <Title>Departamento</Title>
               <Name>{role.departament}</Name>
             </DepartmentInfo>}
-            
           {
-            isOpen ? <UpArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/> : <DownArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/>
+            isOpen ?
+              <UpArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/>
+            :
+              <DownArrowIcon setState={setIsOpen} style={{marginRight: '20px'}}/>
           }
           </AvatarContainer>
         </HorizontalContainer>
       </InfoContainer>
-      { isOpen && <RoleCardData role={role} /> }
+      { isOpen && <RoleCardData role={role} deleteRole={deleteRole}/> }
     </Container>
   )
 }

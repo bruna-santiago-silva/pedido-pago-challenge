@@ -14,7 +14,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 24px;
-  /* border: 1px solid black; */
 
   @media only screen and (max-width: 1300px) {
     flex-direction: column;

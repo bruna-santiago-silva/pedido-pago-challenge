@@ -1,20 +1,14 @@
-import { InputAdornment } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import PageWrapper from '../components/PageWrapper';
-import RoleCard from '../components/RoleCard';
-import { ApplicationContext } from '../src/context/ApplicationContext';
-import AgentCard from './AgentCard';
 import HeaderMobile from './HeaderMobile';
-import InputSearch from './InputSearch';
 import LoadMoreIcon from './LoadMoreIcon';
 import MobileSelectModal from './MobileSelectModal';
 import PageTitle from './PageTitle';
-import StyledTextField from './StyledTextField';
-import ThreeDotsIcon from './ThreeDotsIcon';
 import { PAGE_DATA } from '../src/data';
 import AgentsMobile from './AgentsMobile';
 import RolesMobile from './RolesMobile';
+import ThreeDotsIconMobile from './ThreeDotsIconMobile';
 
 const Main = styled.div`
   position: relative;
@@ -41,24 +35,28 @@ const TextFieldContainer = styled.div`
   width: 90%;
 `;
 
-const Divider = styled.div`
-  border: 1px solid #EAEFED;
-  width: 100%;
+const SelectPageDataContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border: 2px solid #CAD6D1;
+  border-color: #CAD6D1;
+  border-radius: 8px;
+  width: 48%;
+  height: 56px;
+
+  @media only screen and (max-width: 1300px) {
+    margin-bottom: 20px;
+    width: 100%;
+  }
 `;
 
-const SubTitle = styled.div`
+const SelectPageTitle = styled.div`
   font-size: 16px;
   font-weight: 600;
-  color: #34423D;
-  align-self: start;
-  margin: 40px 0 24px 16px;
-`;
-
-const CardsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  color: #587169;
+  margin-left: 20px;
 `;
 
 const LoadMoreContainer = styled.div`
@@ -80,56 +78,46 @@ const ButtonTitle = styled.div`
 `
 
 const MobileHome = () => {
-  // const { agents, filteredAgents, setFilteredAgents, filteredRoles } = useContext(ApplicationContext);
 
-  const [cardDisplayed, setCardDisplayed] = useState<string>(PAGE_DATA['AGENTS'])
+  const [pageData, setPageData] = useState<string>(PAGE_DATA['AGENTS'])
   const [showModal, setShowModal] = useState<boolean>(false)
 
   return (
     <PageWrapper>
-        <HeaderMobile />
-        <Container>
-          <PageTitle
-            style={{
-              fontSize: '24px',
-              marginLeft: '16px',
-              marginTop: '41px',
-              marginBottom: '24px',
-              alignSelf: 'flex-start'
-            }}
-          >
-            Organização
-          </PageTitle>
-          <Main>
-            <TextFieldContainer>
-              <div style={{position: 'relative'}}>
-                <StyledTextField
-                  placeholder='Colaboradores'
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <ThreeDotsIcon modalState={showModal} setState={setShowModal}/>
-                      </InputAdornment>
-                    )
-                  }}
-                  style={{marginTop: '40px', marginBottom: '0'}}
-                />
-              </div>
-              {showModal && 
-                <MobileSelectModal setState={setCardDisplayed} />
-              }
-              </TextFieldContainer>
-              {cardDisplayed !== PAGE_DATA['AGENTS'] ?
-                <AgentsMobile />
-              :
-                <RolesMobile />
-              }
-              <LoadMoreContainer>
-                <LoadMoreIcon />
-                <ButtonTitle>Carregar Mais</ButtonTitle>
-              </LoadMoreContainer>
-          </Main>
-        </Container>
+      <HeaderMobile />
+      <Container>
+        <PageTitle
+          style={{
+            fontSize: '24px',
+            marginLeft: '16px',
+            marginTop: '41px',
+            marginBottom: '24px',
+            alignSelf: 'flex-start'
+          }}
+        >
+          Organização
+        </PageTitle>
+        <Main>
+          <TextFieldContainer>
+              <SelectPageDataContainer>
+                <SelectPageTitle>{pageData === PAGE_DATA['AGENTS'] ? 'Colaboradores' : 'Cargos'}</SelectPageTitle>
+                <ThreeDotsIconMobile setState={setShowModal}/>
+              </SelectPageDataContainer>
+          </TextFieldContainer>
+          {showModal && 
+            <MobileSelectModal setState={setPageData} setShowModal={setShowModal}/>
+          }
+          {pageData === PAGE_DATA['AGENTS'] ?
+            <AgentsMobile />
+          :
+            <RolesMobile />
+          }
+          <LoadMoreContainer>
+            <LoadMoreIcon />
+            <ButtonTitle>Carregar Mais</ButtonTitle>
+          </LoadMoreContainer>
+        </Main>
+      </Container>
     </PageWrapper>
   )
 }

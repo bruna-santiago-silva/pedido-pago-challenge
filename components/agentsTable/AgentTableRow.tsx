@@ -24,7 +24,6 @@ const Link = styled.a`
 const TrBody = styled.tr<IStatus>`
   display: flex;
   width: 100%;
-  /* border: 1px solid red; */
 
   .nameBody {
     width: 44%;
@@ -80,7 +79,6 @@ const Td = styled.td<IStatus>`
   font-weight: 400;
   color: ${ ({ status }) => status === 'active' ? '#587169' : '#A3B8B0'};
   padding: 0 16px;
-  /* border: 1px solid red; */
 `;
 
 const AvatarAgent = styled.img<IStatus>`

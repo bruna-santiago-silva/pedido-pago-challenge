@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { IRole } from '../src/interfaces';
 import CardInfoBox from './CardInfoBox';
+import RoleModalMobile from './RoleModalMobile';
 import ShowActionsIcon from './ShowActionsIcon';
 
 interface IRoleCardData {
   role: IRole;
+  deleteRole: (name: string, departament: string) => void;
 }
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -20,6 +24,7 @@ const HorizontalContainer = styled.div`
 `;
 
 const ActionButton = styled.button`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,16 +46,20 @@ const ButtonTitle = styled.div`
   color: #34423D;
 `;
 
-const RoleCardData: React.FC<IRoleCardData>  = ({ role }) => {
+const RoleCardData: React.FC<IRoleCardData>  = ({ role, deleteRole }) => {
+
+  const [showModal, setShowModal] = useState(false)
+
   return (
     <Container>
       <HorizontalContainer>
         <CardInfoBox title='Colaboradores' data={String(role.agents_quantity)} style={{margin: '10px 0 0 10px'}}/>
       </HorizontalContainer>
-      <ActionButton>
+      <ActionButton onClick={() => setShowModal(!showModal)}>
         <ShowActionsIcon />
         <ButtonTitle>Ações</ButtonTitle>
       </ActionButton> 
+      {showModal && <RoleModalMobile setState={setShowModal} deleteRole={deleteRole} name={role.name} departament={role.departament}/>}
     </Container>
   )
 }

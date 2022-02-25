@@ -11,7 +11,6 @@ const TrHead = styled.tr`
   width: 100%;
   border: 1px solid #CAD6D1;
   border-radius: 8px 8px 0px 0px;
-  /* border: 1px solid green; */
 
   .extraLarge {
     width: 80%;
@@ -43,7 +42,6 @@ const TrHead = styled.tr`
 
   .empty {
     width: 10%;
-    /* border: 1px solid red; */
   }
 `;
 

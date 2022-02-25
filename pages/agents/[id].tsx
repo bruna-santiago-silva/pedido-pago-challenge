@@ -17,7 +17,6 @@ export const Body = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  /* border: 1px solid green; */
 `;
 
 export const RightContainer = styled.div`
@@ -28,7 +27,7 @@ export const RightContainer = styled.div`
   min-height: 1020px;
   background-color: #E5E5E5;
   padding: 50px 100px;
-  /* border: 1px solid black; */
+
   @media only screen and (max-width: 1300px) {
     padding: 50px 0;
   }
@@ -47,7 +46,6 @@ export const OrganizationDetailsTitle = styled.div`
   font-weight: 600;
   color: #34423D;
   margin-bottom: 24px;
-  /* border: 1px solid green; */
 
   @media only screen and (max-width: 1300px) {
     width: 100%;
@@ -59,7 +57,6 @@ export const PersonalInformationTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
-  /* border: 1px solid green; */
 
   @media only screen and (max-width: 1300px) {
     width: 75%;
@@ -77,7 +74,6 @@ export const OrganizationalDataContainer = styled.div`
   border: 2px solid #EAEFED;
   border-radius: 8px;
   padding: 24px;
-  /* border: 1px solid blue; */
 
   @media only screen and (max-width: 1300px) {
     flex-direction: column;
@@ -91,7 +87,6 @@ export const DropdownContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* border: 1px solid blue; */
 
   @media only screen and (max-width: 1300px) {
     flex-direction: column;

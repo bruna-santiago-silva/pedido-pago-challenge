@@ -25,7 +25,13 @@ const CardsContainer = styled.div`
 `;
 
 const RolesMobile = () => {
+
   const { roles, filteredRoles, setFilteredRoles } = useContext(ApplicationContext);
+
+  const deleteRole = (name: string, departament: string) => {
+    const remainFilteredAgents = filteredRoles.filter((f) => !(f.name === name && f.departament === departament))
+    setFilteredRoles(remainFilteredAgents)
+  }
   return (
     <>
       <InputSearch
@@ -39,7 +45,7 @@ const RolesMobile = () => {
       <Divider></Divider>
       <SubTitle>Listagem de cargos</SubTitle>
       <CardsContainer>
-        {filteredRoles.map(role => <RoleCard key={`${role.name}-${role.departament}-${role.agents_quantity}`} role={role}/>)}
+        {filteredRoles.map(role => <RoleCard key={`${role.name}-${role.departament}-${role.agents_quantity}`} role={role} deleteRole={deleteRole}/>)}
       </CardsContainer>
     </>
   )

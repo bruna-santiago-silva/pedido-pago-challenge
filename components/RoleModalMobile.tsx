@@ -5,7 +5,7 @@ import EditIcon from './EditIcon';
 import RemoveIcon from './RemoveIcon';
 import ViewIcon from './ViewIcon';
 
-interface IRoleModal {
+interface IRoleModalMobile {
   setState: Dispatch<SetStateAction<boolean>>;
   deleteRole: (name: string, departament: string) => void;
   name: string;
@@ -14,7 +14,7 @@ interface IRoleModal {
 
 const Container = styled.div`
   position: absolute;
-  right: 50%;
+  /* right: 50%; */
   top: 90%;
   display: flex;
   flex-direction: column;
@@ -44,13 +44,9 @@ const ActionContainer = styled.div`
   cursor: pointer;
 `;
 
-const RoleModal: React.FC<IRoleModal> = ({ setState, deleteRole, name, departament }) => {
+const RoleModalMobile: React.FC<IRoleModalMobile> = ({ setState, deleteRole, name, departament }) => {
   return (
-    <Container
-      onClick={() => setState(false)}
-      onMouseEnter={() => setState(true)}
-      onMouseLeave={() => setState(false)}
-    >
+    <Container onClick={() => setState(false)}>
       <Link href={'/roles/1'}>
         <ActionContainer>
           <ViewIcon />
@@ -73,4 +69,4 @@ const RoleModal: React.FC<IRoleModal> = ({ setState, deleteRole, name, departame
   )
 }
 
-export default RoleModal;
+export default RoleModalMobile;

@@ -14,10 +14,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 37%;
-  /* border: 1px solid red; */
   
   @media only screen and (max-width: 1300px) {
-    /* margin-bottom: 10px; */
     width: 50%;
   }
 `;
