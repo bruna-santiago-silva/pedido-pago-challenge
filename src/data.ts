@@ -10,12 +10,17 @@ export const dataForAgentsTableHead = [
 export const dataForRolesTableHead = [
   {title: 'Cargo', class: ''},
   {title: 'Departamento', class: ''},
-  {title: 'Colaboradores', class: ''},
+  {title: 'Colaboradores', class: ''}
 ]
 
 export const dataForPermissionsTableHead = [
   {title: 'Cargo', class: 'extraLarge'},
   {title: 'Ler', class: 'medium'},
   {title: 'Editar', class: 'medium'},
-  {title: 'Excluir', class: 'medium'},
+  {title: 'Excluir', class: 'medium'}
 ]
+
+export const PAGE_DATA = {
+  AGENTS: 'agents',
+  ROLES: 'roles'
+}

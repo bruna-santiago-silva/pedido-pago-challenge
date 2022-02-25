@@ -47,7 +47,7 @@ const AgentModal: React.FC<IAgentModal> = ({ setState, deleteAgent, agentId }) =
       onMouseEnter={() => setState(true)}
       onMouseLeave={() => setState(false)}
     >
-      <Link href={'/details'}>
+      <Link href={`/agents/${agentId}`}>
         <ActionContainer>
           <ViewIcon />
           <Title>Ver colaborador</Title>

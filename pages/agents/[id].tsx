@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import BackPageIcon from '../components/BackPageIcon';
-import Dropdown from '../components/Dropdown';
-import Header from '../components/Header';
-import LeftMenu from '../components/LeftMenu';
-import Main from '../components/Main';
-import PageTitle from '../components/PageTitle';
-import PageWrapper from '../components/PageWrapper';
+import BackPageIcon from '../../components/BackPageIcon';
+import Dropdown from '../../components/Dropdown';
+import Header from '../../components/Header';
+import LeftMenu from '../../components/LeftMenu';
+import Main from '../../components/Main';
+import PageTitle from '../../components/PageTitle';
+import PageWrapper from '../../components/PageWrapper';
 import { useContext, useEffect, useState } from 'react';
-import { challengeApi } from '../api/ChallengeApi';
-import { IAgentDetail, IRole } from '../src/interfaces';
-import DetailsContainer from '../components/DetailsContainer';
-import UserInformation from '../components/UserInformation';
-import { ApplicationContext } from '../src/context/ApplicationContext';
+import { challengeApi } from '../../api/ChallengeApi';
+import { IAgentDetail, IRole } from '../../src/interfaces';
+import DetailsContainer from '../../components/DetailsContainer';
+import UserInformation from '../../components/UserInformation';
+import { ApplicationContext } from '../../src/context/ApplicationContext';
 
 export const Body = styled.div`
   display: flex;

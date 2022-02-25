@@ -12,11 +12,9 @@ import MobileSelectModal from './MobileSelectModal';
 import PageTitle from './PageTitle';
 import StyledTextField from './StyledTextField';
 import ThreeDotsIcon from './ThreeDotsIcon';
-
-const TABS = {
-  AGENTS: 'agents',
-  ROLES: 'roles'
-}
+import { PAGE_DATA } from '../src/data';
+import AgentsMobile from './AgentsMobile';
+import RolesMobile from './RolesMobile';
 
 const Main = styled.div`
   position: relative;
@@ -82,9 +80,9 @@ const ButtonTitle = styled.div`
 `
 
 const MobileHome = () => {
-  const { agents, filteredAgents, setFilteredAgents, filteredRoles } = useContext(ApplicationContext);
+  // const { agents, filteredAgents, setFilteredAgents, filteredRoles } = useContext(ApplicationContext);
 
-  const [cardDisplayed, setCardDisplayed] = useState<string>(TABS['AGENTS'])
+  const [cardDisplayed, setCardDisplayed] = useState<string>(PAGE_DATA['AGENTS'])
   const [showModal, setShowModal] = useState<boolean>(false)
 
   return (
@@ -118,26 +116,14 @@ const MobileHome = () => {
                 />
               </div>
               {showModal && 
-                <MobileSelectModal />
+                <MobileSelectModal setState={setCardDisplayed} />
               }
-              <InputSearch
-                data={agents}
-                setData={setFilteredAgents}
-                paramToBeFiltered='name'
-                labelText='Pesquisar por'
-                placeholder='Pesquise por nome ou cpf'
-                style={{margin: '40px 0'}}
-              />
               </TextFieldContainer>
-              <Divider></Divider>
-              <SubTitle>{cardDisplayed === TABS['AGENTS'] ? 'Listagem de colaboradores' : 'Listagem de cargos'}</SubTitle>
-              <CardsContainer>
-              {cardDisplayed === TABS['AGENTS'] ? 
-                filteredAgents.map(agent => <AgentCard agent={agent}/>)
+              {cardDisplayed !== PAGE_DATA['AGENTS'] ?
+                <AgentsMobile />
               :
-                filteredRoles.map(role => <RoleCard role={role}/>)
+                <RolesMobile />
               }
-              </CardsContainer>
               <LoadMoreContainer>
                 <LoadMoreIcon />
                 <ButtonTitle>Carregar Mais</ButtonTitle>

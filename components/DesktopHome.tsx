@@ -11,15 +11,11 @@ import TabsContainer from '../components/TabsContainer';
 import PageWrapper from '../components/PageWrapper';
 import Agents from '../components/Agents';
 import Roles from '../components/Roles';
-
-const TABS = {
-  AGENTS: 'agents',
-  ROLES: 'roles'
-}
+import { PAGE_DATA } from '../src/data';
 
 const DesktopHome = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0)
-  const [tabDisplayed, setTabDisplayed] = useState<string>(TABS['AGENTS'])
+  const [tabDisplayed, setTabDisplayed] = useState<string>(PAGE_DATA['AGENTS'])
 
   const handleTabChange = (_, newValue) => {
     setSelectedTab(newValue);
@@ -38,7 +34,7 @@ const DesktopHome = () => {
               handleTabChange={handleTabChange}
               setTabDisplayed={setTabDisplayed}
             />
-            {tabDisplayed === TABS['AGENTS']
+            {tabDisplayed === PAGE_DATA['AGENTS']
             ? 
               <Agents />
             :

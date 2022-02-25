@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MediaQuery from 'react-responsive';
-import BackPageIcon from '../components/BackPageIcon';
-import Header from '../components/Header';
-import LeftMenu from '../components/LeftMenu';
-import Main from '../components/Main';
-import PageTitle from '../components/PageTitle';
-import PageWrapper from '../components/PageWrapper';
-import PermissionsTable from '../components/permissionsTable/PermissionsTable';
-import { dataForPermissionsTableHead } from '../src/data';
-import { challengeApi } from '../api/ChallengeApi';
-import { IPermissions } from '../src/interfaces';
-import StyledTextField from '../components/StyledTextField';
-import HeaderMobile from '../components/HeaderMobile';
+import BackPageIcon from '../../components/BackPageIcon';
+import Header from '../../components/Header';
+import LeftMenu from '../../components/LeftMenu';
+import Main from '../../components/Main';
+import PageTitle from '../../components/PageTitle';
+import PageWrapper from '../../components/PageWrapper';
+import PermissionsTable from '../../components/permissionsTable/PermissionsTable';
+import { dataForPermissionsTableHead } from '../../src/data';
+import { challengeApi } from '../../api/ChallengeApi';
+import { IPermissions } from '../../src/interfaces';
+import StyledTextField from '../../components/StyledTextField';
+import HeaderMobile from '../../components/HeaderMobile';
 
 export const Body = styled.div`
   display: flex;

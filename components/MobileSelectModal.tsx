@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import ExitModalIcon from './ExitModalIcon';
+import { PAGE_DATA } from '../src/data';
+import { Dispatch, SetStateAction } from 'react';
+
+interface IMobileSelectModal {
+  setState: Dispatch<SetStateAction<string>>;
+}
 
 const Container = styled.div`
   position: absolute;
@@ -15,9 +21,6 @@ const Container = styled.div`
   z-index: 100;
 `;
 
-const Link = styled.a`
-  text-decoration: none;
-`;
 const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -45,19 +48,17 @@ const CategorieTitle = styled.div`
   margin-bottom: 24px;
 `;
 
-const MobileSelectModal = () => {
+const MobileSelectModal: React.FC<IMobileSelectModal> = ({ setState }) => {
   return (
     <Container>
-    <Link href={'/details'}>
       <TitleContainer>
         <Title>Categorias</Title>
         <ExitModalIcon />
       </TitleContainer>
-    </Link>
-    <CategoriesContainer>
-      <CategorieTitle>Colaboradores</CategorieTitle>
-      <CategorieTitle>Cargos</CategorieTitle>
-    </CategoriesContainer>
+      <CategoriesContainer>
+        <CategorieTitle onClick={() => setState(PAGE_DATA['AGENTS'])}>Colaboradores</CategorieTitle>
+        <CategorieTitle onClick={() => setState(PAGE_DATA['ROLES'])}>Cargos</CategorieTitle>
+      </CategoriesContainer>
     </Container>
   )
 }
