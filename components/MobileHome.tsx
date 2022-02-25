@@ -59,6 +59,25 @@ const CardsContainer = styled.div`
   width: 100%;
 `;
 
+const LoadMoreContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 52px;
+  margin-bottom: 40px;
+  margin-top: 14px;
+  border: 2px solid #B5F1DD;
+  border-radius: 8px;
+`;
+
+const ButtonTitle = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+`
+
+
 const MobileHome = () => {
   const { agents, filteredAgents, setFilteredAgents } = useContext(ApplicationContext);
   const [searchText, setSearchText] = useState<string>('')
@@ -103,8 +122,11 @@ const MobileHome = () => {
              <Divider></Divider>
              <SubTitle>Listagem de colaboradores</SubTitle>
              <CardsContainer>
-              {filteredAgents.map((agent) => <AgentCard agent={agent} />)}
+              {filteredAgents.map(agent => <AgentCard agent={agent}/>)}
              </CardsContainer>
+             <LoadMoreContainer>
+                <ButtonTitle>Carregar Mais</ButtonTitle>
+             </LoadMoreContainer>
           </Main>
         </Container>
     </PageWrapper>
