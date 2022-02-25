@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
-import { challengeApi } from '../api/ChallengeApi';
 import { dataForAgentsTableHead } from '../src/data';
-import { IAgent } from '../src/interfaces';
 import AgentsTable from './agentsTable/AgentsTable';
 import InputSearch from './InputSearch';
 import Pagination from './Pagination';
+import { ApplicationContext } from '../src/context/ApplicationContext';
 
 const Container = styled.div``
 
@@ -17,21 +16,7 @@ const ListingTitle = styled.div`
 `;
 
 const Agents = () => {
-
-  const [agents, setAgents] = useState<IAgent[]>([])
-  const [filteredAgents, setFilteredAgents] = useState<IAgent[]>([])
-
-  const fetchAgents = async () => {
-    await challengeApi
-      .getAgents()
-      .then(response => {
-        setAgents(response.items)
-        setFilteredAgents(response.items)
-      })
-      .catch(error => console.log(error))
-  }
-
-  useEffect(() => { fetchAgents() }, [])
+  const { agents, filteredAgents, setFilteredAgents } = useContext(ApplicationContext)
 
   const deleteAgent = (id: number) => {
     const remainFilteredAgents = filteredAgents.filter((f) => !(f.agent_id === id))

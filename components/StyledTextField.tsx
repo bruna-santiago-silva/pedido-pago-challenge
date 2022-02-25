@@ -1,8 +1,10 @@
 import { TextField, styled } from "@mui/material";
 
 interface IStyledTextField {
-  label: string;
+  label?: string;
   placeholder: string;
+  inputProps?: any; 
+  style?: any;
 }
 
 const TextFieldStyled = styled(TextField)`
@@ -17,15 +19,15 @@ const TextFieldStyled = styled(TextField)`
   }
 `;
 
-const StyledTextField: React.FC<IStyledTextField> = ({label, placeholder}) => {
+const StyledTextField: React.FC<IStyledTextField> = ({ label, placeholder, inputProps, style }) => {
   return (
     <>
       <TextFieldStyled
         className='searchTextField'
         label={label}
         placeholder={placeholder}
-        // value=''
-        // onChange={}
+        InputProps={inputProps}
+        style={style}
       />
     </>
   )

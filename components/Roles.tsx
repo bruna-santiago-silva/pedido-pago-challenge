@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
-import { challengeApi } from '../api/ChallengeApi';
 import { dataForRolesTableHead } from '../src/data';
 import InputSearch from './InputSearch';
 import Pagination from './Pagination';
 import RolesTable from './rolesTable/RolesTable';
-import { IRole } from '../src/interfaces';
+import { ApplicationContext } from '../src/context/ApplicationContext';
 
 const Container = styled.div``
 
@@ -17,26 +16,13 @@ const ListingTitle = styled.div`
 `;
 
 const Roles = () => {
-
-  const [roles, setRoles] = useState<IRole[]>([])
-  const [filteredRoles, setFilteredRoles] = useState<IRole[]>([])
-  
-  const fetchRoles = async () => {
-    await challengeApi
-      .getRoles()
-      .then(response => {
-        setRoles(response.roles)
-        setFilteredRoles(response.roles)
-      })
-      .catch(error => console.log(error))
-  }
+  const { roles, filteredRoles, setFilteredRoles } = useContext(ApplicationContext)
 
   const deleteRole = (name: string, departament: string) => {
     const remainFilteredAgents = filteredRoles.filter((f) => !(f.name === name && f.departament === departament))
     setFilteredRoles(remainFilteredAgents)
   }
 
-  useEffect(() => { fetchRoles() }, [])
   return( 
     <Container>
       <InputSearch

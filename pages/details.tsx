@@ -15,7 +15,6 @@ import UserInformation from '../components/UserInformation';
 export const Body = styled.div`
   display: flex;
   width: 100%;
-  /* height: 1200px; */
   height: 100%;
   /* border: 1px solid green; */
 `;
@@ -59,7 +58,6 @@ export const PersonalInformationTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #34423D;
-  /* margin-bottom: 24px; */
   /* border: 1px solid green; */
 
   @media only screen and (max-width: 1300px) {

@@ -9,6 +9,7 @@ interface IInputSearch {
   paramToBeFiltered: string;
   labelText: string;
   placeholder: string;
+  style?: any;
 }
 
 export const Container = styled.div`
@@ -21,7 +22,9 @@ export const Container = styled.div`
   }
 `;
 
-const InputSearch: React.FC<IInputSearch> = ({ data, setData, paramToBeFiltered, labelText, placeholder }) => {
+const InputSearch: React.FC<IInputSearch> = ({
+  data, setData, paramToBeFiltered, labelText, placeholder, style
+}) => {
   const [searchText, setSearchText] = useState<string>('')
 
   const handleSearch = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -38,7 +41,7 @@ const InputSearch: React.FC<IInputSearch> = ({ data, setData, paramToBeFiltered,
   }
 
   return (
-    <Container>
+    <Container style={style}>
       <TextField
         className='searchTextField'
         label={labelText}

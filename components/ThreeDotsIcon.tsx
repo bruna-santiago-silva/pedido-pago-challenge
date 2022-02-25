@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 
 interface IThreeDotsIcon {
-  setState: Dispatch<SetStateAction<boolean>>;
-  modalState: boolean;
+  setState?: Dispatch<SetStateAction<boolean>>;
+  modalState?: boolean;
 }
 
 const IconContainer = styled.span`
