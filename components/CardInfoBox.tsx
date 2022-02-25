@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-interface IAgentCardInfoBox {
+interface ICardInfoBox {
   title: string;
   data: string;
+  style?: any;
 }
 
 const Container = styled.div`
@@ -24,14 +25,14 @@ const Data = styled.div`
   width: 100%;
 `;
 
-const AgentCardInfoBox: React.FC<IAgentCardInfoBox> = ({title, data}) => {
+const CardInfoBox: React.FC<ICardInfoBox> = ({ title, data, style }) => {
   return (
-    <Container>
+    <Container style={style}>
       <Title>{title}</Title>
       <Data>{data}</Data>
     </Container>
   )
 }
 
-export default AgentCardInfoBox;
+export default CardInfoBox;
 

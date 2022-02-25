@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IAgent, IStatus } from '../src/interfaces';
-import AgentCardInfoBox from './AgentCardInfoBox';
+import CardInfoBox from './CardInfoBox';
 import ShowActionsIcon from './ShowActionsIcon';
 
 interface IAgentCardData {
@@ -79,12 +79,12 @@ const AgentCardData: React.FC<IAgentCardData>  = ({ agent }) => {
   return (
     <Container>
       <HorizontalContainer>
-        <AgentCardInfoBox title='Departamento' data={agent.department} />
-        <AgentCardInfoBox title='Cargo' data={agent.role} />
+        <CardInfoBox title='Departamento' data={agent.department} />
+        <CardInfoBox title='Cargo' data={agent.role} />
       </HorizontalContainer>
       <HorizontalContainer>
-        <AgentCardInfoBox title='Documento' data={agent.branch} />
-        <AgentCardInfoBox title='Unidade' data={agent.branch} />
+        <CardInfoBox title='Documento' data={agent.branch} />
+        <CardInfoBox title='Unidade' data={agent.branch} />
       </HorizontalContainer>
       <InfoContainer>
         <Title>Status</Title>

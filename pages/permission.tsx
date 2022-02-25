@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import MediaQuery from 'react-responsive';
 import BackPageIcon from '../components/BackPageIcon';
 import Header from '../components/Header';
 import LeftMenu from '../components/LeftMenu';
@@ -11,14 +12,12 @@ import { dataForPermissionsTableHead } from '../src/data';
 import { challengeApi } from '../api/ChallengeApi';
 import { IPermissions } from '../src/interfaces';
 import StyledTextField from '../components/StyledTextField';
-
+import HeaderMobile from '../components/HeaderMobile';
 
 export const Body = styled.div`
   display: flex;
   width: 100%;
-  /* height: 1200px; */
   height: 100%;
-  /* border: 1px solid green; */
 `;
 
 export const RightContainer = styled.div`
@@ -29,7 +28,6 @@ export const RightContainer = styled.div`
   min-height: 1020px;
   background-color: #E5E5E5;
   padding: 50px 100px;
-  /* border: 1px solid black; */
 
   @media only screen and (max-width: 1300px) {
     padding: 50px 0;
@@ -82,7 +80,12 @@ const Permission: React.FC<IPermissions> = () => {
   
   return (
     <PageWrapper>
-      <Header />
+      <MediaQuery minWidth={500}>
+        <Header /> 
+      </MediaQuery>
+      <MediaQuery maxWidth={500}>
+        <HeaderMobile />
+      </MediaQuery>
       <Body>
         <LeftMenu />
         <RightContainer>

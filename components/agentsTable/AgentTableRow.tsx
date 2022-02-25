@@ -70,7 +70,7 @@ const StatusContainer = styled.div<IStatus>`
 `
 
 const Td = styled.td<IStatus>`
-position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   width: 20%;

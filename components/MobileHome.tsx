@@ -2,6 +2,7 @@ import { InputAdornment } from '@mui/material';
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import PageWrapper from '../components/PageWrapper';
+import RoleCard from '../components/RoleCard';
 import { ApplicationContext } from '../src/context/ApplicationContext';
 import AgentCard from './AgentCard';
 import HeaderMobile from './HeaderMobile';
@@ -77,10 +78,9 @@ const ButtonTitle = styled.div`
   font-weight: 600;
 `
 
-
 const MobileHome = () => {
-  const { agents, filteredAgents, setFilteredAgents } = useContext(ApplicationContext);
-  const [searchText, setSearchText] = useState<string>('')
+  const { agents, filteredAgents, setFilteredAgents, filteredRoles } = useContext(ApplicationContext);
+  const [cardDisplayed, setCardDisplayed] = useState<string>(TABS['ROLES'])
 
   return (
     <PageWrapper>
@@ -118,15 +118,19 @@ const MobileHome = () => {
                 placeholder='Pesquise por nome ou cpf'
                 style={{margin: '40px 0'}}
               />
-             </TextFieldContainer>
-             <Divider></Divider>
-             <SubTitle>Listagem de colaboradores</SubTitle>
-             <CardsContainer>
-              {filteredAgents.map(agent => <AgentCard agent={agent}/>)}
-             </CardsContainer>
-             <LoadMoreContainer>
+              </TextFieldContainer>
+              <Divider></Divider>
+              <SubTitle>{cardDisplayed === TABS['AGENTS'] ? 'Listagem de colaboradores' : 'Listagem de cargos'}</SubTitle>
+              <CardsContainer>
+              {cardDisplayed === TABS['AGENTS'] ? 
+                filteredAgents.map(agent => <AgentCard agent={agent}/>)
+              :
+                filteredRoles.map(role => <RoleCard role={role}/>)
+              }
+              </CardsContainer>
+              <LoadMoreContainer>
                 <ButtonTitle>Carregar Mais</ButtonTitle>
-             </LoadMoreContainer>
+              </LoadMoreContainer>
           </Main>
         </Container>
     </PageWrapper>

@@ -11,6 +11,8 @@ interface IAgentModal {
 
 const Container = styled.div`
   position: absolute;
+  right: 50%;
+  top: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,7 +37,6 @@ const Title = styled.div`
 
 const ActionContainer = styled.div`
   display: flex;
-  margin-left: 32px;
   margin: 25px 0 17px 32px;
   cursor: pointer;
 `;
