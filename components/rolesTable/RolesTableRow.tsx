@@ -19,11 +19,12 @@ const TrBody = styled.tr<IStatus>`
   width: 100%;
 
   .nameBody {
-    width: 22%;
+    width: 23%;
+    margin-left: 16px;
   }
 
   .departmentBody {
-    width: 22%;
+    width: 23%;
   }
 
   .roleBody {
@@ -32,6 +33,7 @@ const TrBody = styled.tr<IStatus>`
 
   .agentsQuantityBody {
     width: 40%;
+    margin-left: 1px;
   }
 
   .dots {
@@ -44,13 +46,11 @@ const TrBody = styled.tr<IStatus>`
 const Td = styled.td`
   display: flex;
   align-items: center;
-  width: 20%;
   height: 69px;
   border-bottom: 1px solid #EAEFED;
   font-size: 12px;
   font-weight: 400;
   color: #587169;
-  padding: 0 16px;
 `;
 
 const ModalContainer = styled.div`

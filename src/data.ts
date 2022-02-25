@@ -1,6 +1,6 @@
 export const dataForAgentsTableHead = [
   {title: 'Nome completo', class: 'largeCell'},
-  {title: 'Departamento', class: 'mediumCell'},
+  {title: 'Departamento', class: 'mediumCellNoMargin'},
   {title: 'Cargo', class: 'smallCell'},
   {title: 'Unidade', class: 'bigCell'},
   {title: 'Status', class: 'smallCell'},
@@ -8,9 +8,9 @@ export const dataForAgentsTableHead = [
 ]
 
 export const dataForRolesTableHead = [
-  {title: 'Cargo', class: ''},
-  {title: 'Departamento', class: ''},
-  {title: 'Colaboradores', class: ''}
+  {title: 'Cargo', class: 'mediumCell'},
+  {title: 'Departamento', class: 'mediumCellNoMargin'},
+  {title: 'Colaboradores', class: 'bigCell'}
 ]
 
 export const dataForPermissionsTableHead = [

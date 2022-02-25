@@ -33,6 +33,11 @@ const TrHead = styled.tr`
 
   .mediumCell {
     width: 23%;
+    margin-left: 16px;
+  }
+
+  .mediumCellNoMargin {
+    width: 23%;
   }
 
   .smallCell {
