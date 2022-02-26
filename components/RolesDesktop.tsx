@@ -4,7 +4,7 @@ import { dataForRolesTableHead } from '../src/data';
 import InputSearch from './InputSearch';
 import Pagination from './Pagination';
 import RolesTable from './rolesTable/RolesTable';
-import { ApplicationContext } from '../src/context/ApplicationContext';
+import { ApplicationContext } from '../src/context/ApplicationContextProvider';
 
 const Container = styled.div``
 
@@ -21,6 +21,7 @@ const RolesDesktop = () => {
   const deleteRole = (name: string, departament: string) => {
     const remainFilteredAgents = filteredRoles.filter((f) => !(f.name === name && f.departament === departament))
     setFilteredRoles(remainFilteredAgents)
+    window.alert('Item deletado com sucesso.')
   }
 
   return( 

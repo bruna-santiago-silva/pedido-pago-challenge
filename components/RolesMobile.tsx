@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import InputSearch from "./InputSearch";
-import { ApplicationContext } from '../src/context/ApplicationContext';
+import { ApplicationContext } from '../src/context/ApplicationContextProvider';
 import RoleCard from "./RoleCard";
 
 const Divider = styled.div`
@@ -31,6 +31,7 @@ const RolesMobile = () => {
   const deleteRole = (name: string, departament: string) => {
     const remainFilteredAgents = filteredRoles.filter((f) => !(f.name === name && f.departament === departament))
     setFilteredRoles(remainFilteredAgents)
+    window.alert('Item deletado com sucesso.')
   }
   return (
     <>

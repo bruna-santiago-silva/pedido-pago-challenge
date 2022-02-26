@@ -4,7 +4,7 @@ import { dataForAgentsTableHead } from '../src/data';
 import AgentsTable from './agentsTable/AgentsTable';
 import InputSearch from './InputSearch';
 import Pagination from './Pagination';
-import { ApplicationContext } from '../src/context/ApplicationContext';
+import { ApplicationContext } from '../src/context/ApplicationContextProvider';
 
 const Container = styled.div``
 
@@ -21,6 +21,7 @@ const AgentsDesktop = () => {
   const deleteAgent = (id: number) => {
     const remainFilteredAgents = filteredAgents.filter((f) => !(f.agent_id === id))
     setFilteredAgents(remainFilteredAgents)
+    window.alert('Item deletado com sucesso.')
   }
 
   return( 

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import AgentCard from "./AgentCard";
 import InputSearch from "./InputSearch";
-import { ApplicationContext } from '../src/context/ApplicationContext';
+import { ApplicationContext } from '../src/context/ApplicationContextProvider';
 
 const Divider = styled.div`
   border: 1px solid #EAEFED;
@@ -31,6 +31,7 @@ const AgentsMobile = () => {
   const deleteAgent = (id: number) => {
     const remainFilteredAgents = filteredAgents.filter((f) => !(f.agent_id === id))
     setFilteredAgents(remainFilteredAgents)
+    window.alert('Item deletado com sucesso.')
   }
   return (
     <>

@@ -8,10 +8,10 @@ import PageTitle from './PageTitle';
 import PageWrapper from './PageWrapper';
 import { useContext, useEffect, useState } from 'react';
 import { challengeApi } from '../api/ChallengeApi';
-import { IAgentDetail, IRole } from '../src/interfaces';
+import { IAgentDetail } from '../src/interfaces';
 import DetailsContainer from './DetailsContainer';
 import UserInformation from './UserInformation';
-import { ApplicationContext } from '../src/context/ApplicationContext';
+import { ApplicationContext } from '../src/context/ApplicationContextProvider';
 
 const Body = styled.div`
   display: flex;

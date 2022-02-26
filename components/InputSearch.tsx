@@ -12,7 +12,7 @@ interface IInputSearch {
   style?: any;
 }
 
-export const Container = styled.div`
+const Container = styled.div`
   display: flex;
   margin-bottom: 30px;
   width: 100%;

@@ -6,10 +6,10 @@ import PageTitle from './PageTitle';
 import PageWrapper from './PageWrapper';
 import { useContext, useEffect, useState } from 'react';
 import { challengeApi } from '../api/ChallengeApi';
-import { IAgentDetail, IRole } from '../src/interfaces';
+import { IAgentDetail } from '../src/interfaces';
 import DetailsContainer from './DetailsContainer';
 import UserInformation from './UserInformation';
-import { ApplicationContext } from '../src/context/ApplicationContext';
+import { ApplicationContext } from '../src/context/ApplicationContextProvider';
 import HeaderMobile from './HeaderMobile';
 
 const Body = styled.div`
@@ -24,7 +24,6 @@ const RightContainer = styled.div`
   width: 100%;
   height: 100%;
   min-height: 1020px;
-  /* background-color: #E5E5E5; */
   background-color: #F8FAF9;
   padding: 50px 100px;
 
