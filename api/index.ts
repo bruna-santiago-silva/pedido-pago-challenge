@@ -5,9 +5,7 @@ export class Api {
     axios;
 
     constructor() {
-        // this.baseURL = `https://bbbff4e5-200b-406b-9650-e44c68439220.mock.pstmn.io/`;
         this.baseURL = `https://pp-api-desafio.herokuapp.com/`;
-
 
         this.axios = axios.create({baseURL:this.baseURL});
     }
