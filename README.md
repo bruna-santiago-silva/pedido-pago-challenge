@@ -1,10 +1,11 @@
 # Pedido Pago Challenge
 
 Construção de uma aplicação front-end usando NextJS que apresenta:\
-Tela de listagem de agentes e cargos - [Home](https://pedido-pago-challenge-vercel.vercel.app/)\
-Tela de detalhes de um agente - [Detalhes do Agente](https://pedido-pago-challenge-vercel.vercel.app/agents/1)\
+Tela de listagem de agentes e cargos - [Home](https://pedido-pago-challenge-vercel.vercel.app/).\
+Tela de detalhes de um agente - [Detalhes do Agente](https://pedido-pago-challenge-vercel.vercel.app/agents/1)..\
 Tela de detalhes de um cargo - [Detalhes do Cargo](https://pedido-pago-challenge-vercel.vercel.app/roles/1)\
 A aplicação seguiu o layout apresentado no [figma](https://www.figma.com/file/yUwchJAe2BcgmmBp6Qi3Ld/Tela-de-Colaboradores---Desafio-Front-end?node-id=1167%3A11518).\
+Todos os dados foram consumidos da [API](https://documenter.getpostman.com/view/17430395/UVkgxeaT).\ 
 O deploy da aplicação foi feita utilizando o `Vercel`, pode ser acessada pelo [link](https://pedido-pago-challenge-vercel.vercel.app/). 
 
 
